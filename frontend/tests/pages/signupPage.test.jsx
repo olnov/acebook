@@ -24,10 +24,14 @@ vi.mock("../../src/services/authentication", () => {
 const completeSignupForm = async () => {
   const user = userEvent.setup();
 
+  const firstNameInputEl = screen.getByLabelText("First Name:");
+  const lastNameInputEl = screen.getByLabelText("Last Name");
   const emailInputEl = screen.getByLabelText("Email:");
   const passwordInputEl = screen.getByLabelText("Password:");
   const submitButtonEl = screen.getByRole("submit-button");
 
+  await user.type(firstNameInputEl, "John");
+  await user.type(lastNameInputEl, "Doe");
   await user.type(emailInputEl, "test@email.com");
   await user.type(passwordInputEl, "1234");
   await user.click(submitButtonEl);
