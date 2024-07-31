@@ -1,42 +1,42 @@
 .navigation-pill {
   align-items: center;
-  border-radius: var(--size-radius-200);
+  border-radius: 20px;
   display: inline-flex;
-  gap: var(--size-space-200);
+  gap: 10px;
   justify-content: center;
-  padding: var(--size-space-200);
-  position: relative;
+  padding: 8px 16px;
+  cursor: pointer;
 }
 
 .navigation-pill .title {
-  font-family: var(--single-line-body-base-font-family);
-  font-size: var(--single-line-body-base-font-size);
-  font-style: var(--single-line-body-base-font-style);
-  font-weight: var(--single-line-body-base-font-weight);
-  letter-spacing: var(--single-line-body-base-letter-spacing);
-  line-height: var(--single-line-body-base-line-height);
-  margin-top: -1px;
+  font-family: "Inter", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
   position: relative;
   white-space: nowrap;
   width: fit-content;
 }
 
 .navigation-pill.active {
-  background-color: var(--color-background-brand-tertiary);
-}
-
-.navigation-pill.hover {
-  background-color: var(--color-background-default-default-hover);
+  background-color: #007bff;
 }
 
 .navigation-pill.active .title {
-  color: var(--color-text-brand-on-brand-secondary);
+  color: #fff;
+}
+
+.navigation-pill.default {
+  background-color: #f0f0f0;
 }
 
 .navigation-pill.default .title {
-  color: var(--color-text-default-default);
+  color: #333;
+}
+
+.navigation-pill.hover {
+  background-color: #e0e0e0;
 }
 
 .navigation-pill.hover .title {
-  color: var(--color-text-default-default);
+  color: #333;
 }

@@ -1,192 +1,121 @@
+/* Reset some basic styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .top-bar-group {
   height: 121px;
-  position: relative;
-  width: 1200px;
-}
-
-.top-bar-group .overlap-group {
-  height: 121px;
-  position: relative;
-}
-
-.top-bar-group .header {
-  align-items: center;
-  background-color: var(--color-background-default-default);
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-color: var(--color-border-default-default);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--size-space-600);
-  left: 0;
-  padding: var(--size-space-800);
-  position: absolute;
-  top: 0;
-  width: 1200px;
-}
-
-.top-bar-group .block {
-  flex: 0 0 auto;
-  margin-left: -2.5px;
-  position: relative;
-}
-
-.top-bar-group .div {
-  color: #000000;
-  font-family: "Inter", Helvetica;
-  font-size: 37px;
-  font-weight: 400;
-  height: 31px;
-  letter-spacing: 0;
-  line-height: 37px;
-  position: relative;
-  white-space: nowrap;
-  width: 171px;
-}
-
-.top-bar-group .navigation-pill-list {
-  align-items: center;
+  width: 100%;
   background-color: #ffffff;
+  border-bottom: 1px solid #ccc;
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--size-space-200);
-  justify-content: flex-end;
-  position: relative;
-  width: 513px;
-}
-
-.top-bar-group .navigation-pill-instance {
-  flex: 0 0 auto !important;
-}
-
-.top-bar-group .header-auth {
   align-items: center;
-  display: flex;
-  gap: var(--size-space-300);
-  height: 39px;
-  position: relative;
-  width: 206px;
-}
-
-.top-bar-group .button {
-  all: unset;
-  align-items: center;
-  background-color: var(--color-background-neutral-tertiary);
-  border: 1px solid;
-  border-color: var(--color-border-neutral-secondary);
-  border-radius: var(--size-radius-200);
-  box-sizing: border-box;
-  display: flex;
-  flex: 1;
-  flex-grow: 1;
-  gap: var(--size-space-200);
   justify-content: center;
-  overflow: hidden;
-  padding: var(--size-space-200);
-  position: relative;
 }
 
-.top-bar-group .button-2 {
-  all: unset;
-  box-sizing: border-box;
-  color: var(--color-text-default-default);
-  font-family: var(--single-line-body-base-font-family);
-  font-size: var(--single-line-body-base-font-size);
-  font-style: var(--single-line-body-base-font-style);
-  font-weight: var(--single-line-body-base-font-weight);
-  letter-spacing: var(--single-line-body-base-letter-spacing);
-  line-height: var(--single-line-body-base-line-height);
-  margin-top: -1px;
-  position: relative;
-  white-space: nowrap;
-  width: fit-content;
-}
-
-.top-bar-group .button-wrapper {
-  all: unset;
-  align-items: center;
-  background-color: var(--color-background-brand-default);
-  border: 1px solid;
-  border-color: var(--color-border-brand-default);
-  border-radius: var(--size-radius-200);
-  box-sizing: border-box;
+.header {
   display: flex;
-  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.block {
+  width: 50px; /* Increased size */
+  height: 50px; /* Increased size */
+  margin-right: 10px;
+}
+
+.div {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.search-instance {
   flex-grow: 1;
-  gap: var(--size-space-200);
+  margin: 0 20px;
+  max-width: 300px; /* Decreased length */
+}
+
+.navigation-pill-list {
+  display: flex;
+  gap: 15px;
+}
+
+.header-auth {
+  display: flex;
+  gap: 10px;
+}
+
+.button,
+.button-wrapper {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  overflow: hidden;
-  padding: var(--size-space-200);
-  position: relative;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.top-bar-group .button-3 {
+.button {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.button-wrapper {
+  background-color: #333;
+  color: #fff;
+  border: none;
+}
+
+.button:hover,
+.button-wrapper:hover {
+  background-color: #e0e0e0;
+}
+
+.button-wrapper:hover {
+  background-color: #111;
+}
+
+.button-2,
+.button-3 {
   all: unset;
-  box-sizing: border-box;
-  color: var(--color-text-brand-on-brand);
-  font-family: var(--single-line-body-base-font-family);
-  font-size: var(--single-line-body-base-font-size);
-  font-style: var(--single-line-body-base-font-style);
-  font-weight: var(--single-line-body-base-font-weight);
-  letter-spacing: var(--single-line-body-base-letter-spacing);
-  line-height: var(--single-line-body-base-line-height);
-  margin-top: -1px;
-  position: relative;
-  white-space: nowrap;
-  width: fit-content;
+  cursor: pointer;
 }
 
-.top-bar-group .avatar {
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   background-image: url(https://c.animaapp.com/M2klh9T2/img/shape-1@2x.png);
-  background-position: 50% 50%;
   background-size: cover;
-  border-radius: var(--size-radius-full);
-  height: var(--size-icon-large);
-  margin-bottom: -0.5px;
-  margin-top: -0.5px;
-  position: relative;
-  width: var(--size-icon-large);
 }
 
-.top-bar-group .search-instance {
-  left: 320px !important;
-  position: absolute !important;
-  top: 35px !important;
-}
-
-.top-bar-group .new-post-button {
+.new-post-button {
+  display: flex;
   align-items: center;
-  background-color: var(--color-background-brand-default);
-  border: 1px solid;
-  border-color: var(--color-border-brand-default);
-  border-radius: var(--size-radius-200);
-  display: inline-flex;
-  gap: var(--size-space-200);
-  justify-content: center;
-  left: 937px;
-  overflow: hidden;
-  padding: var(--size-space-300);
-  position: absolute;
-  top: 36px;
+  background-color: #333;
+  border-radius: 20px;
+  padding: 8px 16px;
+  color: #fff;
+  cursor: pointer;
 }
 
-.top-bar-group .icon-outlined {
-  height: 24px !important;
-  position: relative !important;
-  width: 24px !important;
+.new-post-button:hover {
+  background-color: #111;
 }
 
-.top-bar-group .button-4 {
-  all: unset;
-  box-sizing: border-box;
-  color: var(--color-text-brand-on-brand);
-  font-family: var(--single-line-body-base-font-family);
-  font-size: var(--single-line-body-base-font-size);
-  font-style: var(--single-line-body-base-font-style);
-  font-weight: var(--single-line-body-base-font-weight);
-  letter-spacing: var(--single-line-body-base-letter-spacing);
-  line-height: var(--single-line-body-base-line-height);
-  position: relative;
-  white-space: nowrap;
-  width: fit-content;
+.new-post-button .icon-outlined {
+  margin-right: 8px;
 }

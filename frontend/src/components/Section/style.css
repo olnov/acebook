@@ -1,31 +1,11 @@
 .section {
-  align-items: flex-start;
-  background-image: url(https://c.animaapp.com/M2klh9T2/img/section-1.svg);
-  background-position: 50% 50%;
-  background-size: cover;
   display: flex;
   flex-direction: column;
-  height: 1497px;
-  position: relative;
+  align-items: center;
+  padding: 20px;
+  background-color: #f7f7f7;
 }
 
 .section .home-page-change-instance {
-  flex: 0 0 auto !important;
-  width: 1200px !important;
-}
-
-.section .card-grid-content-list {
-  height: 973px !important;
-}
-
-.section .card-grid-content-instance {
-  background-image: url(https://c.animaapp.com/M2klh9T2/img/image-13.svg) !important;
-}
-
-.section .card-grid-content-list-instance {
-  background-image: url(https://c.animaapp.com/M2klh9T2/img/image-14.svg) !important;
-}
-
-.section .design-component-instance-node {
-  background-image: url(https://c.animaapp.com/M2klh9T2/img/image-15.svg) !important;
+  margin-bottom: 40px; /* Ensure space between hero actions and other content */
 }

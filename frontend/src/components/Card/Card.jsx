@@ -1,15 +1,10 @@
-/*
-We're constantly improving the code you see. 
-Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcNg&d=1152665201300829
-*/
-
 import PropTypes from "prop-types";
 import React from "react";
 import { Info3 } from "../../icons/Info3";
 import "./style.css";
 
 export const Card = ({
-  body = "Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. ",
+  body = "Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story.",
   heading = "Title",
   button = true,
   asset = true,
@@ -18,12 +13,13 @@ export const Card = ({
   direction,
   className,
   imageClassName,
+  onButtonClick,
 }) => {
   return (
     <div className={`card ${direction} ${variant} ${className}`}>
       {assetType === "icon" && (
         <>
-          <>{asset && <Info3 className="info" />}</>
+          {asset && <Info3 className="info" />}
         </>
       )}
 
@@ -35,11 +31,11 @@ export const Card = ({
           <p className="body-text-for">{body}</p>
         </div>
         {button && (
-          <button className="button-group-3">
-            <button className="button-8">
+          <div className="button-group-3">
+            <button className="button-8" onClick={onButtonClick}>
               <div className="text-wrapper-3">Button</div>
             </button>
-          </button>
+          </div>
         )}
       </div>
     </div>
@@ -54,4 +50,5 @@ Card.propTypes = {
   assetType: PropTypes.oneOf(["image", "icon"]),
   variant: PropTypes.oneOf(["stroke", "default"]),
   direction: PropTypes.oneOf(["vertical", "horizontal"]),
+  onButtonClick: PropTypes.func,
 };

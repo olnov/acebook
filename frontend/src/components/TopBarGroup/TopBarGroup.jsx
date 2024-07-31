@@ -1,8 +1,3 @@
-/*
-We're constantly improving the code you see. 
-Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcNg&d=1152665201300829
-*/
-
 import PropTypes from "prop-types";
 import React from "react";
 import { IconOutlinedSuggestedSymbol } from "../../icons/IconOutlinedSuggestedSymbol";
@@ -17,43 +12,31 @@ export const TopBarGroup = ({
 }) => {
   return (
     <div className="top-bar-group">
-      <div className="overlap-group">
-        {property1 === "default" && (
-          <div className={`header ${headerClassName}`}>
-            <img className="block" alt="Block" src={block} />
-            <div className="div">AceBook</div>
-            <div className="navigation-pill-list">
-              <NavigationPill className="navigation-pill-instance" label="Home" state="active" />
-              <NavigationPill className="navigation-pill-instance" label="Feed" state="default" />
-              <NavigationPill className="navigation-pill-instance" label="About us" state="default" />
-            </div>
-            <div className="header-auth">
-              <button className="button">
-                <button className="button-2">Login</button>
-              </button>
-              <button className="button-wrapper">
-                <button className="button-3">Sign up</button>
-              </button>
-            </div>
-          </div>
-        )}
-
-        {property1 === "logged-in" && (
-          <div className="header">
-            <img className="block" alt="Block" src="https://c.animaapp.com/M2klh9T2/img/block-1.svg" />
-            <div className="div">AceBook</div>
-            <div className="navigation-pill-list">
-              <NavigationPill className="navigation-pill-instance" label="Home" state="active" />
-              <NavigationPill className="navigation-pill-instance" label="Feed" state="default" />
-              <NavigationPill className="navigation-pill-instance" label="About us" state="default" />
-            </div>
-            <div className="header-auth">
-              <div className="avatar" />
-            </div>
-          </div>
-        )}
-
+      <div className="header">
+        <div className="logo">
+          <img className="block" alt="Block" src={block} />
+          <div className="div">AceBook</div>
+        </div>
         <Search className="search-instance" />
+        <div className="navigation-pill-list">
+          <NavigationPill className="navigation-pill-instance" label="Home" state="active" />
+          <NavigationPill className="navigation-pill-instance" label="Feed" state="default" />
+          <NavigationPill className="navigation-pill-instance" label="About us" state="default" />
+        </div>
+        <div className="header-auth">
+          {property1 === "default" ? (
+            <>
+              <div className="button">
+                <button className="button-2">Login</button>
+              </div>
+              <div className="button-wrapper">
+                <button className="button-3">Sign up</button>
+              </div>
+            </>
+          ) : (
+            <div className="avatar" />
+          )}
+        </div>
         {property1 === "logged-in" && (
           <div className="new-post-button">
             <IconOutlinedSuggestedSymbol className="icon-outlined" />

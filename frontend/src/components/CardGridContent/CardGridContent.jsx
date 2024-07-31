@@ -1,8 +1,3 @@
-/*
-We're constantly improving the code you see. 
-Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcNg&d=1152665201300829
-*/
-
 import PropTypes from "prop-types";
 import React from "react";
 import { Card } from "../Card";
@@ -12,11 +7,15 @@ import "./style.css";
 export const CardGridContent = ({
   platform,
   className,
-  textContentHeadingHeading = "Heading",
+  textContentHeadingHeading = "Recent Posts",
   cardImageClassName,
   cardImageClassNameOverride,
   cardDivClassName,
 }) => {
+  const handleButtonClick = (title) => {
+    console.log(`${title} button clicked`);
+  };
+
   return (
     <div
       className={`card-grid-content platform-${platform} ${className}`}
@@ -37,6 +36,7 @@ export const CardGridContent = ({
           heading="Title"
           imageClassName={cardImageClassName}
           variant={platform === "mobile" ? "default" : "stroke"}
+          onButtonClick={() => handleButtonClick("Title")}
         />
         <Card
           assetType="image"
@@ -46,6 +46,7 @@ export const CardGridContent = ({
           heading="Title"
           imageClassName={cardImageClassNameOverride}
           variant={platform === "mobile" ? "default" : "stroke"}
+          onButtonClick={() => handleButtonClick("Title")}
         />
         <Card
           assetType="image"
@@ -55,6 +56,7 @@ export const CardGridContent = ({
           heading="Title"
           imageClassName={cardDivClassName}
           variant={platform === "mobile" ? "default" : "stroke"}
+          onButtonClick={() => handleButtonClick("Title")}
         />
       </div>
     </div>
