@@ -1,1 +1,0 @@
-export { NavigationPill } from "./NavigationPill";

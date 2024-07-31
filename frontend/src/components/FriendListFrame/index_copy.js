@@ -1,1 +1,0 @@
-export { FriendListFrame } from "./FriendListFrame";
