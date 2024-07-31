@@ -1,0 +1,47 @@
+.text-content-title {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--size-space-200);
+  position: relative;
+}
+
+.text-content-title .title-2 {
+  align-self: stretch;
+  color: var(--color-text-default-default);
+  font-family: var(--title-hero-font-family);
+  font-size: var(--title-hero-font-size);
+  font-style: var(--title-hero-font-style);
+  font-weight: var(--title-hero-font-weight);
+  letter-spacing: var(--title-hero-letter-spacing);
+  line-height: var(--title-hero-line-height);
+  margin-top: -1px;
+  position: relative;
+}
+
+.text-content-title .subtitle {
+  align-self: stretch;
+  color: var(--color-text-default-secondary);
+  font-family: var(--subtitle-font-family);
+  font-size: var(--subtitle-font-size);
+  font-style: var(--subtitle-font-style);
+  font-weight: var(--subtitle-font-weight);
+  letter-spacing: var(--subtitle-letter-spacing);
+  line-height: var(--subtitle-line-height);
+  position: relative;
+}
+
+.text-content-title.center {
+  align-items: center;
+}
+
+.text-content-title.start {
+  align-items: flex-start;
+}
+
+.text-content-title.center .title-2 {
+  text-align: center;
+}
+
+.text-content-title.center .subtitle {
+  text-align: center;
+}

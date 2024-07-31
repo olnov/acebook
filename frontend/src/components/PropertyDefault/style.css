@@ -1,0 +1,23 @@
+.property-default {
+  align-items: center;
+  background-color: var(--color-background-default-default);
+  border-radius: var(--typography-primitives-scale-06);
+  display: flex;
+  gap: var(--size-space-200);
+  height: 44px;
+  justify-content: center;
+  overflow: hidden;
+  padding: var(--size-space-300);
+  position: relative;
+  width: 40px;
+}
+
+.property-default .icon-outlined-action-thumb-thumb-up-2 {
+  height: 36px !important;
+  margin-bottom: -8px !important;
+  margin-left: -10px !important;
+  margin-right: -10px !important;
+  margin-top: -8px !important;
+  position: relative !important;
+  width: 36px !important;
+}

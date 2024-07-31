@@ -1,0 +1,19 @@
+.text {
+  align-items: flex-start;
+  display: inline-flex;
+  position: relative;
+}
+
+.text .div {
+  color: var(--color-text-default-default);
+  font-family: var(--body-base-font-family);
+  font-size: var(--body-base-font-size);
+  font-style: var(--body-base-font-style);
+  font-weight: var(--body-base-font-weight);
+  letter-spacing: var(--body-base-letter-spacing);
+  line-height: var(--body-base-line-height);
+  margin-top: -1px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}

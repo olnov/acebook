@@ -1,0 +1,24 @@
+.post-card-with-like {
+  box-shadow: inset 0px 4px 4px #00000040;
+  height: 277px;
+  width: 440px;
+}
+
+.post-card-with-like .overlap-group {
+  border-radius: 8px;
+  height: 277px;
+  position: relative;
+}
+
+.post-card-with-like .post-card-instance {
+  height: 277px !important;
+  left: 0 !important;
+  position: absolute !important;
+  top: 0 !important;
+}
+
+.post-card-with-like .like-button {
+  left: 240px !important;
+  position: absolute !important;
+  top: 24px !important;
+}

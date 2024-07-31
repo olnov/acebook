@@ -1,0 +1,1 @@
+export { PostCardWithLike } from "./PostCardWithLike";
