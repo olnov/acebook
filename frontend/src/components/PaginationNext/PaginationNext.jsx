@@ -1,22 +1,22 @@
-/*
-We're constantly improving the code you see. 
-Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcNg&d=1152665201300829
-*/
-
-import PropTypes from "prop-types";
 import React from "react";
-import { Size16 } from "../../icons/Size16";
+import PropTypes from "prop-types";
 import "./style.css";
 
-export const PaginationNext = ({ disabled = false, className }) => {
+const PaginationNext = ({ currentPage, totalPages, paginate }) => {
   return (
-    <div className={`pagination-next disabled-1-${disabled} ${className}`}>
-      <div className="text-wrapper-7">Next</div>
-      <Size16 className="arrow-right" />
-    </div>
+    <span
+      className={`pagination-next navigation-pill ${currentPage === totalPages ? 'disabled' : ''}`}
+      onClick={() => paginate(currentPage < totalPages ? currentPage + 1 : currentPage)}
+    >
+      Next →
+    </span>
   );
 };
 
 PaginationNext.propTypes = {
-  disabled: PropTypes.bool,
+  currentPage: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
+  paginate: PropTypes.func.isRequired,
 };
+
+export default PaginationNext;

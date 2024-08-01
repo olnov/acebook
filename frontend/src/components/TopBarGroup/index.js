@@ -1,1 +1,2 @@
-export { TopBarGroup } from "./TopBarGroup";
+import TopBarGroup from './TopBarGroup';
+export default TopBarGroup;

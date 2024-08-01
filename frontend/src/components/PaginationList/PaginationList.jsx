@@ -1,22 +1,34 @@
-/*
-We're constantly improving the code you see. 
-Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcNg&d=1152665201300829
-*/
-
 import React from "react";
-import { PaginationGap } from "../PaginationGap";
-import { PaginationPage } from "../PaginationPage";
+import PropTypes from "prop-types";
 import "./style.css";
 
-export const PaginationList = ({ className }) => {
+const PaginationList = ({ totalPosts, postsPerPage, currentPage, paginate }) => {
+  const pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
   return (
-    <div className={`pagination-list ${className}`}>
-      <PaginationPage className="design-component-instance-node" number="1" stateProp="current" />
-      <PaginationPage className="design-component-instance-node" number="2" stateProp="default" />
-      <PaginationPage className="design-component-instance-node" number="3" stateProp="default" />
-      <PaginationGap className="design-component-instance-node" />
-      <PaginationPage className="design-component-instance-node" number="67" stateProp="default" />
-      <PaginationPage className="design-component-instance-node" number="68" stateProp="default" />
+    <div className="pagination-list">
+      {pageNumbers.map(number => (
+        <span
+          key={number}
+          className={`page-number ${number === currentPage ? 'active' : ''}`}
+          onClick={() => paginate(number)}
+        >
+          {number}
+        </span>
+      ))}
     </div>
   );
 };
+
+PaginationList.propTypes = {
+  totalPosts: PropTypes.number.isRequired,
+  postsPerPage: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  paginate: PropTypes.func.isRequired,
+};
+
+export default PaginationList;

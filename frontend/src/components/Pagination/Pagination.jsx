@@ -1,20 +1,28 @@
-/*
-We're constantly improving the code you see. 
-Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcNg&d=1152665201300829
-*/
-
 import React from "react";
-import { PaginationList } from "../PaginationList";
-import { PaginationNext } from "../PaginationNext";
-import { PaginationPrevious } from "../PaginationPrevious";
+import PaginationList from "../PaginationList/PaginationList";
+import PaginationNext from "../PaginationNext/PaginationNext";
+import PaginationPrevious from "../PaginationPrevious/PaginationPrevious";
+import PropTypes from "prop-types";
 import "./style.css";
 
-export const Pagination = ({ className }) => {
+const Pagination = ({ className, totalPosts, postsPerPage, currentPage, paginate }) => {
+  const totalPages = Math.ceil(totalPosts / postsPerPage);
+
   return (
     <div className={`pagination ${className}`}>
-      <PaginationPrevious className="design-component-instance-node-2" disabled />
-      <PaginationList className="design-component-instance-node-2" />
-      <PaginationNext className="design-component-instance-node-2" />
+      <PaginationPrevious className="pagination-previous" currentPage={currentPage} paginate={paginate} />
+      <PaginationList className="pagination-list" totalPosts={totalPosts} postsPerPage={postsPerPage} currentPage={currentPage} paginate={paginate} />
+      <PaginationNext className="pagination-next" currentPage={currentPage} totalPages={totalPages} paginate={paginate} />
     </div>
   );
 };
+
+Pagination.propTypes = {
+  className: PropTypes.string,
+  totalPosts: PropTypes.number.isRequired,
+  postsPerPage: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  paginate: PropTypes.func.isRequired,
+};
+
+export default Pagination;

@@ -1,20 +1,15 @@
-/*
-We're constantly improving the code you see. 
-Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcNg&d=1152665201300829
-*/
-
 import React from "react";
-import { PostCard } from "../PostCard";
-import { PropertyDefault } from "../PropertyDefault";
+import PostCard from "../PostCard"; // Ensure PostCard is imported correctly
+import PropertyDefault from "../PropertyDefault"; // Ensure PropertyDefault is imported correctly
 import "./style.css";
 
-export const PostCardWithLike = ({ className }) => {
+export const PostCardWithLike = ({ className, post }) => {
   return (
     <div className={`post-card-with-like ${className}`}>
-      <div className="overlap-group">
-        <PostCard className="post-card-instance" />
-        <PropertyDefault className="like-button" />
-      </div>
+      <PostCard className="post-card-instance" post={post} />
+      <PropertyDefault className="like-button" />
     </div>
   );
 };
+
+export default PostCardWithLike;

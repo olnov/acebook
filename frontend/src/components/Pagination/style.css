@@ -1,10 +1,42 @@
 .pagination {
-  align-items: center;
-  display: inline-flex;
-  gap: var(--size-space-200);
-  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
 }
 
-.pagination .design-component-instance-node-2 {
-  flex: 0 0 auto !important;
+.page-number {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.page-number.active {
+  font-weight: bold;
+}
+
+.pagination-previous, .pagination-next {
+  cursor: pointer;
+}
+
+.pagination-previous.disabled, .pagination-next.disabled {
+  pointer-events: none;
+  color: grey;
+}
+
+.navigation-pill {
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 20px;
+  background-color: #ddd;
+  color: #000;
+  text-align: center;
+  user-select: none;
+}
+
+.navigation-pill:hover {
+  background-color: #ccc;
+}
+
+.navigation-pill.active, .navigation-pill.active .page-number {
+  background-color: blue;
+  color: white;
 }

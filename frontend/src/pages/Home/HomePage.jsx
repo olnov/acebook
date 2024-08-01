@@ -1,11 +1,9 @@
-import { Link } from "react-router-dom";
-
 import React from "react";
 import { Section } from "../../components/Section";
-import { TopBarGroup } from "../../components/TopBarGroup";
+import TopBarGroup from "../../components/TopBarGroup";
 import "./style.css";
 
-export const HomePage = () => {
+const HomePage = () => {
   return (
     <div className="home-page">
       <TopBarGroup
@@ -14,6 +12,9 @@ export const HomePage = () => {
         property1="default"
       />
       <Section className="section-instance" />
+      {/* Other content */}
     </div>
   );
 };
+
+export default HomePage;

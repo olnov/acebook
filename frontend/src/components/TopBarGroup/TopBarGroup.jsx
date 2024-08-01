@@ -1,27 +1,45 @@
 import PropTypes from "prop-types";
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import { IconOutlinedSuggestedSymbol } from "../../icons/IconOutlinedSuggestedSymbol";
 import { NavigationPill } from "../NavigationPill";
 import { Search } from "../Search";
 import "./style.css";
 
-export const TopBarGroup = ({
+const TopBarGroup = ({
   property1,
   headerClassName,
-  block = "https://c.animaapp.com/M2klh9T2/img/block.svg",
+  block = "/img/block-2.svg", // Update to the correct local path
 }) => {
+  const location = useLocation();
+
+  const handleImageError = (event) => {
+    event.target.style.display = 'none'; // Hide the image on error
+    event.target.parentElement.style.backgroundColor = 'white'; // Show white box
+    event.target.parentElement.style.width = '50px'; // Adjust to match image size
+    event.target.parentElement.style.height = '50px'; // Adjust to match image size
+  };
+
   return (
-    <div className="top-bar-group">
+    <div className={`top-bar-group ${headerClassName}`}>
       <div className="header">
         <div className="logo">
-          <img className="block" alt="Block" src={block} />
+          <div className="logo-container">
+            <img className="block" alt="Block" src={block} onError={handleImageError} />
+          </div>
           <div className="div">AceBook</div>
         </div>
         <Search className="search-instance" />
         <div className="navigation-pill-list">
-          <NavigationPill className="navigation-pill-instance" label="Home" state="active" />
-          <NavigationPill className="navigation-pill-instance" label="Feed" state="default" />
-          <NavigationPill className="navigation-pill-instance" label="About us" state="default" />
+          <Link to="/" className={`navigation-pill-link ${location.pathname === '/' ? 'active' : ''}`}>
+            <NavigationPill className="navigation-pill-instance" label="Home" state="default" />
+          </Link>
+          <Link to="/feed" className={`navigation-pill-link ${location.pathname === '/feed' ? 'active' : ''}`}>
+            <NavigationPill className="navigation-pill-instance" label="Feed" state="default" />
+          </Link>
+          <Link to="/about-us" className={`navigation-pill-link ${location.pathname === '/about-us' ? 'active' : ''}`}>
+            <NavigationPill className="navigation-pill-instance" label="About us" state="default" />
+          </Link>
         </div>
         <div className="header-auth">
           {property1 === "default" ? (
@@ -52,3 +70,5 @@ TopBarGroup.propTypes = {
   property1: PropTypes.oneOf(["logged-in", "default"]),
   block: PropTypes.string,
 };
+
+export default TopBarGroup;
