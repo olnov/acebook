@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { TopBar } from "../TopBar/TopBar";
 
 import { signup } from "../../services/authentication";
 import "./SignupPage.css"
@@ -38,6 +39,7 @@ export const SignupPage = () => {
 
   return (
     <>
+    <TopBar />
     <h2>Signup</h2>
       <div class="container" className="container">
         <div class="signup-form" className="signup-form">

@@ -6,6 +6,8 @@ import { LoginPage } from "./pages/Login/LoginPage";
 import { SignupPage } from "./pages/Signup/SignupPage";
 import { FeedPage } from "./pages/Feed/FeedPage";
 // import { FriendsPage } from "./pages/Friends/FriendsPage";
+import { MainPage } from "./pages/Main/MainPage"
+
 
 // docs: https://reactrouter.com/en/main/start/overview
 const router = createBrowserRouter([
@@ -25,6 +27,7 @@ const router = createBrowserRouter([
     path: "/posts",
     element: <FeedPage />,
   },
+
   // { 
   //   path: "/friends", 
   //   element: <FriendsPage /> 
@@ -32,6 +35,10 @@ const router = createBrowserRouter([
   // { path: "/search-friends", 
   //   element: <SearchFriendsPage /> 
   // },
+  {
+    path: "/main",
+    element: <MainPage />
+  }
 ]);
 
 const App = () => {
