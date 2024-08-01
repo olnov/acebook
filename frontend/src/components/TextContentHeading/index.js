@@ -1,0 +1,1 @@
+export { TextContentHeading } from "./TextContentHeading";
