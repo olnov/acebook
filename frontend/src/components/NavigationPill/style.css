@@ -17,14 +17,6 @@
   width: fit-content;
 }
 
-.navigation-pill.active {
-  background-color: #007bff;
-}
-
-.navigation-pill.active .title {
-  color: #fff;
-}
-
 .navigation-pill.default {
   background-color: #f0f0f0;
 }
@@ -39,4 +31,12 @@
 
 .navigation-pill.hover .title {
   color: #333;
+}
+
+.navigation-pill.active {
+  background-color: #007bff;
+}
+
+.navigation-pill.active .title {
+  color: #fff;
 }

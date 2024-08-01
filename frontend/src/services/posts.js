@@ -1,7 +1,7 @@
 // docs: https://vitejs.dev/guide/env-and-mode.html
 export const getPosts = async (token) => {
   try {
-    const response = await fetch('/api/posts', {
+    const response = await fetch('/api/models/posts', {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'

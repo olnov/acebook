@@ -1,16 +1,23 @@
+/* Ensure no extra padding or margin on the body and html elements */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 .feed-page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 0; /* Ensure no padding on the main container */
 }
 
 .feed-content {
   display: flex;
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  margin: 20px 0; /* Add margin to the content area */
+  padding: 0 20px; /* Horizontal padding for the content */
 }
 
 .filter-sidebar {

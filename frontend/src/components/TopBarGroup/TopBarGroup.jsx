@@ -9,15 +9,15 @@ import "./style.css";
 const TopBarGroup = ({
   property1,
   headerClassName,
-  block = "/img/block-2.svg", // Update to the correct local path
+  block = "/img/block-2.svg",
 }) => {
   const location = useLocation();
 
   const handleImageError = (event) => {
-    event.target.style.display = 'none'; // Hide the image on error
-    event.target.parentElement.style.backgroundColor = 'white'; // Show white box
-    event.target.parentElement.style.width = '50px'; // Adjust to match image size
-    event.target.parentElement.style.height = '50px'; // Adjust to match image size
+    event.target.style.display = 'none';
+    event.target.parentElement.style.backgroundColor = 'white';
+    event.target.parentElement.style.width = '50px';
+    event.target.parentElement.style.height = '50px';
   };
 
   return (
@@ -32,13 +32,13 @@ const TopBarGroup = ({
         <Search className="search-instance" />
         <div className="navigation-pill-list">
           <Link to="/" className={`navigation-pill-link ${location.pathname === '/' ? 'active' : ''}`}>
-            <NavigationPill className="navigation-pill-instance" label="Home" state="default" />
+            <NavigationPill className={`navigation-pill-instance`} label="Home" state={location.pathname === '/' ? 'active' : 'default'} />
           </Link>
           <Link to="/feed" className={`navigation-pill-link ${location.pathname === '/feed' ? 'active' : ''}`}>
-            <NavigationPill className="navigation-pill-instance" label="Feed" state="default" />
+            <NavigationPill className={`navigation-pill-instance`} label="Feed" state={location.pathname === '/feed' ? 'active' : 'default'} />
           </Link>
           <Link to="/about-us" className={`navigation-pill-link ${location.pathname === '/about-us' ? 'active' : ''}`}>
-            <NavigationPill className="navigation-pill-instance" label="About us" state="default" />
+            <NavigationPill className={`navigation-pill-instance`} label="About us" state={location.pathname === '/about-us' ? 'active' : 'default'} />
           </Link>
         </div>
         <div className="header-auth">
