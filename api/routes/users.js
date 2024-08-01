@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.get("/:id", tokenChecker, UsersController.getUser);
 router.get("/:id/friends", tokenChecker, UsersController.getUserFriends);
+router.get("/", UsersController.getAllUsers)
 
 //update//
 

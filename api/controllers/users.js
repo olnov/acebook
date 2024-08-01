@@ -5,16 +5,17 @@ const create = async (req, res) => {
   const full_name = req.body.full_name;
   const email = req.body.email;
   const password = req.body.password;
+  const friends = req.body.friends;
   console.log("HERE!!");
   console.log("Full name:" + full_name);
   console.log("Email:" + email);
   console.log("Password:" + password);
-
+  console.log("Friends Array: " + friends)
   const user = new User({ 
     full_name, 
     email, 
     password,
-    friends,  
+    friends,
   });
 
     user
@@ -32,6 +33,15 @@ const create = async (req, res) => {
 
 // Read
 
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find(); // This fetches all users
+    res.status(200).json(users); // Respond with the list of users
+  } catch (err) {
+    res.status(500).json({ message: err.message }); // Handle errors
+  }
+};
+
 const getUser = async(req, res) => {
   try{
     const { id } = req.params; 
@@ -47,14 +57,16 @@ const getUserFriends = async (req, res) => {
     const { id } = req.params; 
     const user = await User.findById(id)  
   
-    const friends = await Promise.all()
-    user.friends.map((id) => User.findById(id));
+    const friends = await Promise.all(
+    user.friends.map((id) => User.findById(id)));
+
     const formattedFriends = friends.map(
       ({ _id, full_name, email}) => {
         return { _id, full_name, email};
       } 
     );
-    res.status(200).jason(formattedFriends);
+
+    res.status(200).json(formattedFriends);
   } catch (err) {
     res.status(404).json({ message: err.message })   
   }
@@ -77,13 +89,16 @@ const addRemoveFriend = async(req, res) => {
     } 
     await user.save();
     await friend.save();
-    
+
+    const friends = await Promise.all(
+    user.friends.map((id) => User.findById(id)));  
+
     const formattedFriends = friends.map(
       ({ _id, full_name, email}) => {
         return { _id, full_name, email};
       } 
     );
-    res.status(200).jason(formattedFriends);
+    res.status(200).json(formattedFriends);
 
   } catch (err) {
     res.status(404).json({ message: err.message })
@@ -97,7 +112,8 @@ const UsersController = {
   create,
   getUser,
   getUserFriends,
-  addRemoveFriend
+  addRemoveFriend,
+  getAllUsers
 };
 
 module.exports = UsersController;
