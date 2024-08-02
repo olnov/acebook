@@ -5,7 +5,7 @@ import Pagination from '../../components/Pagination/Pagination';
 import { getPosts } from '../../services/posts';
 import './style.css';
 
-export const FeedPage = () => {
+const FeedPage = () => {
   const [posts, setPosts] = useState([]);
   const [filter, setFilter] = useState('public');
   const [currentPage, setCurrentPage] = useState(1);
