@@ -2,7 +2,12 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 
 // Function to get a user's friends
-export const getUserFriends = async (userId, token) => {
+export const getUserFriends = async (userId) => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+        throw new Error("No authentication token found");
+    }
+
     const requestOptions = {
         method: "GET",
         headers: {
@@ -21,7 +26,11 @@ export const getUserFriends = async (userId, token) => {
 };
 
 // Function to add or remove a friend
-export const addRemoveFriend = async (userId, friendId, token) => {
+export const addRemoveFriend = async (userId, friendId) => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+        throw new Error("No authentication token found");
+    }    
     const requestOptions = {
         method: "PATCH",
         headers: {
