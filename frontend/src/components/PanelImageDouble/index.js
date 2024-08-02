@@ -1,1 +1,0 @@
-export { PanelImageDouble } from "./PanelImageDouble";

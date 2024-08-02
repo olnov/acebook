@@ -1,1 +1,0 @@
-export { PostCardWithLikeScreen } from "./PostCardWithLikeScreen";

@@ -1,1 +1,0 @@
-export { IconOutlinedSuggestedSymbol } from "./IconOutlinedSuggestedSymbol";

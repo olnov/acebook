@@ -1,1 +1,0 @@
-export { PaginationList } from "./PaginationList";
