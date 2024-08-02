@@ -1,0 +1,56 @@
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #f9f9f9;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    flex-direction:row; /* Stacks items vertically */
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+
+.search, .navigation {
+    display: flex;
+    align-items: center;
+}
+
+.navigation {
+    flex-wrap: nowrap; /* Prevents wrapping, ensuring all elements stay inline */
+    gap: 10px; /* Provides spacing between elements */
+    margin-right: 20px;
+}
+
+.navigation p, .navigation button {
+    margin: 0 10px; /* Adds space between inline items */
+}
+
+.navigation button {
+    padding: 5px 10px;
+}
+
+.topbar input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.topbar-photo {
+    width: 100px; /* Adjust the size as needed */
+    height: 100px; /* Adjust the size as needed */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+    margin-bottom: 20px; /* Adds some space below the image */
+}
