@@ -1,14 +1,13 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/Home/HomePage';
 import FeedPage from './pages/Feed/FeedPage';
-import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
-import { LoginPage } from "./pages/Login/LoginPage";
-import { SignupPage } from "./pages/Signup/SignupPage";
-// import { FriendsPage } from "./pages/Friends/FriendsPage";
-import { MainPage } from "./pages/Main/MainPage"
-
+import AboutUsPage from './pages/AboutUs/AboutUsPage';
+import LoginPage from './pages/Login/LoginPage';
+import SignupPage from './pages/Signup/SignupPage';
+import LandingPage from './pages/LandingPage/LandingPage';
+import ResultsPage from './pages/Results/ResultsPage';
+import ProfilePage from './pages/Profile/ProfilePage';
 
 // // docs: https://reactrouter.com/en/main/start/overview
 // const router = createBrowserRouter([
@@ -47,10 +46,14 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/feed" element={<FeedPage />} />
         <Route path="/about-us" element={<AboutUsPage />} /> 
-        {/* Add a catch-all route for 404 errors */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/sign-up" element={<SignupPage />} />
+        <Route path="/results" element={<ResultsPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
     </Router>

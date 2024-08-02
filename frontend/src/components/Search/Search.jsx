@@ -1,14 +1,37 @@
-import React from "react";
-import { IconOutlinedActionMainSearch3 } from "../../icons/IconOutlinedActionMainSearch3";
-import { X2 } from "../../icons/X2";
-import "./style.css";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './style.css';
 
-export const Search = ({ className }) => {
+export const Search = () => {
+  const [query, setQuery] = useState('');
+  const navigate = useNavigate();
+
+  const handleInputChange = (event) => {
+    setQuery(event.target.value);
+  };
+
+  const handleClear = () => {
+    setQuery('');
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      navigate(`/results?query=${query}`);
+    }
+  };
+
   return (
-    <div className={`search ${className}`}>
-      <IconOutlinedActionMainSearch3 className="icon-outlined-action" />
-      <input className="search-input" type="text" placeholder="Search" />
-      <X2 className="x" />
+    <div className="search-container">
+      <i className="search-icon">🔍</i>
+      <input
+        type="text"
+        value={query}
+        onChange={handleInputChange}
+        onKeyPress={handleKeyPress}
+        placeholder="Search"
+        className="search-input"
+      />
+      {query && <i className="clear-icon" onClick={handleClear}>❌</i>}
     </div>
   );
 };

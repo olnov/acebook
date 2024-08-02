@@ -1,21 +1,35 @@
-import PropTypes from "prop-types";
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import "./style.css";
 
-export const HeroActions = ({
+const HeroActions = ({
   buttonGroupText,
   className,
-  platform,
   textContentTitleSubtitle,
   textContentTitleTitle,
 }) => {
+  const navigate = useNavigate();
+
+  const handleLoginClick = () => {
+    navigate("/login");
+  };
+
+  const handleSignUpClick = () => {
+    navigate("/sign-up");
+  };
+
   return (
     <div className={`hero-actions ${className}`}>
       <h1>{textContentTitleTitle}</h1>
       <p>{textContentTitleSubtitle}</p>
       <div className="button-group">
-        <button className="login-button">Login</button>
-        <button className="signup-button">{buttonGroupText}</button>
+        <button className="login-button" onClick={handleLoginClick}>
+          Login
+        </button>
+        <button className="signup-button" onClick={handleSignUpClick}>
+          {buttonGroupText}
+        </button>
       </div>
     </div>
   );
@@ -24,7 +38,8 @@ export const HeroActions = ({
 HeroActions.propTypes = {
   buttonGroupText: PropTypes.string,
   className: PropTypes.string,
-  platform: PropTypes.oneOf(["desktop", "mobile"]),
   textContentTitleSubtitle: PropTypes.string,
   textContentTitleTitle: PropTypes.string,
 };
+
+export default HeroActions;

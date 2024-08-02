@@ -1,0 +1,48 @@
+@import '../../style.css'; /* Import global styles */
+
+.profile-page .hero-basic {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.profile-page .carousel {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.profile-page .carousel .item,
+.profile-page .carousel .item-last {
+  width: 100px;
+  height: 100px;
+  background-color: lightgray;
+}
+
+.profile-page .card-grid-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.profile-page .friend-list-instance {
+  grid-column: span 2;
+}
+
+.profile-page .post-card-with-like-button {
+  margin-bottom: 20px;
+}
+
+.profile-page .text-content-flow {
+  margin-bottom: 20px;
+}
+
+.profile-page .text-content-heading .heading {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.profile-page .text-instance {
+  line-height: 1.5;
+}

@@ -3,9 +3,9 @@ import TopBarGroup from '../../components/TopBarGroup';
 import PostCardWithLike from '../../components/PostCardWithLike/PostCardWithLike';
 import Pagination from '../../components/Pagination/Pagination';
 import { getPosts } from '../../services/posts';
-import './style.css';
+import './style.css';  // Import the specific style for this page
 
-export const FeedPage = () => {
+const FeedPage = () => {
   const [posts, setPosts] = useState([]);
   const [filter, setFilter] = useState('public');
   const [currentPage, setCurrentPage] = useState(1);

@@ -1,0 +1,26 @@
+/* Global styles for padding to account for the fixed TopBarGroup */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.page-content {
+  padding-top: 121px; /* Adjust this value based on the height of TopBarGroup */
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.form-container {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.form-container form {
+  display: inline-block;
+  text-align: left;
+}
+
+.form-footer {
+  margin-top: 20px;
+}

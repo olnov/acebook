@@ -1,13 +1,10 @@
-/* Reset some basic styles */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@import '../../style.css'; /* Import global styles */
 
 .top-bar-group {
-  height: 121px;
+  position: fixed;
+  top: 0;
   width: 100%;
+  z-index: 1000;
   background-color: #ffffff;
   border-bottom: 1px solid #ccc;
   display: flex;
@@ -30,8 +27,8 @@
 }
 
 .block {
-  width: 50px; /* Increased size */
-  height: 50px; /* Increased size */
+  width: 50px;
+  height: 50px;
   margin-right: 10px;
 }
 
@@ -43,7 +40,7 @@
 .search-instance {
   flex-grow: 1;
   margin: 0 20px;
-  max-width: 300px; /* Decreased length */
+  max-width: 300px;
 }
 
 .navigation-pill-list {
@@ -65,7 +62,7 @@
   border-radius: 20px;
   font-size: 16px;
   cursor: pointer;
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap;
 }
 
 .button {
@@ -99,7 +96,7 @@
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 16px;
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap;
 }
 
 .avatar {
@@ -129,8 +126,8 @@
 }
 
 .top-bar-group .logo-container {
-  width: 50px; /* Adjust the width to match the image size */
-  height: 50px; /* Adjust the height to match the image size */
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -150,6 +147,14 @@
 }
 
 .navigation-pill-link.active .navigation-pill-instance {
-  background-color: blue; /* Active background color */
-  color: white !important; /* Ensure the text is white when active */
+  background-color: blue;
+  color: white;
+}
+
+.blank-shape {
+  width: 50px;
+  height: 50px;
+  background-color: #f0f0f0;
+  margin-right: 10px;
+  border-radius: 5px;
 }

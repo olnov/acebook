@@ -3,13 +3,16 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .feed-page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0; /* Ensure no padding on the main container */
+  width: 100%; /* Ensure it takes full width */
 }
 
 .feed-content {
@@ -18,6 +21,7 @@ html, body {
   max-width: 1200px;
   margin: 20px 0; /* Add margin to the content area */
   padding: 0 20px; /* Horizontal padding for the content */
+  justify-content: center;
 }
 
 .filter-sidebar {

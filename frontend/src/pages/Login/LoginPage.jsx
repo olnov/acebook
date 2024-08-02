@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { TopBar } from "../TopBar/TopBar";
-import { Footer } from "../Footer/Footer";
-
+import { Link, useNavigate } from "react-router-dom";
+import TopBarGroup from "../../components/TopBarGroup";
 import { login } from "../../services/authentication";
-import "./LoginPage.css";
+import "./style.css";
 
-export const LoginPage = () => {
+const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -32,33 +30,37 @@ export const LoginPage = () => {
   };
 
   return (
-    <>
-      <TopBar />
-      <h2>Login</h2>
-      <div class="container">
-        <div class="login-form">
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="email">Email:</label>
-            <input
-              id="email"
-              type="text"
-              value={email}
-              onChange={handleEmailChange}
-            />
-            <label htmlFor="password">Password:</label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-            <p>
-              <input role="submit-button" id="submit" type="submit" value="Submit" />
-            </p>
-          </form>
-        </div>
+    <div className="login-page">
+      <TopBarGroup 
+        block="https://c.animaapp.com/M2klh9T2/img/block-2.svg"
+        headerClassName="top-bar-group-instance"
+        property1="default"
+      />
+      <div className="login-container">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="email">Email:</label>
+          <input
+            id="email"
+            type="text"
+            value={email}
+            onChange={handleEmailChange}
+          />
+          <label htmlFor="password">Password:</label>
+          <input
+            id="password"
+            type="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+          <button type="submit">Login</button>
+        </form>
+        <p className="form-footer">
+          Don't have an account? <Link to="/sign-up">Sign Up!</Link>
+        </p>
       </div>
-      <Footer />
-    </>
+    </div>
   );
 };
+
+export default LoginPage;

@@ -1,1 +1,1 @@
-export { HeroActions } from "./HeroActions";
+export { default as HeroActions } from './HeroActions';
