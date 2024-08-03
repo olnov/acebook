@@ -1,9 +1,11 @@
-import React from 'react';
+// Add the necessary state and methods to open and close the NewPostPopOut
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { IconOutlinedSuggestedSymbol } from '../../icons/IconOutlinedSuggestedSymbol';
 import { NavigationPill } from '../NavigationPill';
 import { Search } from '../Search';
+import NewPostPopOut from '../NewPostPopOut/NewPostPopOut';
 import './style.css';
 
 const TopBarGroup = ({
@@ -15,6 +17,16 @@ const TopBarGroup = ({
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
   const isLoggedIn = !!token;
+
+  const [isNewPostOpen, setIsNewPostOpen] = useState(false);
+
+  const handleNewPostClick = () => {
+    setIsNewPostOpen(true);
+  };
+
+  const handleNewPostClose = () => {
+    setIsNewPostOpen(false);
+  };
 
   const handleImageError = (event) => {
     event.target.style.display = 'none';
@@ -82,15 +94,16 @@ const TopBarGroup = ({
               <Link to="/profile">
                 <img className="avatar" alt="Avatar" src="path/to/avatar.jpg" /> {/* Replace with actual avatar path */}
               </Link>
-              <Link to="/new-post" className="new-post-button">
+              <button className="new-post-button" onClick={handleNewPostClick}>
                 <IconOutlinedSuggestedSymbol className="icon-outlined" />
-                <button className="button-4">New Post</button>
-              </Link>
+                New Post
+              </button>
               <button className="button-4" onClick={handleLogout}>Logout</button>
             </>
           )}
         </div>
       </div>
+      {isNewPostOpen && <NewPostPopOut onClose={handleNewPostClose} onPostCreated={() => {}} />}
     </div>
   );
 };

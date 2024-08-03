@@ -2,15 +2,14 @@ const JWT = require("jsonwebtoken");
 
 // Middleware function to check for valid tokens
 const tokenChecker = (req, res, next) => {
-  // Allow public access to GET requests
-  if (req.method === 'GET') {
-    return next();
-  }
-
   const authHeader = req.get("Authorization");
 
   if (!authHeader) {
-    return res.status(401).json({ message: "No token provided" });
+    if (req.method === 'GET') {
+      return next();
+    } else {
+      return res.status(401).json({ message: "No token provided" });
+    }
   }
 
   const token = authHeader.slice(7); // Remove 'Bearer ' from string

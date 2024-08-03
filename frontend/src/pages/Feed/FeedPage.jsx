@@ -1,95 +1,89 @@
 import React, { useEffect, useState } from 'react';
-import TopBarGroup from '../../components/TopBarGroup';
 import PostCardWithLike from '../../components/PostCardWithLike/PostCardWithLike';
 import Pagination from '../../components/Pagination/Pagination';
 import { getPosts } from '../../services/posts';
+import TopBarGroup from '../../components/TopBarGroup/TopBarGroup';
 import './style.css';
 
 const FeedPage = () => {
   const [posts, setPosts] = useState([]);
-  const [filter, setFilter] = useState('public');
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [error, setError] = useState('');
+  const [postsPerPage] = useState(6); // 3 rows * 2 columns = 6 posts per page
+  const [filter, setFilter] = useState('Public');
 
-  const postsPerPage = 6;
+  const fetchPosts = async () => {
+    const token = localStorage.getItem('token');
+    try {
+      const fetchedPosts = await getPosts(token);
+      setPosts(fetchedPosts);
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const fetchedPosts = await getPosts();
-        setPosts(fetchedPosts);
-      } catch (error) {
-        console.error('Error fetching posts:', error);
-        setError('Error fetching posts: ' + error.message);
-      }
-    };
-
     fetchPosts();
   }, []);
 
-  const filteredPosts = posts.filter(post => post.is_private === (filter === 'private'));
+  // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
+  // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  // Filter posts based on the selected filter
+  const filteredPosts = currentPosts.filter(post => filter === 'Public' ? !post.isPrivate : post.isPrivate);
 
   return (
     <div className="feed-page">
-      <TopBarGroup
-        block="https://c.animaapp.com/M2klh9T2/img/block-2.svg"
-        headerClassName="top-bar-group-instance"
-        property1={localStorage.getItem('token') ? 'logged-in' : 'default'}
-      />
-      <div className="feed-content">
-        <div className="filter-sidebar">
-          <h2>Filter</h2>
-          <div>
-            <label>
-              <input 
-                type="radio" 
-                name="filter" 
-                value="public" 
-                checked={filter === 'public'} 
-                onChange={() => setFilter('public')} 
-              /> 
-              Public
-            </label>
-          </div>
-          <div>
-            <label>
-              <input 
-                type="radio" 
-                name="filter" 
-                value="private" 
-                checked={filter === 'private'} 
-                onChange={() => setFilter('private')} 
-              /> 
-              Private
-            </label>
-          </div>
+      <TopBarGroup property1={localStorage.getItem('token') ? 'logged-in' : 'default'} />
+      <div className="feed-container">
+        <div className="filter-container">
+          <h3>Filter</h3>
+          <label>
+            <input
+              type="radio"
+              name="filter"
+              value="Public"
+              checked={filter === 'Public'}
+              onChange={(e) => setFilter(e.target.value)}
+            />
+            Public
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="filter"
+              value="Private"
+              checked={filter === 'Private'}
+              onChange={(e) => setFilter(e.target.value)}
+            />
+            Private
+          </label>
         </div>
         <div className="posts-container">
-          {error ? (
-            <div className="error-message">{error}</div>
-          ) : currentPosts.length === 0 ? (
-            <div className="no-posts-message">No posts</div>
+          {loading ? (
+            <p>Loading...</p>
           ) : (
             <div className="posts-grid">
-              {currentPosts.map((post) => (
-                <PostCardWithLike key={post._id} post={post} className="post-card-with-like-instance" />
+              {filteredPosts.map(post => (
+                <PostCardWithLike key={post._id} post={post} />
               ))}
             </div>
           )}
+          <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={posts.length}
+            currentPage={currentPage}
+            paginate={paginate}
+          />
         </div>
       </div>
-      <Pagination
-        className="pagination"
-        totalPosts={filteredPosts.length}
-        postsPerPage={postsPerPage}
-        currentPage={currentPage}
-        paginate={paginate}
-      />
     </div>
   );
 };

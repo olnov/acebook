@@ -1,44 +1,89 @@
 .feed-page {
-  margin-top: 70px; /* Adjust this value based on the height of your TopBarGroup */
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+  padding-top: 80px; /* Ensure this is enough to clear the TopBarGroup */
 }
 
-.feed-content {
+.feed-container {
   display: flex;
   width: 100%;
-  max-width: 3000px; /* Increase max-width to make use of available space */
-  padding: 20px;
-  box-sizing: border-box;
+  max-width: 1200px;
+  margin-top: 20px; /* Additional spacing if necessary */
 }
 
-.filter-sidebar {
-  flex: 0 0 200px;
+.filter-container {
+  width: 200px;
   margin-right: 20px;
-  margin-top: 20px; /* Adjust to make sure it starts below the TopBarGroup */
+}
+
+.filter-container h3 {
+  margin-bottom: 10px;
+}
+
+.filter-container label {
+  display: block;
+  margin-bottom: 10px;
 }
 
 .posts-container {
-  flex: 1;
-  margin-top: 20px; /* Adjust to make sure it starts below the TopBarGroup */
-  max-width: 2000px; /* Set max-width for better layout */
+  flex-grow: 1;
 }
 
 .posts-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two posts per row */
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
-.pagination {
-  margin-top: 20px;
+.pagination-container {
   display: flex;
-  justify-content: center; /* Center the pagination buttons */
+  justify-content: center;
+  margin-top: 20px;
 }
 
-.error-message,
-.no-posts-message {
-  text-align: center;
-  color: red;
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination a {
+  display: block;
+  padding: 8px 16px;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.pagination a:hover {
+  background-color: #555;
+}
+
+.pagination .active a {
+  background-color: #007bff;
+}
+
+.pagination li {
+  display: flex;
+  align-items: center;
+}
+
+.pagination li a {
+  margin: 0 2px;
+}
+
+.pagination li {
+  display: flex;
+  align-items: center;
+}
+
+.pagination li a {
+  margin: 0 2px;
 }
