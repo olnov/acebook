@@ -1,5 +1,5 @@
 .feed-page {
-  margin-top: 400px; /* Adjust this value based on the height of your TopBarGroup */
+  margin-top: 70px; /* Adjust this value based on the height of your TopBarGroup */
   display: flex;
   flex-direction: column;
   align-items: center;
