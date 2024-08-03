@@ -1,13 +1,40 @@
-import React from "react";
-import PostCard from "../PostCard"; // Ensure PostCard is imported correctly
-import PropertyDefault from "../PropertyDefault"; // Ensure PropertyDefault is imported correctly
-import "./style.css";
+import React, { useState } from 'react';
+import './style.css';
+import PostPopOut from '../PostPopOut/PostPopOut';
 
-export const PostCardWithLike = ({ className, post }) => {
+const PostCardWithLike = ({ post }) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleSeeMoreClick = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const authorFullName = post.author ? post.author.full_name : 'Unknown Author';
+
   return (
-    <div className={`post-card-with-like ${className}`}>
-      <PostCard className="post-card-instance" post={post} />
-      <PropertyDefault className="like-button" />
+    <div>
+      <div className="post-card">
+        <div className="post-card-header">
+          <img src="path/to/avatar.jpg" alt="Avatar" className="avatar" />
+          <div>
+            <h4>{authorFullName}</h4> {/* Display the full name */}
+            <p>{new Date(post.date_created).toLocaleDateString()}</p>
+          </div>
+          <button className="like-button">👍</button>
+        </div>
+        <div className="post-card-body">
+          <h3>{post.title}</h3>
+          <p>{post.message}</p>
+        </div>
+        <div className="post-card-footer">
+          <button className="see-more-button" onClick={handleSeeMoreClick}>See more</button>
+        </div>
+      </div>
+      <PostPopOut show={showModal} onClose={handleCloseModal} post={post} />
     </div>
   );
 };

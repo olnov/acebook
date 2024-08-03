@@ -1,17 +1,18 @@
-// docs: https://vitejs.dev/guide/env-and-mode.html
-export const getPosts = async (token) => {
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+export const getPosts = async () => {
   try {
-    const response = await fetch('/api/models/posts', {
+    const response = await fetch(`${BACKEND_URL}/posts`, {
+      method: 'GET',
       headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
     });
     if (!response.ok) {
-      throw new Error(`Error: ${response.statusText}`);
+      throw new Error('Error fetching posts');
     }
     const data = await response.json();
-    return data;
+    return data.posts; // Ensure this returns the array of posts
   } catch (error) {
     console.error('Error fetching posts:', error);
     throw error;

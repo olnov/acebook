@@ -13,6 +13,8 @@ const TopBarGroup = ({
 }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
+  const isLoggedIn = !!token;
 
   const handleImageError = (event) => {
     event.target.style.display = 'none';
@@ -29,10 +31,25 @@ const TopBarGroup = ({
     navigate('/sign-up');
   };
 
+  const handleHomeClick = () => {
+    if (isLoggedIn) {
+      navigate('/Home');
+    } else {
+      navigate('/');
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.clear("token");
+    localStorage.clear("full_name");
+    localStorage.clear("userId");
+    navigate ("/login");
+  };
+
   return (
-    <div className={`top-bar-group ${headerClassName}`}>
+    <div className={`top-bar-group ${headerClassName}`} style={{ position: 'fixed', top: 0, width: '100%', zIndex: 1000 }}>
       <div className="header">
-        <div className="logo">
+        <div className="logo" onClick={handleHomeClick} style={{ cursor: 'pointer' }}>
           <div className="logo-container">
             <img className="block" alt="Block" src={block} onError={handleImageError} />
           </div>
@@ -51,7 +68,7 @@ const TopBarGroup = ({
           </Link>
         </div>
         <div className="header-auth">
-          {property1 === 'default' ? (
+          {!isLoggedIn ? (
             <>
               <div className="button" onClick={handleLoginClick}>
                 <button className="button-2">Login</button>
@@ -61,15 +78,18 @@ const TopBarGroup = ({
               </div>
             </>
           ) : (
-            <div className="avatar" />
+            <>
+              <Link to="/profile">
+                <img className="avatar" alt="Avatar" src="path/to/avatar.jpg" /> {/* Replace with actual avatar path */}
+              </Link>
+              <Link to="/new-post" className="new-post-button">
+                <IconOutlinedSuggestedSymbol className="icon-outlined" />
+                <button className="button-4">New Post</button>
+              </Link>
+              <button className="button-4" onClick={handleLogout}>Logout</button>
+            </>
           )}
         </div>
-        {property1 === 'logged-in' && (
-          <div className="new-post-button">
-            <IconOutlinedSuggestedSymbol className="icon-outlined" />
-            <button className="button-4">New Post</button>
-          </div>
-        )}
       </div>
     </div>
   );

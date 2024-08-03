@@ -3,7 +3,7 @@ import TopBarGroup from '../../components/TopBarGroup';
 import PostCardWithLike from '../../components/PostCardWithLike/PostCardWithLike';
 import Pagination from '../../components/Pagination/Pagination';
 import { getPosts } from '../../services/posts';
-import './style.css';  // Import the specific style for this page
+import './style.css';
 
 const FeedPage = () => {
   const [posts, setPosts] = useState([]);
@@ -16,12 +16,11 @@ const FeedPage = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const token = localStorage.getItem('token'); // Assuming token is stored in local storage
-        const fetchedPosts = await getPosts(token);
+        const fetchedPosts = await getPosts();
         setPosts(fetchedPosts);
       } catch (error) {
         console.error('Error fetching posts:', error);
-        setError('Error fetching posts');
+        setError('Error fetching posts: ' + error.message);
       }
     };
 
@@ -40,7 +39,7 @@ const FeedPage = () => {
       <TopBarGroup
         block="https://c.animaapp.com/M2klh9T2/img/block-2.svg"
         headerClassName="top-bar-group-instance"
-        property1="default"
+        property1={localStorage.getItem('token') ? 'logged-in' : 'default'}
       />
       <div className="feed-content">
         <div className="filter-sidebar">
@@ -76,9 +75,11 @@ const FeedPage = () => {
           ) : currentPosts.length === 0 ? (
             <div className="no-posts-message">No posts</div>
           ) : (
-            currentPosts.map((post) => (
-              <PostCardWithLike key={post._id} post={post} className="post-card-with-like-instance" />
-            ))
+            <div className="posts-grid">
+              {currentPosts.map((post) => (
+                <PostCardWithLike key={post._id} post={post} className="post-card-with-like-instance" />
+              ))}
+            </div>
           )}
         </div>
       </div>

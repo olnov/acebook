@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Avatar } from "../../components/Avatar";
 import { FriendList } from "../../components/FriendList";
 import { NavigationPill } from "../../components/NavigationPill";
@@ -6,9 +6,66 @@ import { PostCardWithLike } from "../../components/PostCardWithLike";
 import { Search } from "../../components/Search";
 import { Text } from "../../components/Text";
 import { IconOutlinedSuggestedSymbol } from "../../icons/IconOutlinedSuggestedSymbol";
+import { getPosts } from "../../services/posts";
+import { getFriends } from "../../services/friends";
 import "./style.css";
 
 const ProfilePage = () => {
+  const [profileData, setProfileData] = useState({
+    avatar: "",
+    name: "",
+    bio: "",
+    friends: [],
+    posts: []
+  });
+  const [postsError, setPostsError] = useState(null);
+  const [friendsError, setFriendsError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const userId = 'user_id_here'; // Replace with the actual user ID
+        if (!token) {
+          throw new Error('User is not authenticated');
+        }
+        
+        let posts = [];
+        try {
+          posts = await getPosts(token);
+        } catch (error) {
+          setPostsError(error);
+        }
+        
+        let friends = [];
+        try {
+          friends = await getFriends(userId, token);
+        } catch (error) {
+          setFriendsError(error);
+        }
+
+        setProfileData({
+          avatar: "path/to/avatar.jpg",
+          name: "Joanne Lumely",
+          bio: "Joanne's bio...",
+          friends,
+          posts,
+        });
+      } catch (error) {
+        console.error('Error fetching profile data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProfileData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="profile-page">
       <div className="top-bar-group">
@@ -37,57 +94,35 @@ const ProfilePage = () => {
           <div className="avatar-block-2">
             <Avatar className="design-component-instance-node" shape="square" size="large" type="image" />
             <div className="div-wrapper">
-              <div className="text-wrapper-7">Joanne Lumely</div>
+              <div className="text-wrapper-7">{profileData.name}</div>
             </div>
           </div>
         </div>
       </div>
-      <div className="carousel">
-        <div className="item" />
-        <div className="item-last" />
-      </div>
-      <div className="card-grid-content">
-        <div className="panel-image-content">
-          <div className="group">
-            <div className="text-content-flow">
-              <div className="text-content-heading">
-                <div className="heading">Joanne’s Bio</div>
-              </div>
-              <Text
-                className="text-instance"
-                divClassName="text-3"
-                text={
-                  <>
-                    Hi, I&#39;m Joanne! I&#39;m a passionate traveler, avid reader, and dedicated marketing
-                    professional. I was born and raised in Seattle, Washington, where my love for exploring new places
-                    and cultures began. I have a degree in Marketing from the University of Washington, where I
-                    graduated with honors.
-                    <br />
-                    Currently, I work as a Senior Marketing Manager at a leading tech company in Seattle. I&#39;m known
-                    for my innovative strategies and my ability to connect with diverse audiences. When I&#39;m not
-                    working, you&#39;ll often find me hiking in the beautiful Pacific Northwest, experimenting with new
-                    recipes, or volunteering at local animal shelters.
-                    <br />
-                    My friends describe me as enthusiastic, caring, and adventurous. I always bring a positive vibe to
-                    any situation. Whether I&#39;m planning my next international trip or enjoying a quiet evening with
-                    a good book, I strive to live life to the fullest and inspire those around me to do the same.
-                  </>
-                }
-              />
+      <div className="profile-details">
+        <div className="bio">
+          <h2>{profileData.name}'s Bio</h2>
+          <p>{profileData.bio}</p>
+        </div>
+        <div className="friends">
+          <h2>{profileData.name}'s Friends</h2>
+          {friendsError ? (
+            <div className="error-message">Error loading friends: {friendsError.message}</div>
+          ) : (
+            <FriendList friends={profileData.friends} />
+          )}
+        </div>
+        <div className="posts">
+          <h2>{profileData.name}'s Recent Posts</h2>
+          {postsError ? (
+            <div className="error-message">Error loading posts: {postsError.message}</div>
+          ) : (
+            <div className="profile-posts">
+              {profileData.posts.map((post, index) => (
+                <PostCardWithLike key={index} post={post} className="post-card-with-like-button" />
+              ))}
             </div>
-          </div>
-        </div>
-        <FriendList className="friend-list-instance" />
-        <div className="heading-wrapper">
-          <div className="heading">Joanne’s Recent Posts</div>
-        </div>
-        <div className="cards">
-          <PostCardWithLike className="post-card-with-like-button" />
-          <PostCardWithLike className="post-card-with-like-button" />
-          <PostCardWithLike className="post-card-with-like-button" />
-          <PostCardWithLike className="post-card-with-like-button" />
-          <PostCardWithLike className="post-card-with-like-button" />
-          <PostCardWithLike className="post-card-with-like-button" />
+          )}
         </div>
       </div>
     </div>

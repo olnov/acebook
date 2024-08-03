@@ -1,56 +1,44 @@
-/* Ensure no extra padding or margin on the body and html elements */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .feed-page {
+  margin-top: 400px; /* Adjust this value based on the height of your TopBarGroup */
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%; /* Ensure it takes full width */
 }
 
 .feed-content {
   display: flex;
   width: 100%;
-  max-width: 1200px;
-  margin: 20px 0; /* Add margin to the content area */
-  padding: 0 20px; /* Horizontal padding for the content */
-  justify-content: center;
+  max-width: 3000px; /* Increase max-width to make use of available space */
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .filter-sidebar {
   flex: 0 0 200px;
-  padding: 20px;
-  background-color: #f0f0f0;
-  border-right: 1px solid #ddd;
+  margin-right: 20px;
+  margin-top: 20px; /* Adjust to make sure it starts below the TopBarGroup */
 }
 
 .posts-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 20px;
   flex: 1;
-  min-height: calc((200px + 40px) * 2); /* Ensure minimum height to fit 6 posts */
+  margin-top: 20px; /* Adjust to make sure it starts below the TopBarGroup */
+  max-width: 2000px; /* Set max-width for better layout */
 }
 
-.error-message, .no-posts-message {
-  text-align: center;
-  font-size: 1.5rem;
-  color: red;
-  grid-column: span 3; /* Span across all columns */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two posts per row */
+  gap: 20px;
+}
+
+.pagination {
+  margin-top: 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
-  border-radius: 10px;
-  padding: 20px;
-  box-sizing: border-box;
+  justify-content: center; /* Center the pagination buttons */
+}
+
+.error-message,
+.no-posts-message {
+  text-align: center;
+  color: red;
 }

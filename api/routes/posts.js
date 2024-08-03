@@ -1,9 +1,9 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
+const PostsController = require('../controllers/posts');
+const tokenChecker = require('../middleware/tokenChecker');
 
-const PostsController = require("../controllers/posts");
-
-router.get("/", PostsController.getAllPosts);
-router.post("/", PostsController.createPost);
+router.get('/', PostsController.getAllPosts); // Public endpoint
+router.post('/', tokenChecker, PostsController.createPost); // Protected endpoint
 
 module.exports = router;
