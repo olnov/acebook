@@ -1,41 +1,57 @@
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-export const getPosts = async () => {
+export const getPosts = async (token) => {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   try {
-    const response = await fetch(`${BACKEND_URL}/posts`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    if (!response.ok) {
-      throw new Error('Error fetching posts');
+    const response = await fetch(`${BACKEND_URL}/posts`, requestOptions);
+    if (response.status !== 200) {
+      throw new Error("Unable to fetch posts");
     }
     const data = await response.json();
-    return data.posts;
+    return data || []; 
   } catch (error) {
-    console.error('Error fetching posts:', error);
-    throw error;
+    console.error('Error in getPosts:', error);
+    return [];
   }
 };
 
 export const createPost = async (post, token) => {
-  try {
-    const response = await fetch(`${BACKEND_URL}/posts`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
-      body: JSON.stringify(post),
-    });
-    if (!response.ok) {
-      throw new Error('Error creating post');
-    }
-    const data = await response.json();
-    return data.post;
-  } catch (error) {
-    console.error('Error creating post:', error);
-    throw error;
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(post),
+  };
+
+  const response = await fetch(`${BACKEND_URL}/posts`, requestOptions);
+
+  if (!response.ok) {
+    throw new Error("Error creating post");
   }
+
+  const data = await response.json();
+  return data;
+};
+
+export const getPostsByUser = async (userId, token) => {
+  const response = await fetch(`${BACKEND_URL}/posts/users/${userId}/posts`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (response.status !== 200) {
+    throw new Error("Unable to fetch user's posts");
+  }
+
+  const data = await response.json();
+  return Array.isArray(data) ? data : [];
 };

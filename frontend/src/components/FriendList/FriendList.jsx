@@ -10,3 +10,5 @@ export const FriendList = ({ className }) => {
     </div>
   );
 };
+
+export default FriendList;

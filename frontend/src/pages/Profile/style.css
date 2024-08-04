@@ -77,3 +77,48 @@
   background-color: #ffe5e5;
   color: red;
 }
+
+.error-box {
+  border: 1px solid red;
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top-bar-group {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.profile-container {
+  margin-top: 100px; /* Adjust as needed */
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-avatar {
+  margin-right: 20px;
+}
+
+.profile-bio, .profile-friends, .profile-posts {
+  margin-bottom: 20px;
+}

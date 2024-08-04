@@ -1,1 +1,1 @@
-export { NavigationPill } from "./NavigationPill";
+export { default } from "./NavigationPill";

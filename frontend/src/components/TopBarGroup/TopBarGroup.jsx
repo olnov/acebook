@@ -1,22 +1,22 @@
-// Add the necessary state and methods to open and close the NewPostPopOut
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { IconOutlinedSuggestedSymbol } from '../../icons/IconOutlinedSuggestedSymbol';
-import { NavigationPill } from '../NavigationPill';
-import { Search } from '../Search';
+import IconOutlinedSuggestedSymbol from '../../icons/IconOutlinedSuggestedSymbol';
+import NavigationPill from '../NavigationPill';
+import Search from '../Search';
 import NewPostPopOut from '../NewPostPopOut/NewPostPopOut';
 import './style.css';
 
 const TopBarGroup = ({
   property1,
   headerClassName,
-  block = '/img/block-2.svg',
+  block = 'https://c.animaapp.com/M2klh9T2/img/block-2.svg',
 }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
   const isLoggedIn = !!token;
+  const userId = localStorage.getItem('userId');
 
   const [isNewPostOpen, setIsNewPostOpen] = useState(false);
 
@@ -45,7 +45,7 @@ const TopBarGroup = ({
 
   const handleHomeClick = () => {
     if (isLoggedIn) {
-      navigate('/Home');
+      navigate('/home');
     } else {
       navigate('/');
     }
@@ -91,7 +91,7 @@ const TopBarGroup = ({
             </>
           ) : (
             <>
-              <Link to="/profile">
+              <Link to={`/profile/${userId}`}>
                 <img className="avatar" alt="Avatar" src="path/to/avatar.jpg" /> {/* Replace with actual avatar path */}
               </Link>
               <button className="new-post-button" onClick={handleNewPostClick}>
@@ -110,6 +110,7 @@ const TopBarGroup = ({
 
 TopBarGroup.propTypes = {
   property1: PropTypes.oneOf(['logged-in', 'default']),
+  headerClassName: PropTypes.string,
   block: PropTypes.string,
 };
 

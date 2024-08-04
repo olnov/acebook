@@ -1,28 +1,19 @@
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const getFriends = async (userId, token) => {
-  try {
-    const response = await fetch(`${BACKEND_URL}/users/${userId}/friends`, {
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-    });
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
 
-    if (!response.ok) {
-      throw new Error(`Error: ${response.statusText}`);
-    }
+  const response = await fetch(`${BACKEND_URL}/api/users/${userId}/friends`, requestOptions);
 
-    const contentType = response.headers.get('content-type');
-    if (!contentType || !contentType.includes('application/json')) {
-      const errorText = await response.text();
-      throw new Error(`Unexpected content type: ${contentType}. Response: ${errorText}`);
-    }
-
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error fetching friends:', error);
-    throw error;
+  if (response.status !== 200) {
+    throw new Error("Unable to fetch friends");
   }
+
+  const data = await response.json();
+  return data;
 };

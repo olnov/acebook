@@ -16,7 +16,8 @@ const FeedPage = () => {
     const token = localStorage.getItem('token');
     try {
       const fetchedPosts = await getPosts(token);
-      setPosts(fetchedPosts);
+      console.log('Fetched Posts:', fetchedPosts); // Log fetched posts
+      setPosts(Array.isArray(fetchedPosts) ? fetchedPosts : []); // Ensure posts is an array
     } catch (error) {
       console.error('Error fetching posts:', error);
     } finally {
@@ -71,9 +72,13 @@ const FeedPage = () => {
             <p>Loading...</p>
           ) : (
             <div className="posts-grid">
-              {filteredPosts.map(post => (
-                <PostCardWithLike key={post._id} post={post} />
-              ))}
+              {filteredPosts.length > 0 ? (
+                filteredPosts.map(post => (
+                  <PostCardWithLike key={post._id} post={post} />
+                ))
+              ) : (
+                <p>No posts available</p>
+              )}
             </div>
           )}
           <Pagination

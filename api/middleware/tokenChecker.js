@@ -2,22 +2,17 @@ const JWT = require("jsonwebtoken");
 
 // Middleware function to check for valid tokens
 const tokenChecker = (req, res, next) => {
+  let token;
   const authHeader = req.get("Authorization");
 
-  if (!authHeader) {
-    if (req.method === 'GET') {
-      return next();
-    } else {
-      return res.status(401).json({ message: "No token provided" });
-    }
+  if (authHeader) {
+    token = authHeader.slice(7);
   }
-
-  const token = authHeader.slice(7); // Remove 'Bearer ' from string
 
   JWT.verify(token, process.env.JWT_SECRET, (err, payload) => {
     if (err) {
       console.log(err);
-      return res.status(401).json({ message: "Unauthorized" });
+      res.status(401).json({ message: "auth error" });
     } else {
       // Add the user_id from the payload to the req object.
       req.user_id = payload.user_id;

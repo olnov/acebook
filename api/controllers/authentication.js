@@ -17,8 +17,8 @@ const createToken = async (req, res) => {
     return res.status(401).json({ message: "Password incorrect" });
   }
 
-  const token = generateToken(user.id);
-  res.status(201).json({ token: token, message: "OK" });
+  const token = generateToken(user.id, user.full_name); // Include userName in token
+  res.status(201).json({ token: token, userId: user.id, userName: user.full_name });
 };
 
 const AuthenticationController = {

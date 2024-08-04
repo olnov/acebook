@@ -1,127 +1,118 @@
-import React, { useEffect, useState } from "react";
-import { Avatar } from "../../components/Avatar";
-import { FriendList } from "../../components/FriendList";
-import { NavigationPill } from "../../components/NavigationPill";
-import { PostCardWithLike } from "../../components/PostCardWithLike";
-import { Search } from "../../components/Search";
-import { Text } from "../../components/Text";
-import { IconOutlinedSuggestedSymbol } from "../../icons/IconOutlinedSuggestedSymbol";
-import { getPosts } from "../../services/posts";
-import { getFriends } from "../../services/friends";
-import "./style.css";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import TopBarGroup from '../../components/TopBarGroup';
+import Avatar from '../../components/Avatar';
+import FriendList from '../../components/FriendList';
+import PostCardWithLike from '../../components/PostCardWithLike';
+import { getUserById } from '../../services/users';
+import { getPostsByUser } from '../../services/posts';
+import { getFriends } from '../../services/friends';
+import './style.css';
 
 const ProfilePage = () => {
-  const [profileData, setProfileData] = useState({
-    avatar: "",
-    name: "",
-    bio: "",
-    friends: [],
-    posts: []
-  });
-  const [postsError, setPostsError] = useState(null);
-  const [friendsError, setFriendsError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { userId } = useParams();
+  const [user, setUser] = useState(null);
+  const [friends, setFriends] = useState([]);
+  const [posts, setPosts] = useState([]);
+  const [userError, setUserError] = useState('');
+  const [friendsError, setFriendsError] = useState('');
+  const [postsError, setPostsError] = useState('');
+  const token = localStorage.getItem('token');
+  const loggedInUserId = localStorage.getItem('userId');
 
   useEffect(() => {
-    const fetchProfileData = async () => {
+    const fetchUserData = async () => {
       try {
-        const token = localStorage.getItem('token');
-        const userId = 'user_id_here'; // Replace with the actual user ID
-        if (!token) {
-          throw new Error('User is not authenticated');
-        }
-        
-        let posts = [];
-        try {
-          posts = await getPosts(token);
-        } catch (error) {
-          setPostsError(error);
-        }
-        
-        let friends = [];
-        try {
-          friends = await getFriends(userId, token);
-        } catch (error) {
-          setFriendsError(error);
-        }
-
-        setProfileData({
-          avatar: "path/to/avatar.jpg",
-          name: "Joanne Lumely",
-          bio: "Joanne's bio...",
-          friends,
-          posts,
-        });
+        const fetchedUser = await getUserById(userId, token);
+        setUser(fetchedUser);
       } catch (error) {
-        console.error('Error fetching profile data:', error);
-      } finally {
-        setLoading(false);
+        console.error('Error fetching user details:', error);
+        setUserError('Error fetching user details');
       }
     };
 
-    fetchProfileData();
-  }, []);
+    const fetchFriends = async () => {
+      try {
+        const fetchedFriends = await getFriends(userId, token);
+        setFriends(fetchedFriends);
+      } catch (error) {
+        console.error('Error fetching friends:', error);
+        setFriendsError('Error fetching friends');
+      }
+    };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+    const fetchPosts = async () => {
+      try {
+        const fetchedPosts = await getPostsByUser(userId, token);
+        setPosts(fetchedPosts);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+        setPostsError('Error fetching posts');
+      }
+    };
+
+    fetchUserData();
+    fetchFriends();
+    fetchPosts();
+  }, [userId, token]);
+
+  const isCurrentUser = loggedInUserId === userId;
 
   return (
     <div className="profile-page">
-      <div className="top-bar-group">
-        <div className="overlap-group-2">
-          <header className="header">
-            <img className="block" alt="Block" src="https://c.animaapp.com/MBMINqBD/img/block-2.svg" />
-            <div className="text-wrapper-6">AceBook</div>
-            <div className="navigation-pill-list">
-              <NavigationPill className="navigation-pill-instance" label="Home" state="active" />
-              <NavigationPill className="navigation-pill-instance" label="Feed" state="default" />
-              <NavigationPill className="navigation-pill-instance" label="About us" state="default" />
-            </div>
-            <div className="header-auth">
-              <div className="avatar-2" />
-            </div>
-          </header>
-          <Search className="search-instance" />
-          <div className="new-post-button">
-            <IconOutlinedSuggestedSymbol className="icon-outlined" color="#D9D9D9" />
-            <button className="button-3">New Post</button>
+      <TopBarGroup className="top-bar-group" property1={token ? 'logged-in' : 'default'} block="https://c.animaapp.com/M2klh9T2/img/block-2.svg" />
+      <div className="profile-container">
+        {userError ? (
+          <div className="error-box">
+            <p>{userError}</p>
           </div>
-        </div>
-      </div>
-      <div className="hero-basic">
-        <div className="text-content-title">
-          <div className="avatar-block-2">
-            <Avatar className="design-component-instance-node" shape="square" size="large" type="image" />
-            <div className="div-wrapper">
-              <div className="text-wrapper-7">{profileData.name}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="profile-details">
-        <div className="bio">
-          <h2>{profileData.name}'s Bio</h2>
-          <p>{profileData.bio}</p>
-        </div>
-        <div className="friends">
-          <h2>{profileData.name}'s Friends</h2>
+        ) : (
+          user && (
+            <>
+              <div className="profile-header">
+                <Avatar className="profile-avatar" shape="circle" size="large" src={user.profile_image || '/path/to/default/avatar.jpg'} />
+                <h1>{user.full_name}</h1>
+                {isCurrentUser && (
+                  <button onClick={() => { /* Implement edit bio functionality */ }}>Edit Bio</button>
+                )}
+              </div>
+              <div className="profile-bio">
+                <h3>{user.full_name}'s Bio</h3>
+                <p>{user.user_bio}</p>
+              </div>
+            </>
+          )
+        )}
+
+        <div className="profile-friends">
+          <h3>{user?.full_name}'s Friends</h3>
           {friendsError ? (
-            <div className="error-message">Error loading friends: {friendsError.message}</div>
+            <div className="error-box">
+              <p>{friendsError}</p>
+            </div>
           ) : (
-            <FriendList friends={profileData.friends} />
+            friends.length === 0 && !friendsError ? (
+              <p>No friends added currently, use the search bar to find them!</p>
+            ) : (
+              <FriendList friends={friends} />
+            )
           )}
         </div>
-        <div className="posts">
-          <h2>{profileData.name}'s Recent Posts</h2>
+
+        <div className="profile-posts">
+          <h3>{user?.full_name}'s Recent Posts</h3>
           {postsError ? (
-            <div className="error-message">Error loading posts: {postsError.message}</div>
-          ) : (
-            <div className="profile-posts">
-              {profileData.posts.map((post, index) => (
-                <PostCardWithLike key={index} post={post} className="post-card-with-like-button" />
-              ))}
+            <div className="error-box">
+              <p>{postsError}</p>
             </div>
+          ) : (
+            posts.length === 0 && !postsError ? (
+              <p>No posts available</p>
+            ) : (
+              posts.map(post => (
+                <PostCardWithLike key={post._id} post={post} />
+              ))
+            )
           )}
         </div>
       </div>

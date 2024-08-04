@@ -1,1 +1,2 @@
-export { Avatar } from "./Avatar";
+// src/components/Avatar/index.js
+export { default } from './Avatar';

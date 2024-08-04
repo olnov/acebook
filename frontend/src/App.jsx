@@ -41,7 +41,6 @@ import ProfilePage from './pages/Profile/ProfilePage';
 //   }
 // ]);
 
-
 const App = () => {
   return (
     <Router>
@@ -53,7 +52,7 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/sign-up" element={<SignupPage />} />
         <Route path="/results" element={<ResultsPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile/:userId" element={<ProfilePage />} />
         <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
     </Router>
