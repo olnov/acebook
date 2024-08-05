@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getUserFriends, getAllUsers, addRemoveFriend } from "../../services/friends";
 import { AuthContext } from "../../context/AuthContext";
 

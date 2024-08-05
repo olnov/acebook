@@ -5,12 +5,12 @@ import Avatar from "../../components/Avatar";
 import FriendList from "../../components/FriendList";
 import PostCardWithLike from "../../components/PostCardWithLike";
 import { getPosts } from "../../services/posts";
-import { getFriends } from "../../services/friends";
-import { getUserById } from "../../services/users";
+import { getUserFriends } from "../../services/friends";
+import { fetchProfileData } from "../../services/users";
 import "./style.css";
 import exp from "constants";
 
-const HomePage = () => {
+export const HomePage = () => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const [friends, setFriends] = useState([]);
@@ -32,7 +32,7 @@ const HomePage = () => {
 
     const fetchUserDetails = async () => {
       try {
-        const user = await getUserById(userId, token);
+        const user = await fetchProfileData(userId, token);
         setfullName(user.full_name);
       } catch (error) {
         console.error("Error fetching user details:", error);
@@ -45,7 +45,7 @@ const HomePage = () => {
         await fetchUserDetails(); // Wait for user details to be fetched
         const [fetchedPosts, fetchedFriends] = await Promise.all([
           getPosts(token),
-          getFriends(userId, token),
+          getUserFriends(userId, token),
         ]);
         setPosts(Array.isArray(fetchedPosts) ? fetchedPosts.slice(0, 3) : []); // Ensure it's an array and get the 3 most recent posts
         setFriends(fetchedFriends);
@@ -66,7 +66,7 @@ const HomePage = () => {
         property1="default"
       />
       <div className="welcome-message">
-        <h1>Welcome back, {fullName}!</h1>
+        <h1>Welcome back {fullName}!</h1>
       </div>
       <div className="hero-basic">
         <div className="text-content-title">

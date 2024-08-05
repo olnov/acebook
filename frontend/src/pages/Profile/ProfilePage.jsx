@@ -1,6 +1,5 @@
 // import React, { useEffect, useState } from 'react';
 // import { useParams } from 'react-router-dom';
-// import TopBarGroup from '../../components/TopBarGroup';
 // import Avatar from '../../components/Avatar';
 // import FriendList from '../../components/FriendList';
 // import PostCardWithLike from '../../components/PostCardWithLike';
@@ -124,7 +123,7 @@
 import { useState, useEffect } from 'react';
 import ProfileImage from "../../components/ProfileImage/ProfileImage";
 import Footer from "../Footer/Footer";
-import TopBar from "../TopBar/TopBar";
+import TopBarGroup from '../../components/TopBarGroup';
 import { fetchProfileData, updateProfileData } from '../../services/users';
 import "./ProfilePage.css";
 import "../../assets/styles/modal.css";
@@ -218,7 +217,8 @@ export const Profile = () => {
 
   return (
     <>
-      <TopBar />
+    <TopBarGroup className="top-bar-group" property1={token ? 'logged-in' : 'default'} block="https://c.animaapp.com/M2klh9T2/img/block-2.svg" 
+      />
       <div className="profile">
         <div className='banner'></div>
         <ProfileImage userId={user_id} width="150" height="150"/>

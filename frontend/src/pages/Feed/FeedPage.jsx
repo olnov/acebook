@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PostCardWithLike from '../../components/PostCardWithLike/PostCardWithLike';
 import Pagination from '../../components/Pagination/Pagination';
 import { getPosts } from '../../services/posts';
 import TopBarGroup from '../../components/TopBarGroup/TopBarGroup';
 import './style.css';
 
-const FeedPage = () => {
+export const FeedPage = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);

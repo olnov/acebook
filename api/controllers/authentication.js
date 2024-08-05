@@ -6,6 +6,7 @@ const createToken = async (req, res) => {
   const password = req.body.password;
 
   const user = await User.findOne({ email: email });
+  const isMatch = await user.comparePassword(password); //Comparing password with hash from DB
   if (!user) {
     console.log("Auth Error: User not found");
     return res.status(401).json({ message: "User not found" });

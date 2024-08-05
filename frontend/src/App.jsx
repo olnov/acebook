@@ -2,7 +2,7 @@
 // import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import HomePage from './pages/Home/HomePage';
 // import FeedPage from './pages/Feed/FeedPage';
-// import AboutUsPage from './pages/AboutUs/AboutUsPage';
+// 
 // import LoginPage from './pages/Login/LoginPage';
 // import SignupPage from './pages/Signup/SignupPage';
 // import LandingPage from './pages/LandingPage/LandingPage';
@@ -12,20 +12,23 @@
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
-// import { HomePage } from "./pages/Home/HomePage";
+import { HomePage } from "./pages/Home/HomePage";
 import LoginPage from "./pages/Login/LoginPage";
 import SignupPage from "./pages/Signup/SignupPage";
-// import { FeedPage } from "./pages/Feed/FeedPage";
+import LandingPage from './pages/LandingPage/LandingPage';
+import { FeedPage } from "./pages/Feed/FeedPage";
+import AboutUsPage from './pages/AboutUs/AboutUsPage';
+import { FriendsPage } from "./pages/Friends/FriendsPage";
 // import { MainPage } from "./pages/Main/MainPage"
-// import { Profile } from "./pages/Profile/ProfilePage";
+import { Profile } from "./pages/Profile/ProfilePage";
 // import { SearchResultsPage } from "./pages/Search/SearchResultsPage";
 
 // docs: https://reactrouter.com/en/main/start/overview
 const router = createBrowserRouter([
-  // {
-  //   path: "/",
-  //   element: <HomePage />,
-  // },
+  {
+    path: "/Home",
+    element: <HomePage />,
+  },
   {
     path: "/login",
     element: <LoginPage />,
@@ -34,18 +37,30 @@ const router = createBrowserRouter([
     path: "/signup",
     element: <SignupPage />,
   },
-  // {
-  //   path: "/posts",
-  //   element: <FeedPage />,
-  // },
+  {
+    path: "/",
+    element: <LandingPage />,
+  },
+  {
+    path: "/feed",
+    element: <FeedPage />,
+  },
+  {
+    path: "/about-us",
+    element: <AboutUsPage />,
+  },
+  { 
+    path: "/friends", 
+    element: <FriendsPage /> 
+  },
   // {
   //   path: "/main",
   //   element: <MainPage />
   // },
-  // {
-  //   path: "/profile",
-  //   element: <Profile />
-  // },
+  {
+    path: "/profile",
+    element: <Profile />
+  },
   // {
   //   path: "/search-results",
   //   element: <SearchResultsPage />
@@ -75,7 +90,7 @@ const router = createBrowserRouter([
 // import { LoginPage } from "./pages/Login/LoginPage";
 // import { SignupPage } from "./pages/Signup/SignupPage";
 // import { FeedPage } from "./pages/Feed/FeedPage";
-// import { FriendsPage } from "./pages/Friends/FriendsPage";
+
 // import { MainPage } from "./pages/Main/MainPage"
 // import { AuthContext } from "./context/AuthContext";
 
@@ -99,10 +114,7 @@ const router = createBrowserRouter([
 //     element: <FeedPage />,
 //   },
 
-//   { 
-//     path: "/friends", 
-//     element: <FriendsPage /> 
-//   },
+
 //   // { path: "/search-friends", 
 //   //   element: <SearchFriendsPage /> 
 //   // },
