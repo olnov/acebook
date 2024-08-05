@@ -1,40 +1,12 @@
-// import { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-
-// import { getPosts } from "../../services/posts";
-// import Post from "../../components/Post/Post";
-// import { TopBar } from "../TopBar/TopBar";
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PostCardWithLike from '../../components/PostCardWithLike/PostCardWithLike';
 import Pagination from '../../components/Pagination/Pagination';
 import { getPosts } from '../../services/posts';
 import TopBarGroup from '../../components/TopBarGroup/TopBarGroup';
 import './style.css';
 
-// const FeedPage = () => {
-//   const [posts, setPosts] = useState([]);
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     const token = localStorage.getItem("token");
-//     if (token) {
-//       getPosts(token)
-//         .then((data) => {
-//           setPosts(data.posts);
-//           localStorage.setItem("token", data.token);
-//         })
-//         .catch((err) => {
-//           console.error(err);
-//           navigate("/login");
-//         });
-//     }
-//   }, [navigate]);
-
-//   const token = localStorage.getItem("token");
-//   if (!token) {
-//     navigate("/login");
-//     return;
-//   }
+export const FeedPage = () => {
+  const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(6); // 3 rows * 2 columns = 6 posts per page
@@ -69,15 +41,6 @@ import './style.css';
   const filteredPosts = currentPosts.filter(post => filter === 'Public' ? !post.isPrivate : post.isPrivate);
 
   return (
-    // <>
-    //   <TopBar />
-    //   <h2>Posts</h2>
-    //   <div className="feed" role="feed">
-    //     {posts.map((post) => (
-    //       <Post post={post} key={post._id} />
-    //     ))}
-    //   </div>
-    // </>
     <div className="feed-page">
       <TopBarGroup property1={localStorage.getItem('token') ? 'logged-in' : 'default'} />
       <div className="feed-container">
@@ -129,3 +92,5 @@ import './style.css';
     </div>
   );
 };
+
+export default FeedPage;

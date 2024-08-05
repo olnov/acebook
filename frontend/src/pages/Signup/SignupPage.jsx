@@ -1,13 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import TopBarGroup from "../../components/TopBarGroup";
 import { signup } from "../../services/authentication";
 import "./style.css";
 
-const SignupPage = () => {
+export const SignupPage = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
+  // //Add background
+  // useEffect(() => {
+  //   document.body.classList.add('page-background');
+
+  //   return () => {
+  //   document.body.classList.remove('page-background');
+  // };
+  // }, []);
+
+
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -17,7 +28,7 @@ const SignupPage = () => {
       navigate("/login");
     } catch (err) {
       console.error(err);
-      navigate("/sign-up");
+      navigate("/signup");
     }
   };
 
@@ -63,6 +74,7 @@ const SignupPage = () => {
             type="password"
             value={password}
             onChange={handlePasswordChange}
+            autoComplete="on"
           />
           <button type="submit">Sign Up</button>
         </form>
