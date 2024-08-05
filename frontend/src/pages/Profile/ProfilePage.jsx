@@ -121,7 +121,7 @@
 // };
 
 // export default ProfilePage;
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ProfileImage from "../../components/ProfileImage/ProfileImage";
 import Footer from "../Footer/Footer";
 import TopBar from "../TopBar/TopBar";
