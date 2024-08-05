@@ -6,19 +6,23 @@ const createToken = async (req, res) => {
   const password = req.body.password;
 
   const user = await User.findOne({ email: email });
+  const isMatch = await user.comparePassword(password); //Comparing password with hash from DB
   if (!user) {
     console.log("Auth Error: User not found");
     return res.status(401).json({ message: "User not found" });
   }
 
-  const isMatch = await user.comparePassword(password); // Assuming user model has a comparePassword method
-  if (!isMatch) {
-    console.log("Auth Error: Passwords do not match");
-    return res.status(401).json({ message: "Password incorrect" });
-  }
-
-  const token = generateToken(user.id, user.full_name); // Include userName in token
-  res.status(201).json({ token: token, userId: user.id, userName: user.full_name });
+if (!user) {
+  console.log("Auth Error: User not found");
+  res.status(401).json({ message: "User not found" });
+} else if (!isMatch) {
+  console.log("Password in form: "+ password);
+  console.log("Auth Error: Passwords do not match")
+  res.status(401).json({ message: "Password incorrect" });
+} else {
+  const token = generateToken(user.id);
+  res.status(201).json({ token: token, userId: user.id, fullName: user.full_name, message: "OK" });
+}
 };
 
 const AuthenticationController = {

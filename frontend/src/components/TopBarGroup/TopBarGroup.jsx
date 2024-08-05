@@ -40,7 +40,7 @@ const TopBarGroup = ({
   };
 
   const handleSignUpClick = () => {
-    navigate('/sign-up');
+    navigate('/signup');
   };
 
   const handleHomeClick = () => {

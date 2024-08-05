@@ -1,0 +1,21 @@
+.search-results {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-results-item {
+    list-style-type: none;
+    gap: 10px;
+    padding: 10px;
+}
+
+.search-results-card {
+    display: flex;
+    min-width: 250px;
+    min-height: 120px;
+    /* border: solid 1px gray; */
+    /* border-radius: 8px; */
+    gap: 10px;
+    justify-content: center;
+    align-items: flex-end;
+}

@@ -12,3 +12,8 @@
 .button {
     padding: 5px 10px;
 }
+
+.welcome-message {
+    max-width: 400px;
+    font-size: small;
+}

@@ -1,0 +1,10 @@
+.pagination-list {
+  align-items: center;
+  display: inline-flex;
+  gap: var(--size-space-200);
+  position: relative;
+}
+
+.pagination-list .design-component-instance-node {
+  flex: 0 0 auto !important;
+}
