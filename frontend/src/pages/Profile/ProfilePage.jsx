@@ -120,6 +120,7 @@
 // };
 
 // export default ProfilePage;
+
 import { useState, useEffect } from 'react';
 import ProfileImage from "../../components/ProfileImage/ProfileImage";
 import Footer from "../Footer/Footer";
@@ -134,7 +135,7 @@ export const Profile = () => {
   const [bio, setBio] = useState("");
   const [isEditingBio, setIsEditingBio] = useState(false);
   const [editedBio, setEditedBio] = useState("");
-
+  const token = localStorage.getItem('token');
   const user_id = localStorage.getItem("userId");
   const full_name = localStorage.getItem("fullName");
 

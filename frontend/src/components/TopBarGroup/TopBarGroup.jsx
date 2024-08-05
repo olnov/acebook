@@ -91,7 +91,7 @@ const TopBarGroup = ({
             </>
           ) : (
             <>
-              <Link to={`/profile`}>
+              <Link to={`/profile/${userId}`}>
                 <img className="avatar" alt="Avatar" src="path/to/avatar.jpg" /> {/* Replace with actual avatar path */}
               </Link>
               <button className="new-post-button" onClick={handleNewPostClick}>
