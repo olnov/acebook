@@ -17,11 +17,8 @@ export const login = async (email, password) => {
   const response = await fetch(`${BACKEND_URL}/tokens`, requestOptions);
 
   if (response.status === 201) {
-    const data = await response.json();
-    localStorage.setItem('token', data.token);
-    localStorage.setItem('userId', data.userId); // Assuming userId is returned
-    localStorage.setItem('userName', data.userName); // Assuming userName is returned
-    return data.token;
+    let data = await response.json();
+    return data;
   } else {
     throw new Error(`Received status ${response.status} when logging in. Expected 201`);
   }

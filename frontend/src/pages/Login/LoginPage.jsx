@@ -1,20 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import TopBarGroup from "../../components/TopBarGroup";
 import { login } from "../../services/authentication";
 import "./style.css";
 
-const LoginPage = () => {
+
+export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  // //Add background
+  // useEffect(() => {
+  //   document.body.classList.add('page-background');
+
+  //   return () => {
+  //   document.body.classList.remove('page-background');
+  // };
+  // }, []);
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const token = await login(email, password);
-      localStorage.setItem("token", token);
-      navigate("/Home");
+      const data = await login(email, password);
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("userId", data.userId);
+      localStorage.setItem("fullName", data.fullName);
+      navigate("/Home"); //Remember to upadte to /home later
     } catch (err) {
       console.error(err);
       navigate("/login");

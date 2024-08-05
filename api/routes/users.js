@@ -11,9 +11,13 @@ router.get('/me', tokenChecker, (req, res) => {
 // User routes
 router.post('/', UsersController.create);
 router.get('/:user_id', UsersController.getUserById);
-router.put('/:user_id', UsersController.updateUserById);
+router.patch('/:user_id', UsersController.updateUserById);
 router.get('/', UsersController.getAllUsers);
 router.get('/:user_id/friends', UsersController.getUserFriends);
-router.patch('/:user_id/friends/:friendId', UsersController.addRemoveFriend);
+router.patch('/:user_id/:friendId', UsersController.addRemoveFriend);
+router.post('/search', UsersController.getUsersByName);
+router.get('/search', (req, res) => {
+    res.status(405).json({ message: "Method Not Allowed" });
+});
 
 module.exports = router;
