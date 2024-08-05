@@ -28,35 +28,58 @@ const getPostById = async (req, res) => {
 };
 
 //  This function allows a user to create a post
-// The user_id is saved in the request body via the middleware token generator
 const createPost = async (req, res) => {
-  // const {post_title, message, post_author, is_private} = req.body;
-  const {title, message, post_author} = req.body;
-  const date_created = new Date().toLocaleString("en-GB")
+  try {
+    const { title, message } = req.body;
+    const post_author = req.user_id;
+  
+    const post = new Post({
+      title,
+      message,
+      post_author
+    });
+    
+    post.save();
+    const newToken = generateToken(req.user_id);
+    res.status(201).json({ message: "Post created", token: newToken });
 
-  const post = new Post({
-    title,
-    message,
-    post_author
-    // date_created,
-    // is_private
-  });
-
-  post.save();
-
-  const newToken = generateToken(req.user_id);
-  res.status(201).json({ message: "Post created", token: newToken });
+  } catch (error) {
+    res.status(500).json({ error: "Could not create post" });
+  }
 };
 
 // This function first checks if the post exists
-// If it does, it deletes the post 
+// It then checks if the user requesting to delete the post
+// is the author of the post, to ensure that only the author
+// of the post is authorised to delete it 
 
 const deletePost = async (req, res) => {
-  const postId = req.params.id;
-  const post = await Post.findByIdAndDelete(postId);
+  const { post_id } = req.params;
+  const user_id = req.user_id;
 
-  // NEED TO FINISH WRITING THIS
-}
+  try {
+    const post = await Post.findById(post_id);
+
+    if (!post) {
+      return res.status(404).json({ error: 'Could not find post' });
+    }
+
+    // post.post_author returns an ObjectID, so to compare the user_id string
+    // we need to convert post.post_author to a string 
+    if (post.post_author.toString() !== user_id) {
+      return res.status(403).json({ error: 'You are not authorized to delete this post' });
+    }
+
+    await Post.findByIdAndDelete(post_id);
+    const newToken = generateToken(req.user_id);
+    res.status(200).json({ message: 'Post deleted successfully', token : newToken});
+
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred while deleting the post' });
+  }
+};
+
+
 const PostsController = {
   getAllPosts: getAllPosts,
   createPost: createPost,

@@ -14,6 +14,6 @@ router.post('/', CommentsController.createComment);
 // router.post('/:post_id', CommentsController.createComment);
 
 // DELETE route
-// router.delete("/", PostsController.deletePost);
+router.delete("/:id", CommentsController.deleteComment);
 
 module.exports = router;
