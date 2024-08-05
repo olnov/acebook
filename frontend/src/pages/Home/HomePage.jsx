@@ -7,6 +7,7 @@ import PostCardWithLike from "../../components/PostCardWithLike";
 import { getPosts } from "../../services/posts";
 import { getUserFriends } from "../../services/friends";
 import { fetchProfileData } from "../../services/users";
+import Footer from "../Footer/Footer"
 import "./style.css";
 import exp from "constants";
 
@@ -107,6 +108,7 @@ export const HomePage = () => {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

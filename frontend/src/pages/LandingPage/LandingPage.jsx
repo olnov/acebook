@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import HeroActions from "../../components/HeroActions/HeroActions";
 import TopBarGroup from "../../components/TopBarGroup";
+import Footer from "../Footer/Footer"
 import "./style.css";
 
 export const LandingPage = () => {
@@ -29,6 +30,7 @@ export const LandingPage = () => {
           className="heroactions-instance"
         />
       </div>
+      <Footer/>
     </div>
   );
 };

@@ -1,54 +1,114 @@
 .post-popout-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    backdrop-filter: blur(5px); /* Apply blur to the background */
-  }
-  
-  .post-popout-container {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 600px;
-    width: 90%;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .post-popout-close {
-    position: absolute;
-    top: 10px;
-    left: 10px; /* Position the close button in the top-left corner */
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: grey; /* Set the color to grey */
-  }
-  
-  .post-popout-author {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .post-popout-author img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .post-popout-comments .comment {
-    border-top: 1px solid #ccc;
-    padding-top: 10px;
-    margin-top: 10px;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px); /* Apply blur to the background */
+}
+
+.post-popout-container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.post-popout-close {
+  position: absolute;
+  top: 10px;
+  left: 10px; /* Position the close button in the top-left corner */
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: grey; /* Set the color to grey */
+}
+
+.post-popout-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Adjusted for consistency */
+}
+
+.post-popout-header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.post-popout-title {
+  font-size: 20px; /* Match post card font size */
+  font-weight: bold;
+}
+
+.post-popout-author-details {
+  margin-left: 10px; /* Added margin for better spacing */
+}
+
+.post-popout-body {
+  margin-bottom: 20px;
+  font-size: 14px; /* Match post card font size */
+  color: #666; /* Match post card color */
+}
+
+.post-popout-comments {
+  margin-top: 20px;
+}
+
+.post-popout-comments h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.post-popout-comments .comment {
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+  margin-top: 10px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.post-popout-comments .comment img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.post-popout-comments .comment-content {
+  flex-grow: 1;
+}
+
+.post-popout-comments .comment-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.post-popout-comments .comment-body {
+  font-size: 14px;
+  color: #666;
+}
+
+.post-popout-comments .comment-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 10px;
+}
