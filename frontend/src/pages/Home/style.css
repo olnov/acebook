@@ -1,0 +1,95 @@
+.home-page {
+  padding-top: 150px; /* Ensure there's space for the TopBarGroup */
+}
+
+.top-bar-group-instance {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  z-index: 1000;
+}
+
+.welcome-message {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.hero-basic {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.text-content-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-block-2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar-instance {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.div-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text-wrapper-7 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.card-grid-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.friend-list-container {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.friend-list-instance ul {
+  list-style: none;
+  padding: 0;
+}
+
+.friend-list-instance li {
+  margin: 10px 0;
+}
+
+.text-content-heading {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.error-message, .no-posts-message {
+  text-align: center;
+  color: red;
+}

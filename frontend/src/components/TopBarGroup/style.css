@@ -1,0 +1,108 @@
+.top-bar-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px 20px;
+  position: fixed; /* Make it fixed */
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.block {
+  height: 40px;
+}
+
+.div {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.search-instance {
+  flex-grow: 1;
+  margin: 0 20px;
+}
+
+.navigation-pill-list {
+  display: flex;
+  gap: 10px;
+}
+
+.navigation-pill-link {
+  text-decoration: none;
+}
+
+.navigation-pill-instance {
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+.navigation-pill-link.active .navigation-pill-instance {
+  background-color: #000;
+  color: #fff;
+}
+
+.header-auth {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.button-2, .button-3, .button-4 {
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.new-post-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.icon-outlined {
+  color: #D9D9D9;
+}
+
+.avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}

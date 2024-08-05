@@ -1,120 +1,100 @@
-const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 
 const create = async (req, res) => {
-  const full_name = req.body.full_name;
-  const email = req.body.email;
-  const password = req.body.password;
-  const friends = req.body.friends;
-  console.log("HERE!!");
-  console.log("Full name:" + full_name);
-  console.log("Email:" + email);
-  console.log("Password:" + password);
-  console.log("Friends Array: " + friends)
-  const user = new User({ 
-    full_name, 
-    email, 
-    password,
-    friends,
-  });
+  const { full_name, email, password, friends } = req.body;
+  const user = new User({ full_name, email, password, friends });
 
-    user
-    .save()
-    .then((user) => {
-      console.log("User created, id:", user._id.toString());
-      res.status(201).json({ message: "OK" });
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(400).json({ message: "Something went wrong" });
-    });
+  try {
+    await user.save();
+    res.status(201).json({ message: "User created successfully" });
+  } catch (err) {
+    res.status(400).json({ message: "Error creating user", error: err.message });
+  }
 };
 
+const getUserById = async (req, res) => {
+  const userId = req.params.user_id;
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json({ id: user.id, full_name: user.full_name, email: user.email, user_bio: user.user_bio });
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching user details", error: err.message });
+  }
+};
 
-// Read
+const updateUserById = async (req, res) => {
+  const userId = req.params.user_id;
+  const update = { user_bio: req.body.user_bio };
+  try {
+    const user = await User.findByIdAndUpdate(userId, update, { new: true });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json({ message: "User updated successfully", updatedUser: user });
+  } catch (err) {
+    res.status(500).json({ message: "Error updating user", error: err.message });
+  }
+};
 
 const getAllUsers = async (req, res) => {
   try {
-    const users = await User.find(); // This fetches all users
-    res.status(200).json(users); // Respond with the list of users
+    const users = await User.find();
+    res.status(200).json(users);
   } catch (err) {
-    res.status(500).json({ message: err.message }); // Handle errors
+    res.status(500).json({ message: "Error fetching users", error: err.message });
   }
 };
-
-const getUser = async(req, res) => {
-  try{
-    const { id } = req.params; 
-    const user = await User.findById(id)
-    res.status(200).json(user)
-  } catch (err) {
-    res.status(404).json({ message: err.message })
-  }
-}
 
 const getUserFriends = async (req, res) => {
+  const userId = req.params.user_id;
   try {
-    const { id } = req.params; 
-    const user = await User.findById(id)  
-  
-    const friends = await Promise.all(
-    user.friends.map((id) => User.findById(id)));
-
-    const formattedFriends = friends.map(
-      ({ _id, full_name, email}) => {
-        return { _id, full_name, email};
-      } 
-    );
-
-    res.status(200).json(formattedFriends);
+    const user = await User.findById(userId).populate('friends', 'full_name email');
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json(user.friends || []); // Ensure an empty array is returned if no friends
   } catch (err) {
-    res.status(404).json({ message: err.message })   
+    res.status(500).json({ message: "Error fetching friends", error: err.message });
   }
 };
 
-//update
-
-const addRemoveFriend = async(req, res) => {
+const addRemoveFriend = async (req, res) => {
+  const { user_id, friendId } = req.params;
   try {
-    const { id, friendId } = req.params;
-    const user = await User.findById(id)
+    const user = await User.findById(user_id);
     const friend = await User.findById(friendId);
 
+    if (!user || !friend) {
+      return res.status(404).json({ message: "User or friend not found" });
+    }
+
     if (user.friends.includes(friendId)) {
-      user.friends  = user.friends.filter((id) => id !== friendId);
-      friend.friends = friend.friends.filter((id) => id !== id);
+      user.friends.pull(friendId);
+      friend.friends.pull(user_id);
     } else {
       user.friends.push(friendId);
-      friend.friends.push(id);
-    } 
+      friend.friends.push(user_id);
+    }
+
     await user.save();
     await friend.save();
 
-    const friends = await Promise.all(
-    user.friends.map((id) => User.findById(id)));  
-
-    const formattedFriends = friends.map(
-      ({ _id, full_name, email}) => {
-        return { _id, full_name, email};
-      } 
-    );
-    res.status(200).json(formattedFriends);
-
+    res.status(200).json(user.friends);
   } catch (err) {
-    res.status(404).json({ message: err.message })
+    res.status(500).json({ message: "Error adding/removing friend", error: err.message });
   }
+};
 
-}
-
-
-// EXPORT FUNCTIONS 
 const UsersController = {
   create,
-  getUser,
+  getUserById,
+  updateUserById,
+  getAllUsers,
   getUserFriends,
-  addRemoveFriend,
-  getAllUsers
+  addRemoveFriend
 };
 
 module.exports = UsersController;
-
