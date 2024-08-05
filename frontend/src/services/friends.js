@@ -18,8 +18,32 @@ export const getUserFriends = async (userId) => {
     const response = await fetch(`${BACKEND_URL}/users/${userId}/friends`, requestOptions);
 
     if (response.status !== 200) {
-        throw new Error("Unable to fetch user's friends");
+        throw new Error("Unable to fetch this users friends. Soz");
     }
+
+    const data = await response.json();
+    return data;
+};
+
+
+// GETS ALL THE USERS 
+export const getAllUsers = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+        throw new Error("No authentication token found");
+    }    
+    const requestOptions = {
+        method: "GET",
+        headers: {
+    Authorization: `Bearer ${token}`,
+    },
+};
+
+    const response = await fetch(`${BACKEND_URL}/users`, requestOptions);
+
+    if (response.status !== 200) {
+        throw new Error("Unable to fetch users soz");
+}
 
     const data = await response.json();
     return data;

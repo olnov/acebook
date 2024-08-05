@@ -35,9 +35,11 @@ const create = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
   try {
+    console.log('received Request to get all users')
     const users = await User.find(); // This fetches all users
     res.status(200).json(users); // Respond with the list of users
   } catch (err) {
+    console.log('request errored!')
     res.status(500).json({ message: err.message }); // Handle errors
   }
 };

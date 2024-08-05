@@ -5,8 +5,9 @@ import { HomePage } from "./pages/Home/HomePage";
 import { LoginPage } from "./pages/Login/LoginPage";
 import { SignupPage } from "./pages/Signup/SignupPage";
 import { FeedPage } from "./pages/Feed/FeedPage";
-// import { FriendsPage } from "./pages/Friends/FriendsPage";
+import { FriendsPage } from "./pages/Friends/FriendsPage";
 import { MainPage } from "./pages/Main/MainPage"
+import { AuthContext } from "./context/AuthContext";
 
 
 // docs: https://reactrouter.com/en/main/start/overview
@@ -28,10 +29,10 @@ const router = createBrowserRouter([
     element: <FeedPage />,
   },
 
-  // { 
-  //   path: "/friends", 
-  //   element: <FriendsPage /> 
-  // },
+  { 
+    path: "/friends", 
+    element: <FriendsPage /> 
+  },
   // { path: "/search-friends", 
   //   element: <SearchFriendsPage /> 
   // },
@@ -44,7 +45,9 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <>
+
       <RouterProvider router={router} />
+
     </>
   );
 };
