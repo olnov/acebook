@@ -8,6 +8,7 @@ import { getPosts } from "../../services/posts";
 import { getFriends } from "../../services/friends";
 import { getUserById } from "../../services/users";
 import "./style.css";
+import exp from "constants";
 
 const HomePage = () => {
   const navigate = useNavigate();

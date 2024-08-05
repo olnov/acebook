@@ -1,1 +1,0 @@
-export { PaginationPrevious } from "./PaginationPrevious";

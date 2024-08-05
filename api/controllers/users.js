@@ -41,10 +41,12 @@ const updateUserById = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
   try {
-    const users = await User.find();
-    res.status(200).json(users);
+    console.log('received Request to get all users')
+    const users = await User.find(); // This fetches all users
+    res.status(200).json(users); // Respond with the list of users
   } catch (err) {
-    res.status(500).json({ message: "Error fetching users", error: err.message });
+    console.log('request errored!')
+    res.status(500).json({ message: err.message }); // Handle errors
   }
 };
 

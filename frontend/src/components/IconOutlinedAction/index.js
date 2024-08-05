@@ -1,1 +1,0 @@
-export { IconOutlinedAction } from "./IconOutlinedAction";
