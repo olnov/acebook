@@ -1,0 +1,1 @@
+export { CardGridImage } from "./CardGridImage";

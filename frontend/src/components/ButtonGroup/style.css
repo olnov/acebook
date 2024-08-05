@@ -1,0 +1,143 @@
+.button-group {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  gap: var(--size-space-400);
+  position: relative;
+  width: 240px;
+}
+
+.button-group .div-wrapper {
+  all: unset;
+  align-items: center;
+  border-radius: var(--size-radius-200);
+  box-sizing: border-box;
+  gap: var(--size-space-200);
+  justify-content: center;
+  overflow: hidden;
+  padding: var(--size-space-300);
+  position: relative;
+}
+
+.button-group .button-5 {
+  color: var(--color-text-neutral-default);
+  font-family: var(--single-line-body-base-font-family);
+  font-size: var(--single-line-body-base-font-size);
+  font-style: var(--single-line-body-base-font-style);
+  font-weight: var(--single-line-body-base-font-weight);
+  letter-spacing: var(--single-line-body-base-letter-spacing);
+  line-height: var(--single-line-body-base-line-height);
+  margin-top: -1px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.button-group .button-6 {
+  all: unset;
+  align-items: center;
+  background-color: var(--color-background-brand-default);
+  border: 1px solid;
+  border-color: var(--color-border-brand-default);
+  border-radius: var(--size-radius-200);
+  box-sizing: border-box;
+  gap: var(--size-space-200);
+  justify-content: center;
+  overflow: hidden;
+  padding: var(--size-space-300);
+  position: relative;
+}
+
+.button-group .button-7 {
+  color: var(--color-text-brand-on-brand);
+  font-family: var(--single-line-body-base-font-family);
+  font-size: var(--single-line-body-base-font-size);
+  font-style: var(--single-line-body-base-font-style);
+  font-weight: var(--single-line-body-base-font-weight);
+  letter-spacing: var(--single-line-body-base-letter-spacing);
+  line-height: var(--single-line-body-base-line-height);
+  margin-top: -1px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.button-group.align-1-end {
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.button-group.align-1-justify {
+  align-items: center;
+}
+
+.button-group.align-1-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.button-group.align-1-start {
+  align-items: center;
+}
+
+.button-group.align-1-stack {
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.button-group.align-1-end .div-wrapper {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.button-group.align-1-justify .div-wrapper {
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+}
+
+.button-group.align-1-center .div-wrapper {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.button-group.align-1-start .div-wrapper {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.button-group.align-1-stack .div-wrapper {
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.button-group.align-1-end .button-6 {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.button-group.align-1-justify .button-6 {
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+}
+
+.button-group.align-1-center .button-6 {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.button-group.align-1-start .button-6 {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.button-group.align-1-stack .button-6 {
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  width: 100%;
+}

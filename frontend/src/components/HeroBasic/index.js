@@ -1,0 +1,1 @@
+export { HeroBasic } from "./HeroBasic";
