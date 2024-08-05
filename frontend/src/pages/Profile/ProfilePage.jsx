@@ -120,7 +120,7 @@
 //   );
 // };
 
-export default ProfilePage;
+// export default ProfilePage;
 import React, { useState, useEffect } from 'react';
 import ProfileImage from "../../components/ProfileImage/ProfileImage";
 import Footer from "../Footer/Footer";

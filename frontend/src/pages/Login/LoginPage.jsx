@@ -69,7 +69,7 @@ export const LoginPage = () => {
           <button type="submit">Login</button>
         </form>
         <p className="form-footer">
-          Don't have an account? <Link to="/sign-up">Sign Up!</Link>
+          Don't have an account? <Link to="/signup">Sign Up!</Link>
         </p>
       </div>
     </div>

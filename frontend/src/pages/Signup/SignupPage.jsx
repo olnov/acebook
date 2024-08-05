@@ -4,7 +4,7 @@ import TopBarGroup from "../../components/TopBarGroup";
 import { signup } from "../../services/authentication";
 import "./style.css";
 
-const SignupPage = () => {
+export const SignupPage = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,7 +28,7 @@ const SignupPage = () => {
       navigate("/login");
     } catch (err) {
       console.error(err);
-      navigate("/sign-up");
+      navigate("/signup");
     }
   };
 
