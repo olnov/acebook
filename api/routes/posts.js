@@ -1,9 +1,11 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
+const PostsController = require('../controllers/posts');
+const tokenChecker = require('../middleware/tokenChecker');
 
-const PostsController = require("../controllers/posts");
-
-router.get("/", PostsController.getAllPosts);
-router.post("/", PostsController.createPost);
+// Define your routes here
+router.get('/', PostsController.getAllPosts);
+router.post('/', tokenChecker, PostsController.createPost);
+router.get('/users/:user_id/posts', PostsController.getPostsByUser);
 
 module.exports = router;
