@@ -126,7 +126,7 @@ import ProfileImage from "../../components/ProfileImage/ProfileImage";
 import Footer from "../Footer/Footer";
 import TopBarGroup from '../../components/TopBarGroup';
 import { fetchProfileData, updateProfileData } from '../../services/users';
-import "./ProfilePage.css";
+import "./style.css";
 import "../../assets/styles/modal.css";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
