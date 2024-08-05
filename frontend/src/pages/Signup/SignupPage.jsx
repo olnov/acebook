@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { TopBar } from "../TopBar/TopBar";
 
@@ -10,6 +10,15 @@ export const SignupPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
+  //Add background
+  useEffect(() => {
+    document.body.classList.add('page-background');
+
+    return () => {
+    document.body.classList.remove('page-background');
+  };
+  }, []);
+
 
   const navigate = useNavigate();
 
@@ -41,8 +50,8 @@ export const SignupPage = () => {
     <>
     <TopBar />
     <h2>Signup</h2>
-      <div class="container" className="container">
-        <div class="signup-form" className="signup-form">
+      <div className="container">
+        <div className="signup-form">
         <form onSubmit={handleSubmit}>
           <label htmlFor="full_name">Full Name:</label>
           <input 
@@ -65,11 +74,13 @@ export const SignupPage = () => {
             type="password"
             value={password}
             onChange={handlePasswordChange}
+            autoComplete="on"
           />
           <p>
           <input role="submit-button" id="submit" type="submit" value="Submit" />
           </p>
         </form>
+        <p><a href="/login">Already register? Please login.</a></p>
         </div>
       </div>
     </>

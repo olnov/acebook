@@ -12,6 +12,7 @@
     padding: 20px; /* Example padding */
     width: 200px; /* Fixed width */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Example shadow for the card */
+    opacity: 0.9;
   }
   
   
@@ -29,4 +30,9 @@
   input[type="text"], input[type="date"], input[type="password"], input[type="email"] {
     display: inline-block;
     width: 100%;
+}
+
+.page-background {
+  background-image: url("/public/zetland2.jpg");
+  background-size: cover;
 }

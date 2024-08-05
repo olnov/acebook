@@ -50,10 +50,24 @@ const updateUserById = async (req, res) => {
   }
 };
 
+// Search users by full name
+const getUsersByName = async (req,res) => {
+  const userName = req.body.name;
+  const users = await User.find({ "full_name": { $regex: new RegExp(userName, "i") } }).select("full_name _id");
+  if (!users) {
+    res.status(400).json({ message: "No matches for your request "});
+    console.log("Reques: ", userName);
+  } else {
+    res.status(200).json({ users });
+  }
+}
+
+
 const UsersController = {
   create: create,
   getUserById: getUserById,
   updateUserById: updateUserById,
+  getUsersByName: getUsersByName,
 };
 
 module.exports = UsersController;

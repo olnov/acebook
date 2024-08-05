@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { TopBar } from "../TopBar/TopBar";
 import { Footer } from "../Footer/Footer";
@@ -6,17 +6,30 @@ import { Footer } from "../Footer/Footer";
 import { login } from "../../services/authentication";
 import "./LoginPage.css";
 
+
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  //Add background
+  useEffect(() => {
+    document.body.classList.add('page-background');
+
+    return () => {
+    document.body.classList.remove('page-background');
+  };
+  }, []);
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const token = await login(email, password);
-      localStorage.setItem("token", token);
-      navigate("/main");
+      const data = await login(email, password);
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("userId", data.userId);
+      localStorage.setItem("fullName", data.fullName);
+      navigate("/main"); //Remember to upadte to /home later
     } catch (err) {
       console.error(err);
       navigate("/login");
@@ -35,8 +48,8 @@ export const LoginPage = () => {
     <>
       <TopBar />
       <h2>Login</h2>
-      <div class="container">
-        <div class="login-form">
+      <div className="container">
+        <div className="login-form">
           <form onSubmit={handleSubmit}>
             <label htmlFor="email">Email:</label>
             <input
@@ -51,14 +64,16 @@ export const LoginPage = () => {
               type="password"
               value={password}
               onChange={handlePasswordChange}
+              autoComplete="on"
             />
             <p>
               <input role="submit-button" id="submit" type="submit" value="Submit" />
             </p>
           </form>
+          <p><a href="/signup">Don't have an account? Please register.</a></p>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

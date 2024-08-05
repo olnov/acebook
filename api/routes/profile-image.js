@@ -9,6 +9,9 @@ const upload = multer ({
 });
 
 router.post('/', upload.single('profile_image'), uploadProfileImage);
+router.get('/', (req, res) => {
+    res.status(405).json({ message: "Method Not Allowed" });
+});
 router.get('/:user_id', getProfileImage);
 
 module.exports = router;
