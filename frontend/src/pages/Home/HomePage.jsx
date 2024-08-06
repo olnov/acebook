@@ -1,3 +1,4 @@
+// HomePage.js
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TopBarGroup from "../../components/TopBarGroup";
@@ -7,6 +8,7 @@ import PostCardWithLike from "../../components/PostCardWithLike";
 import { getPosts } from "../../services/posts";
 import { getUserFriends } from "../../services/friends";
 import { fetchProfileData } from "../../services/users";
+import Footer from "../Footer/Footer";
 import "./style.css";
 import exp from "constants";
 
@@ -24,7 +26,7 @@ export const HomePage = () => {
 
     if (!token || !userId) {
       console.error("No token or userId found, redirecting to landing page.");
-      navigate("/landing-page");
+      navigate("/");
       return;
     }
 
@@ -45,7 +47,7 @@ export const HomePage = () => {
         await fetchUserDetails(); // Wait for user details to be fetched
         const [fetchedPosts, fetchedFriends] = await Promise.all([
           getPosts(token),
-          getUserFriends(userId, token),
+          getUserFriends(userId), // Updated to call getUserFriends with only userId
         ]);
         setPosts(Array.isArray(fetchedPosts) ? fetchedPosts.slice(0, 3) : []); // Ensure it's an array and get the 3 most recent posts
         setFriends(fetchedFriends);
@@ -107,6 +109,7 @@ export const HomePage = () => {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
