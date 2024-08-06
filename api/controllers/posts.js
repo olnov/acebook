@@ -31,7 +31,8 @@ const getPostById = async (req, res) => {
 const createPost = async (req, res) => {
   try {
     const { title, message } = req.body;
-    const post_author = req.user_id;
+    const post_author = req.body.user_id;
+    console.log(req.user_id)
   
     const post = new Post({
       title,
@@ -55,7 +56,7 @@ const createPost = async (req, res) => {
 
 const deletePost = async (req, res) => {
   const { post_id } = req.params;
-  const user_id = req.user_id;
+  const user_id = req.body.user_id;
 
   try {
     const post = await Post.findById(post_id);
