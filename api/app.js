@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const usersRouter = require("./routes/users");
 const postsRouter = require("./routes/posts");
+const commentsRouter = require("./routes/comments");
 const authenticationRouter = require("./routes/authentication");
 const profileRouter = require("./routes/profile-image");
 const tokenChecker = require("./middleware/tokenChecker");
@@ -22,11 +23,12 @@ app.use(bodyParser.json());
 app.use("/users", usersRouter);
 app.use("/posts", tokenChecker, postsRouter);
 app.use("/tokens", authenticationRouter);
+app.use("/comments", tokenChecker, commentsRouter)
 app.use("/profile-images", profileRouter);
 
 // 404 Handler
 app.use((_req, res) => {
-  res.status(404).json({ err: "Error 404: Not Found" });
+  res.status(404).json({ err: "Error 404: Not Found - written by Marya" });
 });
 
 // Error handler
