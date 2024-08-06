@@ -4,8 +4,6 @@ const PostsController = require('../controllers/posts');
 const tokenChecker = require('../middleware/tokenChecker');
 
 
-const PostsController = require("../controllers/posts");
-
 router.get("/", PostsController.getAllPosts);
 router.get("/:id", PostsController.getPostById);
 router.post('/', tokenChecker, PostsController.createPost);

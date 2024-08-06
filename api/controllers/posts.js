@@ -48,7 +48,8 @@ const createPost = async (req, res) => {
 
   } catch (error) {
     res.status(500).json({ error: "Could not create post" });
-
+  }
+}
 
 const getPostsByUser = async (req, res) => {
   try {
@@ -96,8 +97,8 @@ const PostsController = {
   getAllPosts: getAllPosts,
   createPost: createPost,
   getPostById: getPostById,
-  deletePost: deletePost
-
+  deletePost: deletePost,
+  getPostsByUser: getPostsByUser
 };
 
 // Question to ask John - is this destructuring?
@@ -107,4 +108,4 @@ module.exports = PostsController;
 
 // When designing a feature that allows a user
 // to delete the post, this option should only be 
-// available to them if they are logged in 
+// available to them if they are logged in
