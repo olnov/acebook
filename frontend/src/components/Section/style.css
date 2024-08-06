@@ -1,0 +1,11 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f7f7f7;
+}
+
+.section .home-page-change-instance {
+  margin-bottom: 40px; /* Ensure space between hero actions and other content */
+}

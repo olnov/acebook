@@ -1,0 +1,125 @@
+.top-bar-group {
+  display: flex;
+  align-items: center; /* Center alignment */
+  background-color: #fff;
+  border-bottom: 1px solid #ffffff;
+  padding: 10px 20px;
+  position: fixed; /* Keep it fixed */
+  top: 0;
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  width: 100%;
+  max-width: 1200px;
+  z-index: 1000;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.block {
+  height: 40px;
+}
+
+.div {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.search-instance {
+  flex-grow: 1;
+  margin: 0 20px;
+  display: flex; /* Added to align search bar items */
+  align-items: center; /* Center search bar items */
+}
+
+.search-instance input {
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.search-instance button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navigation-pill-list {
+  display: flex;
+  gap: 10px;
+}
+
+.navigation-pill-link {
+  text-decoration: none;
+}
+
+.navigation-pill-instance {
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  color: #000;
+  cursor: pointer; /* Added cursor pointer */
+}
+
+.navigation-pill-link.active .navigation-pill-instance {
+  background-color: #000;
+  color: #fff;
+}
+
+.header-auth {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.button-2, .button-3, .button-4 {
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.new-post-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.icon-outlined {
+  color: #D9D9D9;
+}
+
+.avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}

@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 
 // A Schema defines the "shape" of entries in a collection. This is similar to
 // defining the columns of an SQL Database.
+// const PostSchema = new mongoose.Schema({
+//   message: String,
+// });
+
 const PostSchema = new mongoose.Schema({
   title: {
     type: String, 
@@ -24,10 +28,10 @@ const PostSchema = new mongoose.Schema({
     default: Date.now, 
     required: true
   },
-  // is_private : {
-  //   type: Boolean, 
-  //   required: true
-  // },
+  is_private : {
+    type: Boolean, 
+    required: true
+  },
   comments: [{
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'Comment',
@@ -44,3 +48,5 @@ const Post = mongoose.model("Post", PostSchema);
 // new Post({ message: `Test message, created at ${dateTimeString}` }).save();
 
 module.exports = Post;
+
+

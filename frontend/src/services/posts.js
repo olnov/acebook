@@ -9,10 +9,33 @@ export const getPosts = async (token) => {
     },
   };
 
+  try {
+    const response = await fetch(`${BACKEND_URL}/posts`, requestOptions);
+    if (response.status !== 200) {
+      throw new Error("Unable to fetch posts");
+    }
+    const data = await response.json();
+    return data || []; 
+  } catch (error) {
+    console.error('Error in getPosts:', error);
+    return [];
+  }
+};
+
+export const createPost = async (post, token) => {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(post),
+  };
+
   const response = await fetch(`${BACKEND_URL}/posts`, requestOptions);
 
-  if (response.status !== 200) {
-    throw new Error("Unable to fetch posts");
+  if (!response.ok) {
+    throw new Error("Error creating post");
   }
 
   const data = await response.json();
@@ -42,3 +65,19 @@ export const getPosts = async (token) => {
 //   const data = await response.json();
 //   return data;
 // };
+
+export const getPostsByUser = async (userId, token) => {
+  const response = await fetch(`${BACKEND_URL}/posts/users/${userId}/posts`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (response.status !== 200) {
+    throw new Error("Unable to fetch user's posts");
+  }
+
+  const data = await response.json();
+  return Array.isArray(data) ? data : [];
+};
+

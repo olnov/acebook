@@ -1,0 +1,51 @@
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-section {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.heroactions-instance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.heroactions-instance h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.heroactions-instance p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.login-button, .signup-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.login-button {
+  background-color: #ccc;
+  color: #000;
+}
+
+.signup-button {
+  background-color: #333;
+  color: #fff;
+}

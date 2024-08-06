@@ -1,14 +1,16 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
+const PostsController = require('../controllers/posts');
+const tokenChecker = require('../middleware/tokenChecker');
+
 
 const PostsController = require("../controllers/posts");
 
-// GET routes 
 router.get("/", PostsController.getAllPosts);
 router.get("/:id", PostsController.getPostById);
+router.post('/', tokenChecker, PostsController.createPost);
+router.get('/users/:user_id/posts', PostsController.getPostsByUser);
 
-// POST route
-router.post("/", PostsController.createPost);
 
 // DELETE route
 router.delete("/:id", PostsController.deletePost);

@@ -1,11 +1,13 @@
 const Post = require("../models/post");
-const { generateToken } = require("../lib/token");
 
 
 const getAllPosts = async (req, res) => {
-  const posts = await Post.find();
-  const token = generateToken(req.user_id);
-  res.status(200).json({ posts: posts, token: token });
+  try {
+    const posts = await Post.find().populate('post_author', 'full_name');
+    res.status(200).json(posts);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching posts" });
+  }
 };
 
 // This function returns a specific post via it's objectID
@@ -46,6 +48,15 @@ const createPost = async (req, res) => {
 
   } catch (error) {
     res.status(500).json({ error: "Could not create post" });
+
+
+const getPostsByUser = async (req, res) => {
+  try {
+    const posts = await Post.find({ post_author: req.params.user_id }).populate('post_author', 'full_name');
+    res.status(200).json(posts);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching user's posts" });
+
   }
 };
 
@@ -86,6 +97,7 @@ const PostsController = {
   createPost: createPost,
   getPostById: getPostById,
   deletePost: deletePost
+
 };
 
 // Question to ask John - is this destructuring?
