@@ -2,13 +2,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
-  border-bottom: 1px solid #e0e0e0;
+  background-color: var(--color-gray-background);
+  border-bottom: 1px solid var(--color-gray-border);
   padding: 10px 20px;
-  position: fixed; /* Make it fixed */
+  position: fixed;
   top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
+  max-width: 1200px;
   z-index: 1000;
+  font-family: var(--font-family-primary);
 }
 
 .header {
@@ -56,13 +60,13 @@
 .navigation-pill-instance {
   padding: 10px 20px;
   border-radius: 20px;
-  background-color: #f0f0f0;
-  color: #000;
+  background-color: var(--color-gray-lightest);
+  color: var(--color-black);
 }
 
 .navigation-pill-link.active .navigation-pill-instance {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .header-auth {
@@ -74,8 +78,8 @@
 .button-2, .button-3, .button-4 {
   padding: 10px 20px;
   border-radius: 20px;
-  background-color: #000;
-  color: #fff;
+  background-color: var(--color-black);
+  color: var(--color-white);
   border: none;
   cursor: pointer;
 }
@@ -100,9 +104,30 @@
 .logout-button {
   padding: 10px 20px;
   border-radius: 20px;
-  background-color: #000;
-  color: #fff;
+  background-color: var(--color-black);
+  color: var(--color-white);
   border: none;
   cursor: pointer;
   margin-left: 10px;
+}
+
+/* Dark mode styles */
+[data-theme='dark'] .top-bar-group {
+  background-color: var(--color-dark-background);
+  border-bottom: 1px solid var(--color-dark-border);
+}
+
+[data-theme='dark'] .navigation-pill-instance {
+  background-color: var(--color-dark-light-mid);
+  color: var(--color-white);
+}
+
+[data-theme='dark'] .navigation-pill-link.active .navigation-pill-instance {
+  background-color: var(--color-dark-link);
+  color: var(--color-white);
+}
+
+[data-theme='dark'] .button-2, [data-theme='dark'] .button-3, [data-theme='dark'] .button-4, [data-theme='dark'] .logout-button {
+  background-color: var(--color-dark);
+  color: var(--color-white);
 }

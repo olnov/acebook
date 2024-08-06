@@ -5,7 +5,7 @@ import { createPost } from '../../services/posts';
 
 const NewPostPopOut = ({ onClose, onPostCreated }) => {
   const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+  const [message, setBody] = useState('');
   const [isPrivate, setIsPrivate] = useState(false);
   const [charCount, setCharCount] = useState(0);
 
@@ -20,9 +20,9 @@ const NewPostPopOut = ({ onClose, onPostCreated }) => {
     try {
       const post = await createPost({
         title,
-        body,
+        message,
         isPrivate,
-        author: userId,
+        post_author: userId,
       }, token);
 
       // Handle token refresh
@@ -62,7 +62,7 @@ const NewPostPopOut = ({ onClose, onPostCreated }) => {
         <div className="form-group">
           <label>Post Body</label>
           <textarea
-            value={body}
+            value={message}
             onChange={(e) => {
               setBody(e.target.value);
               setCharCount(e.target.value.length);

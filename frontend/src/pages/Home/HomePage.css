@@ -2,3 +2,15 @@
   display: flex;
   flex-direction: column;
 }
+
+.home-page {
+  background-color: var(--color-gray-faint);
+  color: var(--color-black);
+  font-family: var(--font-family-primary);
+}
+
+[data-theme='dark'] .home-page {
+  background-color: var(--color-dark-background);
+  color: var(--color-white);
+  font-family: var(--font-family-primary);
+}
