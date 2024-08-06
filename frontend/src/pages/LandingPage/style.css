@@ -49,3 +49,8 @@
   background-color: #333;
   color: #fff;
 }
+
+.page-background {
+  background-image: url("/public/zetland2.jpg");
+  background-size: cover;
+}

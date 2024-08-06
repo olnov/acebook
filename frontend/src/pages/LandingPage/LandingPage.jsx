@@ -7,6 +7,14 @@ import "./style.css";
 export const LandingPage = () => {
   const navigate = useNavigate();
 
+  // useEffect(() => {
+    document.body.classList.add('page-background');
+
+    return () => {
+    document.body.classList.remove('page-background');
+  };
+  }, []);
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
