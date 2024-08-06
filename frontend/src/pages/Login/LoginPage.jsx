@@ -11,13 +11,13 @@ export const LoginPage = () => {
   const navigate = useNavigate();
 
   // //Add background
-  // useEffect(() => {
-  //   document.body.classList.add('page-background');
+  useEffect(() => {
+    document.body.classList.add('page-background');
 
-  //   return () => {
-  //   document.body.classList.remove('page-background');
-  // };
-  // }, []);
+    return () => {
+    document.body.classList.remove('page-background');
+  };
+  }, []);
 
 
   const handleSubmit = async (event) => {

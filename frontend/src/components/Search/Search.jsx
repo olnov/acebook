@@ -26,6 +26,8 @@ export const Search = () => {
       <input
         type="text"
         value={query}
+        name='name'
+        id='name'
         onChange={handleInputChange}
         onKeyPress={handleKeyPress}
         placeholder="Search"
