@@ -21,7 +21,7 @@ import AboutUsPage from './pages/AboutUs/AboutUsPage';
 import { FriendsPage } from "./pages/Friends/FriendsPage";
 // import { MainPage } from "./pages/Main/MainPage"
 import { Profile } from "./pages/Profile/ProfilePage";
-// import { SearchResultsPage } from "./pages/Search/SearchResultsPage";
+import { SearchResultsPage } from "./pages/Search/SearchResultsPage";
 
 // docs: https://reactrouter.com/en/main/start/overview
 const router = createBrowserRouter([
@@ -61,10 +61,10 @@ const router = createBrowserRouter([
     path: "/profile/:userId",
     element: <Profile />
   },
-  // {
-  //   path: "/search-results",
-  //   element: <SearchResultsPage />
-  // },
+  {
+    path: "/results",
+    element: <SearchResultsPage />
+  },
 ]);
 
 // const App = () => {
