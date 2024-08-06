@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './style.css'; // Ensure this file contains the required styles
 import PostPopOut from '../PostPopOut/PostPopOut';
+import IconOutlinedActionThumbThumbUp2 from '../../icons/IconOutlinedActionThumbThumbUp2'; // Import the icon
 
 const PostCardWithLike = ({ post }) => {
   const [showPopOut, setShowPopOut] = useState(false);
@@ -28,7 +29,9 @@ const PostCardWithLike = ({ post }) => {
           </h4> {/* Display the full name */}
           <p>{new Date(post.date_created).toLocaleDateString()}</p>
         </div>
-        <button className="like-button">👍</button>
+        <button className="like-button">
+          <IconOutlinedActionThumbThumbUp2 />
+        </button>
       </div>
       <div className="post-card-body">
         <h3>{post.title}</h3>
@@ -43,4 +46,5 @@ const PostCardWithLike = ({ post }) => {
 };
 
 export default PostCardWithLike;
+
 
