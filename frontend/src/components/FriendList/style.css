@@ -1,32 +1,4 @@
 .friend-list {
-  background-color: #ffffff;
-  height: auto; /* Adjusted to fit content dynamically */
-  padding: 20px; /* Added padding for better spacing */
-  margin-bottom: 40px; /* Space between sections */
-  width: 100%;
-  max-width: 600px; /* Increased width */
-  min-height: 200px; /* Added minimum height */
-  border: 1px solid #e0e0e0; /* Added border for consistency */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
-}
-
-.friend-list .friend-list-frame-instance {
-  position: relative; /* Changed to relative for better alignment */
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-.friend-list .text-wrapper-2 {
-  color: #000000;
-  font-family: var(--subheading-font-family, Arial, sans-serif);
-  font-size: var(--subheading-font-size, 20px);
-  font-weight: var(--subheading-font-weight, bold);
-  letter-spacing: var(--subheading-letter-spacing, 0.5px);
-  line-height: var(--subheading-line-height, 1.5);
-  margin-bottom: 10px; /* Spacing between title and list */
-  text-align: center; /* Center align text */
   background-color: var(--color-gray-background);
   border: 1px solid var(--color-gray-border);
   border-radius: 10px;

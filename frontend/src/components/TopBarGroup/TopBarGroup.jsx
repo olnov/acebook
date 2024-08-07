@@ -5,7 +5,6 @@ import IconOutlinedSuggestedSymbol from '../../icons/IconOutlinedSuggestedSymbol
 import NavigationPill from '../NavigationPill';
 import Search from '../Search';
 import NewPostPopOut from '../NewPostPopOut/NewPostPopOut';
-import { ProfileImage } from "../ProfileImage/ProfileImage";
 import Toggle from '../Toggle/Toggle'; // Import the Toggle component
 import './style.css';
 
@@ -111,7 +110,7 @@ const TopBarGroup = ({
           ) : (
             <>
               <Link to={`/profile/${userId}`}>
-                <ProfileImage userId={userId} height="40" width="40" />
+                <img className="avatar" alt="Avatar" src="path/to/avatar.jpg" /> {/* Replace with actual avatar path */}
               </Link>
               <button className="new-post-button" onClick={handleNewPostClick}>
                 <IconOutlinedSuggestedSymbol className="icon-outlined" />

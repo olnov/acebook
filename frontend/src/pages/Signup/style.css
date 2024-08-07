@@ -14,7 +14,6 @@ html, body {
 .form-container {
   margin-top: 50px;
   text-align: center;
-  opacity: 0.9;
 }
 
 .form-container form {
@@ -24,9 +23,4 @@ html, body {
 
 .form-footer {
   margin-top: 20px;
-}
-
-.page-background {
-  background-image: url("/public/zetland2.jpg");
-  background-size: cover;
 }

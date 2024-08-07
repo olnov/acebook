@@ -23,51 +23,23 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-// const getUserFriends = async (req, res) => {
-//   const id = req.params.id;
-//   console.log("this is your user's id: " + id)
-//   try {
-//     // const user = await User.findById(id).select("friends full_name email _id");
-//     const user = await User.findById(id).populate("friends");
-//     console.log(user)
-//     if (!user) {
-//       return res.status(404).json({ message: "User not found" });
-//     }
-//     console.log(user.friends)
-//     res.status(200).json(user.friends || []); // Ensure an empty array is returned if no friends
-//   } catch (err) {
-//     const user = await User.findById(id).populate('friends', 'full_name', 'email');
-//     res.status(500).json({ message: "Error fetching friends", error: err.message });
-//     console.log('this is the user variable: ' + user)
-//   }
-// };
-
 const getUserFriends = async (req, res) => {
+  const userId = req.params.user_id;
   try {
-    const { id } = req.params; 
-    console.log("This is your user's id: " + id)
-    const user = await User.findById(id)  
-  
-    const friends = await Promise.all(
-    user.friends.map((id) => User.findById(id)));
-
-    const formattedFriends = friends.map(
-      ({ _id, full_name, email}) => {
-        return { _id, full_name, email};
-      } 
-    );
-
-    res.status(200).json(formattedFriends);
+    const user = await User.findById(userId).populate('friends', 'full_name email');
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json(user.friends || []); // Ensure an empty array is returned if no friends
   } catch (err) {
-    res.status(404).json({ message: err.message })   
+    res.status(500).json({ message: "Error fetching friends", error: err.message });
   }
 };
 
 const addRemoveFriend = async (req, res) => {
-  const { id , friendId } = req.params;
-  console.log("This is your user's id: " + id + " and this is your friend's id: " + friendId)
+  const { user_id, friendId } = req.params;
   try {
-    const user = await User.findById(id);
+    const user = await User.findById(user_id);
     const friend = await User.findById(friendId);
 
     if (!user || !friend) {
@@ -76,10 +48,10 @@ const addRemoveFriend = async (req, res) => {
 
     if (user.friends.includes(friendId)) {
       user.friends.pull(friendId);
-      friend.friends.pull(id);
+      friend.friends.pull(user_id);
     } else {
       user.friends.push(friendId);
-      friend.friends.push(id);
+      friend.friends.push(user_id);
     }
 
     await user.save();

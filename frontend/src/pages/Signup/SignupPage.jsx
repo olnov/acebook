@@ -9,14 +9,14 @@ export const SignupPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
-  //Add background
-  useEffect(() => {
-    document.body.classList.add('page-background');
+  // //Add background
+  // useEffect(() => {
+  //   document.body.classList.add('page-background');
 
-    return () => {
-    document.body.classList.remove('page-background');
-  };
-  }, []);
+  //   return () => {
+  //   document.body.classList.remove('page-background');
+  // };
+  // }, []);
 
 
   const navigate = useNavigate();

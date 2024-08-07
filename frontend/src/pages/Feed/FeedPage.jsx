@@ -4,7 +4,6 @@ import Pagination from '../../components/Pagination/Pagination';
 import { getPosts } from '../../services/posts';
 import TopBarGroup from '../../components/TopBarGroup/TopBarGroup';
 import './style.css';
-import Footer from '../Footer/Footer';
 
 export const FeedPage = () => {
   const [posts, setPosts] = useState([]);
@@ -15,12 +14,6 @@ export const FeedPage = () => {
 
   const fetchPosts = async () => {
     const token = localStorage.getItem('token');
-    if (!token) {
-      console.error('No token found. Please log in.');
-      setLoading(false);
-      return;
-    }
-  
     try {
       const fetchedPosts = await getPosts(token);
       console.log('Fetched Posts:', fetchedPosts); // Log fetched posts
@@ -31,7 +24,6 @@ export const FeedPage = () => {
       setLoading(false);
     }
   };
-  
 
   useEffect(() => {
     fetchPosts();
