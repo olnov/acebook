@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { getUserFriends, getAllUsers } from "../../services/friends";
+import { getUserFriends, getAllUsers, addRemoveFriend } from "../../services/friends";
 import { AuthContext } from "../../context/AuthContext"; 
+import './friendsStyle.css';
 
-const FriendsSidebar = () => {
+export const FriendsSidebar = () => {
     const [friends, setFriends] = useState([]);
     const { token, userId } = useContext(AuthContext);
     const [nonFriends, setNonFriends] = useState([]);
@@ -28,12 +29,32 @@ const FriendsSidebar = () => {
         }
     }, [userId, token]);
 
+    const handleRemoveFriend = async (friendId) => {
+        try {
+        await addRemoveFriend(userId, friendId);
+        
+        // Update the friends and non-friends lists after removing a friend
+        setFriends(prevFriends =>
+            prevFriends.filter(friend => friend._id !== friendId)
+        );
+        
+        setNonFriends(prevNonFriends => [
+            ...prevNonFriends,
+            friends.find(friend => friend._id === friendId)
+        ]);
+        } catch (err) {
+        console.error('Failed to remove friend :( ', err);
+        }
+    };
+
     return (
         <div>
             <h3>Your Friends</h3>
             <ul>
                 {friends.map(friend => (
-                    <li key={friend._id}>{friend.full_name}</li>
+                    <li key={friend._id}>{friend.full_name}
+                    <button className="remove-friends" onClick = {() => handleRemoveFriend(friend._id)}> Remove Friend </button>
+                    </li>
                 ))}
             </ul>
         </div>

@@ -68,7 +68,7 @@ export const HomePage = () => {
         property1="default"
       />
       <div className="welcome-message">
-        <h1>Welcome back {fullName}!</h1>
+        <h1>Welcome back, {fullName}!</h1>
       </div>
       {/* <div className="hero-basic">
         <div className="text-content-title">
@@ -87,7 +87,6 @@ export const HomePage = () => {
       </div> */}
       <div className="card-grid-content">
         <div className="friend-list-container">
-          <h3>{fullName}'s Friends</h3>
           {friends.length === 0 ? (
             <p>No friends added currently, use the search bar to find them!</p>
           ) : (

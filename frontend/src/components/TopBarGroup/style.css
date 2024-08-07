@@ -101,6 +101,7 @@
 
 .new-post-button {
   display: flex;
+  border-radius: 20px;
   align-items: center;
   gap: 5px;
 }
