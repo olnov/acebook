@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
 import { createPost } from '../../services/posts';
 
 const NewPostPopOut = ({ onClose, onPostCreated }) => {
   const [title, setTitle] = useState('');
-  const [message, setBody] = useState('');
+  const [body, setBody] = useState('');
   const [isPrivate, setIsPrivate] = useState(false);
   const [charCount, setCharCount] = useState(0);
 
@@ -20,13 +20,8 @@ const NewPostPopOut = ({ onClose, onPostCreated }) => {
     try {
       const post = await createPost({
         title,
-<<<<<<< HEAD
-        message,
-        isPrivate,
-=======
         message: body,
         is_private: isPrivate,
->>>>>>> 6705f47 (fixed post popout to actually create posts in backend)
         post_author: userId,
       }, token);
 
@@ -67,7 +62,7 @@ const NewPostPopOut = ({ onClose, onPostCreated }) => {
         <div className="form-group">
           <label>Post Body</label>
           <textarea
-            value={message}
+            value={body}
             onChange={(e) => {
               setBody(e.target.value);
               setCharCount(e.target.value.length);

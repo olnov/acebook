@@ -9,8 +9,6 @@ const getAllPosts = async (req, res) => {
   }
 };
 
-<<<<<<< HEAD
-=======
 // This function returns a specific post via it's objectID
 // This might be useful for the 'see post in more detail' feature
 // This also returns the comments for a specific post 
@@ -35,20 +33,10 @@ const getPostById = async (req, res) => {
 };
 
 //  This function allows a user to create a post
->>>>>>> e7b9fa7 (created directory for comments component)
 const createPost = async (req, res) => {
   console.log('We are here')
   try {
-<<<<<<< HEAD
-    const post = new Post({
-      ...req.body,
-      post_author: req.user_id, // Set the post author to the authenticated user
-      date_created: new Date(),
-    });
-    await post.save();
-    res.status(201).json({ message: "Post created", post });
-=======
-    const { title, message, post_author, is_private } = req.body;
+    const { title, message, post_author } = req.body;
     // const post_author = req.body.user_id
     console.log(post_author)
   
@@ -56,7 +44,7 @@ const createPost = async (req, res) => {
       title,
       message,
       post_author,
-      is_private
+      // is_private
     });
     
     await post.save();
@@ -64,9 +52,9 @@ const createPost = async (req, res) => {
     // res.status(201).json({ message: "Post created", token: newToken });
     res.status(201).json({ message: "New post created" })
 
->>>>>>> e7b9fa7 (created directory for comments component)
   } catch (error) {
     res.status(400).json({ message: "Error creating post" });
+    console.log(error)
   }
 };
 
@@ -79,8 +67,6 @@ const getPostsByUser = async (req, res) => {
   }
 };
 
-<<<<<<< HEAD
-=======
 // This function first checks if the post exists
 // It then checks if the user requesting to delete the post
 // is the author of the post, to ensure that only the author
@@ -132,7 +118,6 @@ const deletePost = async (req, res) => {
 //   }
 // }
 
->>>>>>> e7b9fa7 (created directory for comments component)
 const PostsController = {
   getAllPosts,
   createPost,
