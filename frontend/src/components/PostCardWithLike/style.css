@@ -77,6 +77,19 @@
   font-size: var(--single-line-body-base-font-size, 0.9em); /* Adjusted font size */
 }
 
+.add-comment-button {
+  all: unset;
+  margin-left: auto;
+  align-items: center;
+  background-color: var(--color-background-neutral-tertiary, #f0f0f0);
+  border: 1px solid var(--color-border-neutral-secondary, #ccc);
+  border-radius: var(--size-radius-200, 10px);
+  display: inline-flex;
+  justify-content: center;
+  padding: var(--size-space-300, 8px);
+  cursor: pointer;
+}
+
 [data-theme='dark'] .post-card {
   background-color: var(--color-dark-darker);
   border: 1px solid var(--color-dark-border);
@@ -104,6 +117,12 @@
 }
 
 [data-theme='dark'] .see-more-button {
+  background-color: var(--color-dark-light-mid);
+  border: 1px solid var(--color-dark-border);
+  color: var(--color-white);
+}
+
+[data-theme='dark'] .add-comment-button {
   background-color: var(--color-dark-light-mid);
   border: 1px solid var(--color-dark-border);
   color: var(--color-white);
