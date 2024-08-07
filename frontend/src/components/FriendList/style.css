@@ -27,4 +27,62 @@
   line-height: var(--subheading-line-height, 1.5);
   margin-bottom: 10px; /* Spacing between title and list */
   text-align: center; /* Center align text */
+  background-color: var(--color-gray-background);
+  border: 1px solid var(--color-gray-border);
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.friend-list-header {
+  background-color: var(--color-gray-background);
+  padding: 10px;
+  font-family: var(--font-family-primary);
+  font-size: 1.2em;
+  font-weight: bold;
+  border-bottom: 1px solid var(--color-gray-border);
+}
+
+.friend-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-gray-border);
+}
+
+.friend-item:last-child {
+  border-bottom: none;
+}
+
+.friend-avatar {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.friend-name {
+  font-family: var(--font-family-secondary);
+  font-size: 1em;
+  color: var(--color-black);
+}
+
+/* Dark mode styles */
+[data-theme='dark'] .friend-list {
+  background-color: var(--color-dark-background);
+  border: 1px solid var(--color-dark-border);
+}
+
+[data-theme='dark'] .friend-list-header {
+  background-color: var(--color-dark-background);
+  border-bottom: 1px solid var(--color-dark-border);
+}
+
+[data-theme='dark'] .friend-item {
+  border-bottom: 1px solid var(--color-dark-border);
+}
+
+[data-theme='dark'] .friend-name {
+  color: var(--color-white);
 }

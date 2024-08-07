@@ -128,6 +128,7 @@ import TopBarGroup from '../../components/TopBarGroup';
 import { fetchProfileData, updateProfileData } from '../../services/users';
 import "./style.css";
 import "../../assets/styles/modal.css";
+
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const Profile = () => {

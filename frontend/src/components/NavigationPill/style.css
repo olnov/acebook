@@ -1,42 +1,12 @@
-.navigation-pill {
-  align-items: center;
-  border-radius: 20px;
-  display: inline-flex;
+.navigation-pills {
+  display: flex;
   gap: 10px;
-  justify-content: center;
-  padding: 8px 16px;
-  cursor: pointer;
+  background-color: var(--color-gray-light);
+  border: 1px solid var(--color-gray-border);
+  font-family: var(--font-family-primary);
 }
 
-.navigation-pill .title {
-  font-family: "Inter", Helvetica;
-  font-size: 16px;
-  font-weight: 400;
-  position: relative;
-  white-space: nowrap;
-  width: fit-content;
-}
-
-.navigation-pill.active {
-  background-color: #007bff;
-}
-
-.navigation-pill.active .title {
-  color: #fff;
-}
-
-.navigation-pill.default {
-  background-color: #f0f0f0;
-}
-
-.navigation-pill.default .title {
-  color: #333;
-}
-
-.navigation-pill.hover {
-  background-color: #e0e0e0;
-}
-
-.navigation-pill.hover .title {
-  color: #000000;
+.pill {
+  padding: 10px 20px;
+  border-radius: 20 &#8203;:citation[oaicite:0]{index=0}&#8203;
 }

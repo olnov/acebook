@@ -1,5 +1,3 @@
-import React from "react";
-
 export const IconOutlinedActionThumbThumbUp2 = ({ className }) => {
   return (
     <svg
