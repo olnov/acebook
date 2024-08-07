@@ -2,13 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-<<<<<<< Updated upstream
   background-color: var(--color-gray-background);
   border-bottom: 1px solid var(--color-gray-border);
-=======
-  background-color: var(--color-background-default);
-  border-bottom: 1px solid var(--color-border-default-default);
->>>>>>> Stashed changes
   padding: 10px 20px;
   position: fixed;
   top: 0;
@@ -65,7 +60,6 @@
 .navigation-pill-instance {
   padding: 10px 20px;
   border-radius: 20px;
-<<<<<<< Updated upstream
   background-color: var(--color-gray-lightest);
   color: var(--color-black);
 }
@@ -73,15 +67,6 @@
 .navigation-pill-link.active .navigation-pill-instance {
   background-color: var(--color-black);
   color: var(--color-white);
-=======
-  background-color: var(--color-background-neutral-tertiary);
-  color: var(--color-text-default);
-}
-
-.navigation-pill-link.active .navigation-pill-instance {
-  background-color: var(--color-text-default);
-  color: var(--color-background-default);
->>>>>>> Stashed changes
 }
 
 .header-auth {
@@ -93,13 +78,8 @@
 .button-2, .button-3, .button-4 {
   padding: 10px 20px;
   border-radius: 20px;
-<<<<<<< Updated upstream
   background-color: var(--color-black);
   color: var(--color-white);
-=======
-  background-color: var(--color-text-default);
-  color: var(--color-background-default);
->>>>>>> Stashed changes
   border: none;
   cursor: pointer;
 }
@@ -124,19 +104,13 @@
 .logout-button {
   padding: 10px 20px;
   border-radius: 20px;
-<<<<<<< Updated upstream
   background-color: var(--color-black);
   color: var(--color-white);
-=======
-  background-color: var(--color-text-default);
-  color: var(--color-background-default);
->>>>>>> Stashed changes
   border: none;
   cursor: pointer;
   margin-left: 10px;
 }
 
-<<<<<<< Updated upstream
 /* Dark mode styles */
 [data-theme='dark'] .top-bar-group {
   background-color: var(--color-dark-background);
@@ -156,39 +130,4 @@
 [data-theme='dark'] .button-2, [data-theme='dark'] .button-3, [data-theme='dark'] .button-4, [data-theme='dark'] .logout-button {
   background-color: var(--color-dark);
   color: var(--color-white);
-=======
-.search-container {
-  display: flex;
-  align-items: center;
-  background-color: var(--color-background-default);
-  border: 1px solid var(--color-border-neutral-secondary);
-  border-radius: 20px;
-  padding: 5px 10px;
-  width: 300px;
-  transition: all 0.3s ease;
-}
-
-.search-input {
-  flex: 1;
-  border: none;
-  outline: none;
-  padding: 5px 10px;
-  font-size: 14px;
-  background: none;
-  color: var(--color-text-default);
-}
-
-.search-icon {
-  margin-right: 10px;
-  color: #888;
-}
-
-.clear-icon {
-  cursor: pointer;
-  color: #888;
-}
-
-.search-container:focus-within {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
->>>>>>> Stashed changes
 }
