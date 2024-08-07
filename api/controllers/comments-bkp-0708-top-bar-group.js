@@ -12,8 +12,8 @@ const getComments = async (req, res) => {
 
 
 const createComment = async (req, res) => {
-    const { message, author_id } = req.body;
-    const { post_id } = req.params;
+    const { message, author_id, post_id } = req.body;
+    // const { post_id } = req.params;
     console.log('this is a test message')
     
     try {
@@ -35,8 +35,8 @@ const createComment = async (req, res) => {
         post.comments.push(savedComment._id);
         await post.save();
         
-        // const newToken = generateToken(req.user_id);
-        res.status(201).json({ message: "Comment created", comment: savedComment.message });
+        const newToken = generateToken(req.user_id);
+        res.status(201).json({ message: "Comment created", comment: savedComment.message, token: newToken });
     } catch (error) {
         res.status(500).json({ error: "Could not post comment" });
     }

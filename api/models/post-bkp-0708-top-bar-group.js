@@ -1,4 +1,4 @@
-// const User = require('./user'); 
+const User = require('./user'); 
 const mongoose = require("mongoose");
 
 // A Schema defines the "shape" of entries in a collection. This is similar to
@@ -48,3 +48,5 @@ const Post = mongoose.model("Post", PostSchema);
 // new Post({ message: `Test message, created at ${dateTimeString}` }).save();
 
 module.exports = Post;
+
+
