@@ -20,9 +20,9 @@ const NewPostPopOut = ({ onClose, onPostCreated }) => {
     try {
       const post = await createPost({
         title,
-        body,
-        isPrivate,
-        author: userId,
+        message: body,
+        is_private: isPrivate,
+        post_author: userId,
       }, token);
 
       // Handle token refresh
