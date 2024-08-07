@@ -24,14 +24,20 @@ export const FeedPage = () => {
     try {
       const fetchedPosts = await getPosts(token);
       console.log('Fetched Posts:', fetchedPosts); // Log fetched posts
-      setPosts(Array.isArray(fetchedPosts) ? fetchedPosts : []); // Ensure posts is an array
+  
+      // This part of the code sorts out the Array of fetched posts 
+      // So that the most recent posts are displayed first
+      const sortedPosts = Array.isArray(fetchedPosts)
+        ? fetchedPosts.sort((a, b) => new Date(b.date_created) - new Date(a.date_created))
+        : [];
+  
+      setPosts(sortedPosts); // Ensure posts is an array
     } catch (error) {
       console.error('Error fetching posts:', error);
     } finally {
       setLoading(false);
     }
   };
-  
 
   useEffect(() => {
     fetchPosts();

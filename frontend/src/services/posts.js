@@ -29,7 +29,8 @@ export const createPost = async (post, token) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(post),
+    body: 
+    JSON.stringify(post),
   };
 
   const response = await fetch(`${BACKEND_URL}/posts`, requestOptions);
@@ -39,7 +40,7 @@ export const createPost = async (post, token) => {
   }
 
   const data = await response.json();
-  return data;
+  return data
 };
 
 // // export const createPost = async (token, title, message, author) => {
