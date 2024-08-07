@@ -1,92 +1,16 @@
+.home {
+  display: flex;
+  flex-direction: column;
+}
+
 .home-page {
-  padding-top: 150px; /* Ensure there's space for the TopBarGroup */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f9f9f9; /* Light background color for contrast */
+  background-color: var(--color-gray-faint);
+  color: var(--color-black);
+  font-family: var(--font-family-primary);
 }
 
-.welcome-message {
-  text-align: center;
-  margin: 20px 0;
-  font-size: 24px; /* Decreased font size */
-  font-weight: bold;
-}
-
-.hero-basic {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.text-content-title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.avatar-block-2 {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.avatar-instance {
-  width: 100px; /* Adjusted avatar size */
-  height: 100px; /* Adjusted avatar size */
-  border-radius: 50%;
-}
-
-.div-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.text-wrapper-7 {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.card-grid-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.friend-list-container {
-  width: 100%;
-  max-width: 600px; /* Adjusted to match friend list */
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-.friend-list-instance ul {
-  list-style: none;
-  padding: 0;
-}
-
-.friend-list-instance li {
-  margin: 10px 0;
-  font-size: 18px; /* Adjust font size for friend list items */
-}
-
-.text-content-heading {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 24px; /* Adjusted font size */
-  font-weight: bold;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  width: 100%;
-  max-width: 1200px;
-}
-
-.error-message, .no-posts-message {
-  text-align: center;
-  color: red;
+[data-theme='dark'] .home-page {
+  background-color: var(--color-dark-background);
+  color: var(--color-white);
+  font-family: var(--font-family-primary);
 }

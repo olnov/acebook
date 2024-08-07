@@ -1,16 +1,18 @@
 .top-bar-group {
   display: flex;
-  align-items: center; /* Center alignment */
-  background-color: #fff;
-  border-bottom: 1px solid #ffffff;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-gray-background);
+  border-bottom: 1px solid var(--color-gray-border);
   padding: 10px 20px;
-  position: fixed; /* Keep it fixed */
+  position: fixed;
   top: 0;
-  left: 50%; /* Center horizontally */
-  transform: translateX(-50%); /* Center horizontally */
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
   max-width: 1200px;
   z-index: 1000;
+  font-family: var(--font-family-primary);
 }
 
 .header {
@@ -18,6 +20,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: 1200px;
 }
 
 .logo {
@@ -43,21 +46,6 @@
 .search-instance {
   flex-grow: 1;
   margin: 0 20px;
-  display: flex; /* Added to align search bar items */
-  align-items: center; /* Center search bar items */
-}
-
-.search-instance input {
-  flex-grow: 1;
-  padding: 10px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-}
-
-.search-instance button {
-  background: none;
-  border: none;
-  cursor: pointer;
 }
 
 .navigation-pill-list {
@@ -72,14 +60,13 @@
 .navigation-pill-instance {
   padding: 10px 20px;
   border-radius: 20px;
-  background-color: #ffffff;
-  color: #000;
-  cursor: pointer; /* Added cursor pointer */
+  background-color: var(--color-gray-lightest);
+  color: var(--color-black);
 }
 
 .navigation-pill-link.active .navigation-pill-instance {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .header-auth {
@@ -91,8 +78,8 @@
 .button-2, .button-3, .button-4 {
   padding: 10px 20px;
   border-radius: 20px;
-  background-color: #000;
-  color: #fff;
+  background-color: var(--color-black);
+  color: var(--color-white);
   border: none;
   cursor: pointer;
 }
@@ -117,9 +104,30 @@
 .logout-button {
   padding: 10px 20px;
   border-radius: 20px;
-  background-color: #000;
-  color: #fff;
+  background-color: var(--color-black);
+  color: var(--color-white);
   border: none;
   cursor: pointer;
   margin-left: 10px;
+}
+
+/* Dark mode styles */
+[data-theme='dark'] .top-bar-group {
+  background-color: var(--color-dark-background);
+  border-bottom: 1px solid var(--color-dark-border);
+}
+
+[data-theme='dark'] .navigation-pill-instance {
+  background-color: var(--color-dark-light-mid);
+  color: var(--color-white);
+}
+
+[data-theme='dark'] .navigation-pill-link.active .navigation-pill-instance {
+  background-color: var(--color-dark-link);
+  color: var(--color-white);
+}
+
+[data-theme='dark'] .button-2, [data-theme='dark'] .button-3, [data-theme='dark'] .button-4, [data-theme='dark'] .logout-button {
+  background-color: var(--color-dark);
+  color: var(--color-white);
 }

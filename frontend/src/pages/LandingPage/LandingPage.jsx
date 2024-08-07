@@ -2,11 +2,18 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import HeroActions from "../../components/HeroActions/HeroActions";
 import TopBarGroup from "../../components/TopBarGroup";
-import Footer from "../Footer/Footer"
 import "./style.css";
 
 export const LandingPage = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.body.classList.add('page-background');
+
+    return () => {
+    document.body.classList.remove('page-background');
+  };
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -30,7 +37,6 @@ export const LandingPage = () => {
           className="heroactions-instance"
         />
       </div>
-      <Footer/>
     </div>
   );
 };

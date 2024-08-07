@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import IconOutlinedSuggestedSymbol from '../../icons/IconOutlinedSuggestedSymbol';
 import NavigationPill from '../NavigationPill';
 import Search from '../Search';
 import NewPostPopOut from '../NewPostPopOut/NewPostPopOut';
+import Toggle from '../Toggle/Toggle'; // Import the Toggle component
 import './style.css';
 
 const TopBarGroup = ({
@@ -19,6 +20,23 @@ const TopBarGroup = ({
   const userId = localStorage.getItem('userId');
 
   const [isNewPostOpen, setIsNewPostOpen] = useState(false);
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+  };
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   const handleNewPostClick = () => {
     setIsNewPostOpen(true);
@@ -102,6 +120,7 @@ const TopBarGroup = ({
             </>
           )}
         </div>
+        <Toggle theme={theme} toggleTheme={toggleTheme} /> {/* Add the Toggle component */}
       </div>
       {isNewPostOpen && <NewPostPopOut onClose={handleNewPostClose} onPostCreated={() => {}} />}
     </div>
