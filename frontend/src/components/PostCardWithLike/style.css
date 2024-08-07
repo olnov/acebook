@@ -76,3 +76,35 @@
   font-family: var(--single-line-body-base-font-family, Arial, sans-serif);
   font-size: var(--single-line-body-base-font-size, 0.9em); /* Adjusted font size */
 }
+
+[data-theme='dark'] .post-card {
+  background-color: var(--color-dark-darker);
+  border: 1px solid var(--color-dark-border);
+}
+
+[data-theme='dark'] .post-card-header {
+  background-color: var(--color-dark-darker);
+}
+
+[data-theme='dark'] .avatar {
+  border-radius: 50%;
+}
+
+[data-theme='dark'] .like-button {
+  background-color: var(--color-dark-light-mid);
+  color: var(--color-white);
+}
+
+[data-theme='dark'] .post-card-body h3 {
+  color: var(--color-white);
+}
+
+[data-theme='dark'] .post-card-body p {
+  color: var(--color-gray-light);
+}
+
+[data-theme='dark'] .see-more-button {
+  background-color: var(--color-dark-light-mid);
+  border: 1px solid var(--color-dark-border);
+  color: var(--color-white);
+}

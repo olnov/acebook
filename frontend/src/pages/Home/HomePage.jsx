@@ -70,21 +70,6 @@ export const HomePage = () => {
       <div className="welcome-message">
         <h1>Welcome back {fullName}!</h1>
       </div>
-      {/* <div className="hero-basic">
-        <div className="text-content-title">
-          <div className="avatar-block-2">
-            <Avatar
-              className="avatar-instance"
-              shape="square"
-              size="large"
-              type="image"
-            />
-            <div className="div-wrapper">
-              <div className="text-wrapper-7">{fullName}</div>
-            </div>
-          </div>
-        </div>
-      </div> */}
       <div className="card-grid-content">
         <div className="friend-list-container">
           <h3>{fullName}'s Friends</h3>
