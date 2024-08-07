@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { CardGridImage } from "../../components/CardGridImage";
 import { HeroBasic } from "../../components/HeroBasic";
 import { PanelImageDouble } from "../../components/PanelImageDouble";

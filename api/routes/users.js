@@ -17,7 +17,7 @@ router.get('/search', (req, res) => {
 });
 router.get('/:user_id', UsersController.getUserById);
 router.patch('/:user_id', UsersController.updateUserById);
-router.get('/:user_id/friends', UsersController.getUserFriends);
-router.patch('/:user_id/:friendId', UsersController.addRemoveFriend);
+router.get('/:id/friends', UsersController.getUserFriends);
+router.patch('/:id/:friendId', tokenChecker, UsersController.addRemoveFriend);
 
 module.exports = router;

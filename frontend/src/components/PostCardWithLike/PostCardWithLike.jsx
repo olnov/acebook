@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './style.css'; // Ensure this file contains the required styles
 import PostPopOut from '../PostPopOut/PostPopOut';
 import IconOutlinedActionThumbThumbUp2 from '../../icons/IconOutlinedActionThumbThumbUp2'; // Import the icon
+import { ProfileImage } from "../ProfileImage/ProfileImage";
 
 const PostCardWithLike = ({ post }) => {
   const [showPopOut, setShowPopOut] = useState(false);
@@ -19,7 +20,8 @@ const PostCardWithLike = ({ post }) => {
     <div className="post-card">
       <div className="post-card-header">
         <Link to={`/profile/${post.post_author._id}`}>
-          <img src="path/to/avatar.jpg" alt="Avatar" className="avatar" /> {/* Replace with actual avatar path */}
+          <ProfileImage userId={post.post_author._id} height="40" width="40" />
+          {/* <img src="path/to/avatar.jpg" alt="Avatar" className="avatar" /> Replace with actual avatar path */}
         </Link>
         <div>
           <h4>

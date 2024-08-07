@@ -9,7 +9,9 @@ import { FeedPage } from "./pages/Feed/FeedPage";
 import AboutUsPage from './pages/AboutUs/AboutUsPage';
 import { FriendsPage } from "./pages/Friends/FriendsPage";
 import { Profile } from "./pages/Profile/ProfilePage";
+import { SearchResultsPage } from "./pages/Search/SearchResultsPage";
 import './index.css'; // Assuming your global styles are here
+
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,10 @@ const router = createBrowserRouter([
   {
     path: "/profile/:userId",
     element: <Profile />
+  },
+  {
+    path: "/results",
+    element: <SearchResultsPage />
   },
 ]);
 
