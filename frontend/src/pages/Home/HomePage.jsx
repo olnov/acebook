@@ -49,7 +49,11 @@ export const HomePage = () => {
           getPosts(token),
           getUserFriends(userId), // Updated to call getUserFriends with only userId
         ]);
-        setPosts(Array.isArray(fetchedPosts) ? fetchedPosts.slice(0, 3) : []); // Ensure it's an array and get the 3 most recent posts
+        const sortedPosts = Array.isArray(fetchedPosts)
+        ? fetchedPosts.sort((a, b) => new Date(b.date_created) - new Date(a.date_created))
+        : [];
+        const latest3Posts = sortedPosts.slice(0,3);
+        setPosts(latest3Posts);
         setFriends(fetchedFriends);
       } catch (error) {
         console.error("Error fetching data:", error);
