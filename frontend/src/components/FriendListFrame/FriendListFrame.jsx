@@ -1,6 +1,6 @@
+import React from "react";
 import { BuildingBlocks } from "../BuildingBlocks";
 import { BuildingBlocksWrapper } from "../BuildingBlocksWrapper";
-import "./style.css";
 import { getUserFriends, getAllUsers, addRemoveFriend } from "../../services/friends";
 import FriendsSidebar from "./FriendsSidebar";
 
