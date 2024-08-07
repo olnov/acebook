@@ -1,6 +1,8 @@
-import './style.css'; // Assuming you create a separate CSS file for Toggle component styles
+import './style.css';
+import { ThemeContext } from '../../context/ThemeContext';
 
 const Toggle = ({ theme, toggleTheme }) => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
   return (
     <div className="mt-auto p-4">
       <label className="ui-switch">

@@ -20,23 +20,6 @@ const TopBarGroup = ({
   const userId = localStorage.getItem('userId');
 
   const [isNewPostOpen, setIsNewPostOpen] = useState(false);
-  const [theme, setTheme] = useState('light');
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-  };
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme);
-    document.documentElement.setAttribute('data-theme', savedTheme);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('theme', theme);
-  }, [theme]);
 
   const handleNewPostClick = () => {
     setIsNewPostOpen(true);
