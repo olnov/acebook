@@ -42,12 +42,12 @@
 
 /* Dark mode styles */
 [data-theme='dark'] .friend-list {
-  background-color: var(--color-dark-background);
+  background-color: var(--color-dark-darker);
   border: 1px solid var(--color-dark-border);
 }
 
 [data-theme='dark'] .friend-list-header {
-  background-color: var(--color-dark-background);
+  background-color: var(--color-dark-darker);
   border-bottom: 1px solid var(--color-dark-border);
 }
 

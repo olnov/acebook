@@ -7,7 +7,7 @@ import "./style.css";
 export const LandingPage = () => {
   const navigate = useNavigate();
 
-  // useEffect(() => {
+  useEffect(() => {
     document.body.classList.add('page-background');
 
     return () => {

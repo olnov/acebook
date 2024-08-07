@@ -1,7 +1,5 @@
-import React from "react";
 import { BuildingBlocks } from "../BuildingBlocks";
 import { BuildingBlocksWrapper } from "../BuildingBlocksWrapper";
-import "./style.css";
 
 export const FriendListFrame = ({ className }) => {
   return (
