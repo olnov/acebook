@@ -1,32 +1,78 @@
-/* Global styles for padding to account for the fixed TopBarGroup */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+.login-page, .signup-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
-.page-content {
-  padding-top: 121px; /* Adjust this value based on the height of TopBarGroup */
-  margin: 0 auto;
-  max-width: 1200px;
-}
-
-.form-container {
+.login-container, .signup-container {
+  width: 100%;
+  max-width: 400px;
   margin-top: 50px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9); /* Standard background color with 90% opacity */
+  border: 1px solid var(--container-border);
+  border-radius: 20px; /* Make corners rounded */
+  box-shadow: 0 4px 6px var(--container-shadow);
+}
+
+h2 {
   text-align: center;
-  opacity: 0.9;
+  margin-bottom: 20px;
 }
 
-.form-container form {
-  display: inline-block;
-  text-align: left;
+label {
+  display: block;
+  margin-bottom: 5px;
 }
 
-.form-footer {
-  margin-top: 20px;
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--input-border);
+  background-color: #fff; /* Light background color for light mode */
+  border-radius: 5px;
+  color: var(--text-color); /* Ensure text is visible in dark mode */
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--button-background);
+  color: var(--button-text);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
 }
 
 .page-background {
   background-image: url("/public/zetland2.jpg");
   background-size: cover;
+}
+
+/* Dark mode styles */
+[data-theme='dark'] .login-page, [data-theme='dark'] .signup-page {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+[data-theme='dark'] .login-container, [data-theme='dark'] .signup-container {
+  background: rgba(18, 18, 18, 0.9); /* Darker background with 90% opacity */
+  border: 1px solid var(--container-border);
+  box-shadow: 0 4px 6px var(--container-shadow);
+}
+
+[data-theme='dark'] input {
+  border: 1px solid var(--input-border);
+  background-color: #333; /* Dark background color for dark mode */
+  color: var(--text-color);
+}
+
+[data-theme='dark'] button {
+  background-color: var(--button-background);
+  color: var(--button-text);
 }

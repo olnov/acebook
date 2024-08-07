@@ -21,7 +21,7 @@ const NewPostPopOut = ({ onClose, onPostCreated }) => {
       const post = await createPost({
         title,
         message: body,
-        is_private : isPrivate,
+        is_private: isPrivate,
         post_author: userId,
       }, token);
 
