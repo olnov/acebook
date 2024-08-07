@@ -59,15 +59,19 @@
   align-items: center;
 }
 
-.friend-list-container {
-  width: 100%;
-  max-width: 400px;
-  margin-bottom: 40px;
-  text-align: center;
+.friend-border{
+  display: flex;
+  justify-self: center;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  max-width: 70vw; /* Full viewport width */
+  padding: 10px; /* Optional padding */
+  box-sizing: border-box; Ensure padding is included in total width/height
 }
 
 .friend-list-instance ul {
   list-style: none;
+  grid: column;
   padding: 0;
 }
 

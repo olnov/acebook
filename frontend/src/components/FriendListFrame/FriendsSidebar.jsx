@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { getUserFriends, getAllUsers, addRemoveFriend } from "../../services/friends";
 import { AuthContext } from "../../context/AuthContext"; 
+import ProfileImage from "../ProfileImage/ProfileImage";
 import './friendsStyle.css';
 
 export const FriendsSidebar = () => {
@@ -48,14 +49,17 @@ export const FriendsSidebar = () => {
     };
 
     return (
-        <div>
-            <h3>Your Friends</h3>
-            <ul>
+        <div className="friends-list-container">
+            <ul className="friends-list">
                 {friends.map(friend => (
-                    <li key={friend._id}>{friend.full_name}
-                    <button className="remove-friends" onClick = {() => handleRemoveFriend(friend._id)}> Remove Friend </button>
+                    <li className = "friend-item" key={friend._id}>
+                        <ProfileImage foundUserId={friend._id} height="70" width="70"/>
+                    <div classname='friend-info'>
+                        <span className = 'friend-name'> {friend.full_name} </span>
+                        <button className="remove-friends" onClick = {() => handleRemoveFriend(friend._id)}> Remove Friend </button>
+                    </div>
                     </li>
-                ))}
+                    ))}
             </ul>
         </div>
     );
