@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { getUserFriends, getAllUsers } from "../../services/friends";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext"; 
 
 const FriendsSidebar = () => {
     const [friends, setFriends] = useState([]);
@@ -18,7 +18,7 @@ const FriendsSidebar = () => {
                     user => !friendsData.some(friend => friend._id === user._id) && user._id !== userId
                 );
                 setNonFriends(nonFriendsData);
-            } catch (err) {
+            } catch (err) {       
                 console.error('Failed to fetch friends or users :( ', err);
             }
         };
