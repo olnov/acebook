@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './style.css';
+import SearchIcon from '../../assets/search.svg';
+// import './style.css';
+import './search.css';
 
 export const Search = () => {
   const [query, setQuery] = useState('');
@@ -16,15 +18,16 @@ export const Search = () => {
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
-      navigate(`/results?query=${query}`);
+      navigate(`/results?q=${query}`);
     }
   };
 
   return (
     <div className="search-container">
-      <i className="search-icon">🔍</i>
+      {/* <i className="search-icon">🔍</i> */}
+      <i className='search-icon'><img src={SearchIcon} /></i>
       <input
-        type="text"
+        type="search"
         value={query}
         name='name'
         id='name'
@@ -33,7 +36,6 @@ export const Search = () => {
         placeholder="Search"
         className="search-input"
       />
-      {query && <i className="clear-icon" onClick={handleClear}>❌</i>}
     </div>
   );
 };

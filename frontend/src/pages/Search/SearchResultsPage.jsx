@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { searchResults } from '../../services/users';
 import { SearchResults } from '../../components/Search/SearchResults';
-import TopBar from '../TopBar/TopBar';
+import { TopBarGroup } from '../../components/TopBarGroup/TopBarGroup';
+// import TopBar from '../TopBar/TopBar';
 import Footer from '../Footer/Footer';
 
 export const SearchResultsPage = () => {
@@ -33,7 +34,7 @@ export const SearchResultsPage = () => {
 
     return (
     <>
-    <TopBar />
+    <TopBarGroup />
     <div className='search-results'>
         <h3>Search Results for: {query}</h3>
         {isLoading ? (

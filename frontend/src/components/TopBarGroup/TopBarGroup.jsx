@@ -6,12 +6,14 @@ import NavigationPill from '../NavigationPill';
 import Search from '../Search';
 import NewPostPopOut from '../NewPostPopOut/NewPostPopOut';
 import { ProfileImage } from "../ProfileImage/ProfileImage";
+import Logo from "../../assets/acebook.svg";
 import './style.css';
 
-const TopBarGroup = ({
-  property1,
-  headerClassName,
-  block = 'https://c.animaapp.com/M2klh9T2/img/block-2.svg',
+export const TopBarGroup = ({
+  // property1,
+  // headerClassName,
+  // block = 'https://c.animaapp.com/M2klh9T2/img/block-2.svg',
+  // block = Logo,
 }) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -60,11 +62,11 @@ const TopBarGroup = ({
   };
 
   return (
-    <div className={`top-bar-group ${headerClassName}`} style={{ position: 'fixed', top: 0, width: '100%', zIndex: 1000 }}>
+    <div className='top-bar-group'>
       <div className="header">
         <div className="logo" onClick={handleHomeClick} style={{ cursor: 'pointer' }}>
           <div className="logo-container">
-            <img className="block" alt="Block" src={block} onError={handleImageError} />
+            <img className="block" alt="Block" src={Logo} onError={handleImageError} />
           </div>
           <div className="div">AceBook</div>
         </div>

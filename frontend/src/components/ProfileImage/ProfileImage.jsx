@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import "./ProfileImage.css"
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+const PLACEHOLDER_IMAGE = '/public/gradient.jpeg';
 // const user_id = localStorage.getItem("userId");
 
 export const ProfileImage = ({ userId, height, width }) => {
@@ -25,12 +26,14 @@ export const ProfileImage = ({ userId, height, width }) => {
         };
         reader.onerror = (error) => {
           console.error('Error converting blob to data URL', error);
-          setError('Could not load profile image');
+          // setError('Could not load profile image');
+          setImageSrc(PLACEHOLDER_IMAGE);
         };
         reader.readAsDataURL(blob);
       } catch (err) {
         console.error('Error fetching profile image:', err);
-        setError('Could not load profile image');
+        // setError('Could not load profile image');
+        setImageSrc(PLACEHOLDER_IMAGE);
       }
     };
 

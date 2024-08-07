@@ -135,7 +135,7 @@ export const Profile = () => {
   const [bio, setBio] = useState("");
   const [isEditingBio, setIsEditingBio] = useState(false);
   const [editedBio, setEditedBio] = useState("");
-  const token = localStorage.getItem('token');
+  // const token = localStorage.getItem('token');
   const user_id = localStorage.getItem("userId");
   const full_name = localStorage.getItem("fullName");
 
@@ -218,8 +218,8 @@ export const Profile = () => {
 
   return (
     <>
-    <TopBarGroup className="top-bar-group" property1={token ? 'logged-in' : 'default'} block="https://c.animaapp.com/M2klh9T2/img/block-2.svg" 
-      />
+    {/* <TopBarGroup className="top-bar-group" property1={token ? 'logged-in' : 'default'} block="https://c.animaapp.com/M2klh9T2/img/block-2.svg" /> */}
+    <TopBarGroup />
       <div className="profile">
         <div className='banner'></div>
         <ProfileImage userId={user_id} width="150" height="150"/>
