@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import IconOutlinedSuggestedSymbol from '../../icons/IconOutlinedSuggestedSymbol';
@@ -6,6 +6,7 @@ import NavigationPill from '../NavigationPill';
 import Search from '../Search';
 import NewPostPopOut from '../NewPostPopOut/NewPostPopOut';
 import Toggle from '../Toggle/Toggle'; // Import the Toggle component
+import { ThemeContext } from '../../context/ThemeContext';
 import './style.css';
 
 const TopBarGroup = ({
@@ -18,7 +19,7 @@ const TopBarGroup = ({
   const token = localStorage.getItem('token');
   const isLoggedIn = !!token;
   const userId = localStorage.getItem('userId');
-
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const [isNewPostOpen, setIsNewPostOpen] = useState(false);
 
   const handleNewPostClick = () => {
@@ -103,7 +104,7 @@ const TopBarGroup = ({
             </>
           )}
         </div>
-        <Toggle theme={theme} toggleTheme={toggleTheme} /> {/* Add the Toggle component */}
+        <Toggle />
       </div>
       {isNewPostOpen && <NewPostPopOut onClose={handleNewPostClose} onPostCreated={() => {}} />}
     </div>

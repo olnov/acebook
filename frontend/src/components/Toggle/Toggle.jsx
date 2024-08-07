@@ -1,15 +1,17 @@
 import './style.css';
+import { useContext } from 'react';
 import { ThemeContext } from '../../context/ThemeContext';
 
-const Toggle = ({ theme, toggleTheme }) => {
+const Toggle = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
+
   return (
-    <div className="mt-auto p-4">
+    <div className="toggle-container mt-auto p-4">
       <label className="ui-switch">
         <input type="checkbox" onChange={toggleTheme} checked={theme === 'dark'} />
-        <div className="slider">
-          <div className="circle"></div>
-        </div>
+        <span className="slider">
+          <span className="circle"></span>
+        </span>
       </label>
     </div>
   );
