@@ -20,8 +20,13 @@ const NewPostPopOut = ({ onClose, onPostCreated }) => {
     try {
       const post = await createPost({
         title,
+<<<<<<< HEAD
         message,
         isPrivate,
+=======
+        message: body,
+        is_private: isPrivate,
+>>>>>>> 6705f47 (fixed post popout to actually create posts in backend)
         post_author: userId,
       }, token);
 
