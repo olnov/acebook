@@ -248,6 +248,7 @@ export const Profile = () => {
         )}
         <p>Friend list</p>
       </div>
+      
       {isModalOpen && (
         <>
           <div className="modal">

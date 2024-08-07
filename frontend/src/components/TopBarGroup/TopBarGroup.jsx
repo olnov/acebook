@@ -5,6 +5,7 @@ import IconOutlinedSuggestedSymbol from '../../icons/IconOutlinedSuggestedSymbol
 import NavigationPill from '../NavigationPill';
 import Search from '../Search';
 import NewPostPopOut from '../NewPostPopOut/NewPostPopOut';
+import Toggle from '../Toggle/Toggle';
 import { ProfileImage } from "../ProfileImage/ProfileImage";
 import Logo from "../../assets/acebook.svg";
 import './style.css';
@@ -105,6 +106,7 @@ export const TopBarGroup = ({
             </>
           )}
         </div>
+        <Toggle />
       </div>
       {isNewPostOpen && <NewPostPopOut onClose={handleNewPostClose} onPostCreated={() => {}} />}
     </div>
