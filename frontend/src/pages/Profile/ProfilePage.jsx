@@ -1,126 +1,3 @@
-// import React, { useEffect, useState } from 'react';
-// import { useParams } from 'react-router-dom';
-// import Avatar from '../../components/Avatar';
-// import FriendList from '../../components/FriendList';
-// import PostCardWithLike from '../../components/PostCardWithLike';
-// import { getUserById } from '../../services/users';
-// import { getPostsByUser } from '../../services/posts';
-// import { getFriends } from '../../services/friends';
-// import './style.css';
-
-// const ProfilePage = () => {
-//   const { userId } = useParams();
-//   const [user, setUser] = useState(null);
-//   const [friends, setFriends] = useState([]);
-//   const [posts, setPosts] = useState([]);
-//   const [userError, setUserError] = useState('');
-//   const [friendsError, setFriendsError] = useState('');
-//   const [postsError, setPostsError] = useState('');
-//   const token = localStorage.getItem('token');
-//   const loggedInUserId = localStorage.getItem('userId');
-
-//   useEffect(() => {
-//     const fetchUserData = async () => {
-//       try {
-//         const fetchedUser = await getUserById(userId, token);
-//         setUser(fetchedUser);
-//       } catch (error) {
-//         console.error('Error fetching user details:', error);
-//         setUserError('Error fetching user details');
-//       }
-//     };
-
-//     const fetchFriends = async () => {
-//       try {
-//         const fetchedFriends = await getFriends(userId, token);
-//         setFriends(fetchedFriends);
-//       } catch (error) {
-//         console.error('Error fetching friends:', error);
-//         setFriendsError('Error fetching friends');
-//       }
-//     };
-
-//     const fetchPosts = async () => {
-//       try {
-//         const fetchedPosts = await getPostsByUser(userId, token);
-//         setPosts(fetchedPosts);
-//       } catch (error) {
-//         console.error('Error fetching posts:', error);
-//         setPostsError('Error fetching posts');
-//       }
-//     };
-
-//     fetchUserData();
-//     fetchFriends();
-//     fetchPosts();
-//   }, [userId, token]);
-
-//   const isCurrentUser = loggedInUserId === userId;
-
-//   return (
-//     <div className="profile-page">
-//       <TopBarGroup className="top-bar-group" property1={token ? 'logged-in' : 'default'} block="https://c.animaapp.com/M2klh9T2/img/block-2.svg" />
-//       <div className="profile-container">
-//         {userError ? (
-//           <div className="error-box">
-//             <p>{userError}</p>
-//           </div>
-//         ) : (
-//           user && (
-//             <>
-//               <div className="profile-header">
-//                 <Avatar className="profile-avatar" shape="circle" size="large" src={user.profile_image || '/path/to/default/avatar.jpg'} />
-//                 <h1>{user.full_name}</h1>
-//                 {isCurrentUser && (
-//                   <button onClick={() => { /* Implement edit bio functionality */ }}>Edit Bio</button>
-//                 )}
-//               </div>
-//               <div className="profile-bio">
-//                 <h3>{user.full_name}'s Bio</h3>
-//                 <p>{user.user_bio}</p>
-//               </div>
-//             </>
-//           )
-//         )}
-
-//         <div className="profile-friends">
-//           <h3>{user?.full_name}'s Friends</h3>
-//           {friendsError ? (
-//             <div className="error-box">
-//               <p>{friendsError}</p>
-//             </div>
-//           ) : (
-//             friends.length === 0 && !friendsError ? (
-//               <p>No friends added currently, use the search bar to find them!</p>
-//             ) : (
-//               <FriendList friends={friends} />
-//             )
-//           )}
-//         </div>
-
-//         <div className="profile-posts">
-//           <h3>{user?.full_name}'s Recent Posts</h3>
-//           {postsError ? (
-//             <div className="error-box">
-//               <p>{postsError}</p>
-//             </div>
-//           ) : (
-//             posts.length === 0 && !postsError ? (
-//               <p>No posts available</p>
-//             ) : (
-//               posts.map(post => (
-//                 <PostCardWithLike key={post._id} post={post} />
-//               ))
-//             )
-//           )}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProfilePage;
-
 import { useState, useEffect } from 'react';
 import ProfileImage from "../../components/ProfileImage/ProfileImage";
 import Footer from "../Footer/Footer";
@@ -128,6 +5,7 @@ import TopBarGroup from '../../components/TopBarGroup';
 import { fetchProfileData, updateProfileData } from '../../services/users';
 import "./style.css";
 import "../../assets/styles/modal.css";
+import { useParams } from 'react-router-dom';
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const Profile = () => {
@@ -135,24 +13,24 @@ export const Profile = () => {
   const [bio, setBio] = useState("");
   const [isEditingBio, setIsEditingBio] = useState(false);
   const [editedBio, setEditedBio] = useState("");
-  // const token = localStorage.getItem('token');
-  const user_id = localStorage.getItem("userId");
-  const full_name = localStorage.getItem("fullName");
+  const [fullName, setFullName] = useState("");
+  const { userId } = useParams();
 
   useEffect(() => {
     // Fetch profile data when component mounts
     const fetchData = async () => {
       try {
-        const data = await fetchProfileData(user_id);
+        const data = await fetchProfileData(userId);
         setBio(data.user_bio || "Put some words about yourself here.");
         setEditedBio(data.user_bio || "");
+        setFullName(data.full_name || "");
       } catch (error) {
         console.error("Failed to fetch profile data");
       }
     };
 
     fetchData();
-  }, [user_id]);
+  }, [userId]);
 
   const handleEditClick = () => {
     setIsEditingBio(true);
@@ -166,7 +44,7 @@ export const Profile = () => {
     setBio(editedBio);
     setIsEditingBio(false);
     try {
-        await updateProfileData(user_id, editedBio);
+        await updateProfileData(userId, editedBio);
     } catch (error) {
         console.error("Something went wrong: ", error);
     }
@@ -218,15 +96,14 @@ export const Profile = () => {
 
   return (
     <>
-    {/* <TopBarGroup className="top-bar-group" property1={token ? 'logged-in' : 'default'} block="https://c.animaapp.com/M2klh9T2/img/block-2.svg" /> */}
     <TopBarGroup />
       <div className="profile">
         <div className='banner'></div>
-        <ProfileImage userId={user_id} width="150" height="150"/>
+        <ProfileImage userId={userId} width="150" height="150"/>
         <button className="button" onClick={openModal}>
           Profile photo
         </button>
-        <h3>{full_name}</h3>
+        <h3>{fullName}</h3>
         {isEditingBio ? (
           <div>
             <textarea
@@ -253,7 +130,7 @@ export const Profile = () => {
         <>
           <div className="modal">
             <div className="add_new">
-              <ProfileImage userId={user_id} height="150" width="150" />
+              <ProfileImage userId={userId} height="150" width="150" />
               <form encType="multipart/form-data" onSubmit={handleSubmit}>
                 <label>Profile photo:</label>
                 <input
@@ -266,7 +143,7 @@ export const Profile = () => {
                   type="hidden"
                   name="user_id"
                   id="user_id"
-                  value={user_id}
+                  value={userId}
                 ></input>
                 <p>Image size limit is 1MB</p>
                 <p>
