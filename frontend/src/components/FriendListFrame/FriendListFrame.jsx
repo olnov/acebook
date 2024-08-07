@@ -2,56 +2,14 @@ import React from "react";
 import { BuildingBlocks } from "../BuildingBlocks";
 import { BuildingBlocksWrapper } from "../BuildingBlocksWrapper";
 import "./style.css";
+import { getUserFriends, getAllUsers, addRemoveFriend } from "../../services/friends";
+import FriendsSidebar from "./FriendsSidebar";
 
-export const FriendListFrame = ({ className }) => {
+export const FriendListFrame = () => {
   return (
-    <div className={`friend-list-frame ${className}`}>
-      <div className="friend-list-2">
-        <div className="list-item">
-          <BuildingBlocks className="state-layer-overlay" />
-          <div className="state-layer">
-            <div className="leading-element">
-              <BuildingBlocksWrapper />
-            </div>
-            <div className="content">
-              <div className="headline">Abbey Johnson</div>
-            </div>
-          </div>
-        </div>
-        <div className="list-item">
-          <BuildingBlocks className="state-layer-overlay" />
-          <div className="state-layer">
-            <div className="leading-element">
-              <BuildingBlocksWrapper />
-            </div>
-            <div className="content">
-              <div className="headline">Steve Jobs</div>
-            </div>
-          </div>
-        </div>
-        <div className="list-item">
-          <BuildingBlocks className="state-layer-overlay" />
-          <div className="state-layer">
-            <div className="leading-element">
-              <BuildingBlocksWrapper />
-            </div>
-            <div className="content">
-              <div className="headline">John Smith</div>
-            </div>
-          </div>
-        </div>
-        <div className="list-item">
-          <BuildingBlocks className="state-layer-overlay" />
-          <div className="state-layer">
-            <div className="leading-element">
-              <BuildingBlocksWrapper />
-            </div>
-            <div className="content">
-              <div className="headline">Jane Doe</div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className={`friend-list-frame`}>
+      <FriendsSidebar/>
+      
     </div>
   );
 };
