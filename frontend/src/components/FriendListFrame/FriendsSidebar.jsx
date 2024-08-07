@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { getUserFriends, getAllUsers, addRemoveFriend } from "../../services/friends";
 import { AuthContext } from "../../context/AuthContext"; 
 import ProfileImage from "../ProfileImage/ProfileImage";
+import { Link } from "react-router-dom";
 import './friendsStyle.css';
 
 export const FriendsSidebar = () => {
@@ -53,11 +54,15 @@ export const FriendsSidebar = () => {
             <ul className="friends-list">
                 {friends.map(friend => (
                     <li className = "friend-item" key={friend._id}>
+                        <Link to={`/profile/${friend._id}`} style={{ textDecoration: 'none'}}>
                         <ProfileImage foundUserId={friend._id} height="70" width="70"/>
-                    <div classname='friend-info'>
-                        <span className = 'friend-name'> {friend.full_name} </span>
-                        <button className="remove-friends" onClick = {() => handleRemoveFriend(friend._id)}> Remove Friend </button>
-                    </div>
+                        </Link>
+                        <div classname='friend-info'>
+                            <Link to={`/profile/${friend._id}`} style={{ textDecoration: 'none'}}>
+                            <span className = 'friend-name'> {friend.full_name} </span>
+                            </Link>
+                            <button className="remove-friends" onClick = {() => handleRemoveFriend(friend._id)}> Remove Friend </button>
+                        </div>
                     </li>
                     ))}
             </ul>

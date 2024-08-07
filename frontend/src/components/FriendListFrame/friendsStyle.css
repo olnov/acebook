@@ -1,20 +1,28 @@
 .friends-list-container {
   display: flex;
+  align-items: center;
+  justify-content: center;
   height: 400px;
+  width: 70vh;
   margin-bottom: 40px;
   /* align-items: flex-start; */
   overflow-x: auto;
   padding: 10px;
   border: 1px solid #a2a1a1;
   border-radius: 30px;
+  box-shadow:  0px 0px 50px 0px #dbddc6;
+  margin: auto;
+  backdrop-filter: blur(2px)
+  
 }
 
 .friends-list {
-  padding: 10px;
   display: flex;
+  padding: 10px;
+
   flex-direction: column;
   flex-wrap: wrap;
-  width: max-content;
+  /* width: max-content; */
   max-height: 100%;
   grid-gap: 15px; /* Gap between grid items */
 }
