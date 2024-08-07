@@ -1,10 +1,29 @@
 .post-card {
+<<<<<<< Updated upstream
   background-color: var(--color-gray-background);
   border: 1px solid var(--color-gray-border);
   border-radius: 10px;
   padding: 20px;
   position: relative;
   width: 350px;
+=======
+  align-items: flex-start;
+  background-color: var(--post-background-light); /* Use variable for background color */
+  border: 1px solid var(--color-border-default-default);
+  border-radius: var(--size-radius-200, 10px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-space-400, 10px);
+  padding: var(--size-space-400, 10px);
+  position: relative;
+  width: 350px;
+  color: var(--color-text-default); /* Ensure text color is appropriate */
+}
+
+[data-theme='dark'] .post-card {
+  background-color: var(--post-background-dark); /* Use dark mode background color */
+  color: var(--text-color-dark); /* Ensure text color is appropriate */
+>>>>>>> Stashed changes
 }
 
 .post-card-header {
@@ -25,9 +44,15 @@
   all: unset;
   margin-left: auto;
   align-items: center;
+<<<<<<< Updated upstream
   background-color: var(--color-background-neutral-tertiary, #f0f0f0);
   border: 1px solid var(--color-border-neutral-secondary, #ccc);
   border-radius: 10px;
+=======
+  background-color: var(--color-background-neutral-tertiary);
+  border: 1px solid var(--color-border-neutral-secondary);
+  border-radius: var(--size-radius-200, 10px);
+>>>>>>> Stashed changes
   display: inline-flex;
   justify-content: center;
   padding: 8px;
@@ -43,33 +68,51 @@
 }
 
 .post-card-body h3 {
-  color: var(--color-text-default-default, #000);
+  color: var(--color-text-default); /* Ensure text color is appropriate */
   font-family: var(--heading-font-family, Arial, sans-serif);
+<<<<<<< Updated upstream
   font-size: 1.2em;
   font-weight: bold;
+=======
+  font-size: var(--heading-font-size, 1.2em);
+  font-weight: var(--heading-font-weight, bold);
+>>>>>>> Stashed changes
   margin-top: -1px;
 }
 
 .post-card-body p {
-  color: var(--color-text-default-secondary, #666);
+  color: var(--color-text-default-secondary); /* Ensure text color is appropriate */
   font-family: var(--body-base-font-family, Arial, sans-serif);
+<<<<<<< Updated upstream
   font-size: 0.9em;
   font-weight: normal;
   line-height: 1.5;
+=======
+  font-size: var(--body-base-font-size, 0.9em);
+  font-weight: var(--body-base-font-weight, normal);
+  line-height: var(--body-base-line-height, 1.5);
+>>>>>>> Stashed changes
 }
 
 .see-more-button {
   all: unset;
   align-items: center;
+<<<<<<< Updated upstream
   background-color: var(--color-background-neutral-tertiary, #f0f0f0);
   border: 1px solid var(--color-border-neutral-secondary, #ccc);
   border-radius: 10px;
+=======
+  background-color: var(--color-background-neutral-tertiary);
+  border: 1px solid var(--color-border-neutral-secondary);
+  border-radius: var(--size-radius-200, 10px);
+>>>>>>> Stashed changes
   display: inline-flex;
   justify-content: center;
   padding: 8px;
   cursor: pointer;
-  color: var(--color-text-default-default, #000);
+  color: var(--color-text-default); /* Ensure text color is appropriate */
   font-family: var(--single-line-body-base-font-family, Arial, sans-serif);
+<<<<<<< Updated upstream
   font-size: 0.9em;
 }
 
@@ -104,4 +147,7 @@
   background-color: var(--color-dark-light-mid);
   border: 1px solid var(--color-dark-border);
   color: var(--color-white);
+=======
+  font-size: var(--single-line-body-base-font-size, 0.9em);
+>>>>>>> Stashed changes
 }
