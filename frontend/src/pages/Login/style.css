@@ -1,52 +1,79 @@
 .login-page, .signup-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .login-container, .signup-container {
-    width: 100%;
-    max-width: 400px;
-    margin-top: 50px;
-    padding: 20px;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    opacity: 0.9;
-  }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 5px;
-  }
-  
-  .page-background {
-    background-image: url("/public/zetland2.jpg");
-    background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.login-container, .signup-container {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 50px;
+  padding: 20px;
+  background: var(--container-background);
+  border: 1px solid var(--container-border);
+  border-radius: 20px; /* Make corners rounded */
+  box-shadow: 0 4px 6px var(--container-shadow);
+  opacity: 0.9; /* Set opacity to 90% */
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--input-border);
+  background-color: var(--input-background);
+  border-radius: 5px;
+  color: var(--text-color); /* Ensure text is visible in dark mode */
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--button-background);
+  color: var(--button-text);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.page-background {
+  background-image: url("/public/zetland2.jpg");
+  background-size: cover;
+}
+
+/* Dark mode styles */
+[data-theme='dark'] .login-page, [data-theme='dark'] .signup-page {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+[data-theme='dark'] .login-container, [data-theme='dark'] .signup-container {
+  background: var(--container-background);
+  border: 1px solid var(--container-border);
+  box-shadow: 0 4px 6px var(--container-shadow);
+}
+
+[data-theme='dark'] input {
+  border: 1px solid var(--input-border);
+  background-color: var(--input-background);
+  color: var(--text-color);
+}
+
+[data-theme='dark'] button {
+  background-color: var(--button-background);
+  color: var(--button-text);
 }
