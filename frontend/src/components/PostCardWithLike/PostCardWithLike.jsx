@@ -16,6 +16,11 @@ const PostCardWithLike = ({ post }) => {
     setShowPopOut(false);
   };
 
+  const handleAddCommentClick = () => {
+    setShowPopOut(false);
+  };
+
+
   return (
     <div className="post-card">
       <div className="post-card-header">
@@ -41,6 +46,7 @@ const PostCardWithLike = ({ post }) => {
       </div>
       <div className="post-card-footer">
         <button className="see-more-button" onClick={handleSeeMoreClick}>See more</button>
+        <button className ="add-comment-button" onClick={handleAddCommentClick}>Add comment</button>
       </div>
       {showPopOut && <PostPopOut post={post} onClose={handleClosePopOut} />}
     </div>
