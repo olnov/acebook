@@ -15,6 +15,7 @@ export const Profile = () => {
   const [editedBio, setEditedBio] = useState("");
   const [fullName, setFullName] = useState("");
   const { userId } = useParams();
+  const currentUserId = localStorage.getItem("userId");
 
   useEffect(() => {
     // Fetch profile data when component mounts
@@ -100,11 +101,13 @@ export const Profile = () => {
       <div className="profile">
         <div className='banner'></div>
         <ProfileImage userId={userId} width="150" height="150"/>
+        { userId === currentUserId ? (
         <button className="button" onClick={openModal}>
           Profile photo
         </button>
+        ) : ( <p></p> )}
         <h3>{fullName}</h3>
-        {isEditingBio ? (
+        {userId === currentUserId && isEditingBio ? (
           <div>
             <textarea
               className="text-area"

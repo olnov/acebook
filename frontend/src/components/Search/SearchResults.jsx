@@ -45,7 +45,7 @@ export const SearchResults = ({ results }) => {
                 <li key={foundUser._id} className='search-results-item'>
                     <div className='search-results-card'>
                         <span>
-                            <ProfileImage foundUserId={foundUser._id} height="70" width="70"/>
+                            <ProfileImage userId={foundUser._id} height="70" width="70"/>
                         </span>
                         <span>
                             <h4>{foundUser.full_name}</h4>
