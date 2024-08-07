@@ -10,10 +10,10 @@ router.get("/", CommentsController.getComments);
 // router.get("/:id", CommentsController.getComments);
 
 // POST route for a specific Facebook post
-router.post('/', CommentsController.createComment);
+router.post('/:post_id', CommentsController.createComment);
 // router.post('/:post_id', CommentsController.createComment);
 
 // DELETE route
-router.delete("/:id", CommentsController.deleteComment);
+router.delete("/:comment_id", CommentsController.deleteComment);
 
 module.exports = router;
