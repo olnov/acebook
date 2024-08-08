@@ -49,7 +49,7 @@ export const SearchResults = ({ results }) => {
                         </span>
                         <span>
                             <h4>{foundUser.full_name}</h4>
-                            <button className='button' 
+                            <button className='add-friend-button' 
                                 onClick={() => handleAddFriend(foundUser._id)}
                                 disabled={friendIds.includes(foundUser._id)}
                                 style={{ 
