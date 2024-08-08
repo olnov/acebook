@@ -13,12 +13,12 @@ const getComments = async (req, res) => {
 
 const createComment = async (req, res) => {
     const { message, author_id } = req.body;
-    const { post_id } = req.params;
+    const { id } = req.params;
     console.log('this is a test message')
     
     try {
         console.log('we are looking for the post')
-        const post = await Post.findById(post_id);
+        const post = await Post.findById(id);
         if (!post) {
             return res.status(404).json({ error: "Post not't found" });
         }
