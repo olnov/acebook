@@ -2,8 +2,10 @@ const Post = require("../models/post");
 
 
 const getAllPosts = async (req, res) => {
+  const limit = req.query.limit || 0;
+  console.log("Limit:",limit);
   try {
-    const posts = await Post.find().populate('post_author', 'full_name');
+    const posts = await Post.find().populate('post_author', 'full_name').limit(limit);
     res.status(200).json(posts);
   } catch (error) {
     res.status(500).json({ message: "Error fetching posts" });
@@ -59,8 +61,9 @@ const createPost = async (req, res) => {
 }
 
 const getPostsByUser = async (req, res) => {
+  const limit = req.query.limit || 0;
   try {
-    const posts = await Post.find({ post_author: req.params.user_id }).populate('post_author', 'full_name');
+    const posts = await Post.find({ post_author: req.params.user_id }).populate('post_author', 'full_name').limit(limit);
     res.status(200).json(posts);
   } catch (error) {
     res.status(500).json({ message: "Error fetching user's posts" });

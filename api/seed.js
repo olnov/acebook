@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const axios = require('axios');
 const faker = require('faker');
 const bcrypt = require('bcrypt');
 const User = require('./models/user'); // Ensure the path is correct
@@ -24,6 +25,23 @@ mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTop
     console.error('Database connection error:', err);
   });
 
+async function fetchProfileImage(retries = 5) {
+  try {
+    const response = await axios.get('https://thispersondoesnotexist.com', {
+      responseType: 'arraybuffer'
+    });
+    return response.data;
+  } catch (error) {
+    if (retries > 0) {
+      console.error('Error fetching profile image, retrying...', error);
+      return fetchProfileImage(retries - 1);
+    } else {
+      console.error('Failed to fetch profile image after multiple attempts:', error);
+      return null;
+    }
+  }
+}
+
 async function seedDatabase() {
   try {
     await User.deleteMany({});
@@ -35,20 +53,24 @@ async function seedDatabase() {
     // Create test user
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(TEST_USER.password, salt);
+    const testUserProfileImage = await fetchProfileImage();
     const testUser = new User({
       full_name: TEST_USER.full_name,
       email: TEST_USER.email,
       password: hashedPassword,
+      profile_image: testUserProfileImage
     });
     await testUser.save();
     users.push(testUser);
 
     // Create random users
     for (let i = 0; i < NUM_USERS; i++) {
+      const profileImage = await fetchProfileImage();
       const user = new User({
         full_name: faker.name.findName(),
         email: faker.internet.email(),
         password: 'password123', // Use a simple password for all users
+        profile_image: profileImage
       });
       users.push(user);
     }

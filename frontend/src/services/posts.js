@@ -1,7 +1,7 @@
 // docs: https://vitejs.dev/guide/env-and-mode.html
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-export const getPosts = async (token) => {
+export const getPosts = async (token, limit=0) => {
   const requestOptions = {
     method: "GET",
     headers: {
@@ -10,7 +10,7 @@ export const getPosts = async (token) => {
   };
 
   try {
-    const response = await fetch(`${BACKEND_URL}/posts`, requestOptions);
+    const response = await fetch(`${BACKEND_URL}/posts?limit=${limit}`, requestOptions);
     if (response.status !== 200) {
       throw new Error("Unable to fetch posts");
     }
@@ -66,8 +66,8 @@ export const createPost = async (post, token) => {
 //   return data;
 // };
 
-export const getPostsByUser = async (userId, token) => {
-  const response = await fetch(`${BACKEND_URL}/posts/users/${userId}/posts`, {
+export const getPostsByUser = async (userId, token, limit) => {
+  const response = await fetch(`${BACKEND_URL}/posts/users/${userId}/posts?${limit}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

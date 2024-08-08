@@ -73,7 +73,15 @@
   cursor: pointer;
 }
 
+[data-theme='dark'] .friends-list-container {
+  background-color: var(--color-dark-darker); /* Dark mode background color */
+  border: 1px solid var(--color-dark-border); /* Dark mode border color */
+}
 
+[data-theme='dark'] .friend-item {
+  background-color: var(--color-dark-light-mid); /* Dark mode background color */
+  color: var(--color-white); /* Dark mode text color */
+  border: 1px solid var(--color-dark-border); /* Dark mode border color */
 
 
 

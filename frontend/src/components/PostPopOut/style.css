@@ -1,3 +1,4 @@
+/* Overlay styles */
 .post-popout-overlay {
   position: fixed;
   top: 0;
@@ -12,6 +13,7 @@
   backdrop-filter: blur(5px); /* Apply blur to the background */
 }
 
+/* Container styles */
 .post-popout-container {
   background: white;
   padding: 20px;
@@ -24,19 +26,28 @@
   max-height: 90vh;
 }
 
-.post-popout-close {
+.close-button {
+  width: 30px;
+  height: 30px;
   position: absolute;
   top: 10px;
-  left: 10px; /* Position the close button in the top-left corner */
+  right: 10px;
   background: none;
   border: none;
   font-size: 20px;
   cursor: pointer;
-  color: grey; /* Set the color to grey */
+  color: gray;
 }
 
+.close-button:hover {
+  color: rgb(196, 196, 196);
+}
+
+
+/* Header styles */
 .post-popout-header {
   display: flex;
+  padding-right: 30px;
   align-items: center;
   margin-bottom: 10px; /* Adjusted for consistency */
 }
@@ -57,12 +68,14 @@
   margin-left: 10px; /* Added margin for better spacing */
 }
 
+/* Body styles */
 .post-popout-body {
   margin-bottom: 20px;
   font-size: 14px; /* Match post card font size */
   color: #666; /* Match post card color */
 }
 
+/* Comments section styles */
 .post-popout-comments {
   margin-top: 20px;
 }
@@ -111,4 +124,35 @@
   color: #fff;
   cursor: pointer;
   margin-top: 10px;
+}
+
+/* Dark mode styles */
+[data-theme='dark'] .post-popout-container {
+  background: var(--color-dark-darker);
+}
+
+[data-theme='dark'] .post-popout-close {
+  color: var(--color-gray-light);
+}
+
+[data-theme='dark'] .post-popout-body,
+[data-theme='dark'] .post-popout-comments .comment-body {
+  color: var(--color-gray-light-mid);
+}
+
+[data-theme='dark'] .post-popout-comments .comment-title {
+  color: var(--color-gray-lightest);
+}
+
+[data-theme='dark'] .post-popout-comments .comment {
+  border-top: 1px solid var(--color-dark-light-mid);
+}
+
+[data-theme='dark'] .post-popout-comments .comment-button {
+  background-color: var(--color-dark-mid);
+  color: var(--color-white);
+}
+
+[data-theme='dark'] .post-popout-comments h3 {
+  color: var(--color-white);
 }

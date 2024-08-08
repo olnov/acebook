@@ -2,8 +2,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TopBarGroup from "../../components/TopBarGroup";
-import Avatar from "../../components/Avatar";
-import FriendList from "../../components/FriendList";
 import FriendsSidebar from "../../components/FriendListFrame/FriendsSidebar";
 import PostCardWithLike from "../../components/PostCardWithLike";
 import { getPosts } from "../../services/posts";
@@ -81,7 +79,8 @@ export const HomePage = () => {
         headerClassName="top-bar-group-instance"
         property1="default"
       />
-        <h1>Welcome back, {fullName}!</h1>
+      <div className="welcome-message">
+        <h1>Welcome back {fullName}!</h1>
       </div>
       <h2>Your Friends</h2>
         <div className="friend-border">
