@@ -162,7 +162,7 @@ export const Profile = () => {
                 {friends.map(friend => (
                     <li className = "friend-item" key={friend._id}>
                         <Link to={`/profile/${friend._id}`} style={{ textDecoration: 'none'}}>
-                        <ProfileImage foundUserId={friend._id} height="70" width="70"/>
+                        <ProfileImage userId={friend._id} height="70" width="70"/>
                         </Link>
                         <div className='friend-info'>
                             <Link to={`/profile/${friend._id}`} style={{ textDecoration: 'none'}}>
