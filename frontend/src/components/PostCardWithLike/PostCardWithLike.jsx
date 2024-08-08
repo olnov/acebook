@@ -27,7 +27,6 @@ const PostCardWithLike = ({ post, comment }) => {
     setShowAddComment(false);
   } 
 
-
   return (
     <div className="post-card">
       <div className="post-card-header">
@@ -58,6 +57,8 @@ const PostCardWithLike = ({ post, comment }) => {
       <div>
       <button className ="add-comment-button" onClick={handleAddCommentClick}>Add comment</button>
       {showAddComment && <NewCommentPopOut key={post._id} post={post} onClose={handleCloseCommentClick} />}
+      </div>
+      <div>
     </div>
     </div>
   );

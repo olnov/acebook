@@ -4,7 +4,7 @@ const tokenChecker = require('../middleware/tokenChecker');
 
 const CommentsController = require("../controllers/comments");
 
-router.get("/", CommentsController.getComments);
+router.get("/:post_id", tokenChecker, CommentsController.getAllCommentsforPost);
 
 // GET routes 
 // router.get("/", PostsController.getAllPosts);
@@ -13,6 +13,7 @@ router.get("/", CommentsController.getComments);
 // POST route for a specific Facebook post
 // router.post('/:id', tokenChecker, CommentsController.createComment);
 router.post('/:post_id', tokenChecker, CommentsController.createComment);
+
 
 // DELETE route
 router.delete("/:comment_id", CommentsController.deleteComment);

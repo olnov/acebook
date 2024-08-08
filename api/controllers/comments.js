@@ -6,10 +6,6 @@ const Post = require("../models/post");
 // for a specific post with specific ObjectID
 // Work in progress right now
 
-const getComments = async (req, res) => {
-    res.status(200).json({ message: "Route is working" });
-};
-
 
 const createComment = async (req, res) => {
     const { message, author_id } = req.body;
@@ -71,26 +67,31 @@ const deleteComment = async (req, res) => {
     }
   };
 
-const CommentsController = {
-    getComments: getComments,
-    createComment: createComment,
-    deleteComment: deleteComment
-};
+  
+  
+  
+  const getAllCommentsforPost = async (req, res) => {
+      const { post_id } = req.params;
+      try {
+          const post = await Post.findById(post_id);
+          if (!post) {
+              return res.status(404).json({ error: 'Post could not be found' });
+            } 
+            
+        } catch (error) {
+            res.status(500).json({ message: "Error fetching comments for post" });
+            
+            
+        }
+    };
+    
+    const CommentsController = {
+        getAllCommentsforPost: getAllCommentsforPost,
+        createComment: createComment,
+        deleteComment: deleteComment
+    };
 
-module.exports = CommentsController;
-
-
-// const getAllCommentsforPost = async (req, res) => {
-//     const { post_id } = req.params;
-//     try {
-//         const post = await Post.findById(post_id);
-//         if (!post) {
-//             return res.status(404).json({ error: 'Post could not be found' });
-//         }
-
-//     }
-// }
-
-// This function takes a postID from the request body
-// and checks if it exists first before allowing
-// the user to leave a comment
+    module.exports = CommentsController;
+    // This function takes a postID from the request body
+    // and checks if it exists first before allowing
+    // the user to leave a comment
