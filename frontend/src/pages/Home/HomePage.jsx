@@ -21,6 +21,14 @@ export const HomePage = () => {
   const [fullName, setfullName] = useState("");
 
   useEffect(() => {
+    document.body.classList.add('home-page-background');
+
+    return () => {
+    document.body.classList.remove('home-page-background');
+  };
+  }, []);
+
+  useEffect(() => {
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("userId");
     const storedfullName = localStorage.getItem("fullName");
@@ -78,7 +86,7 @@ export const HomePage = () => {
       <h2>Your Friends</h2>
         <div className="friend-border">
           {friends.length === 0 ? (
-            <p>No friends added currently, use the search bar to find them!</p>
+            <p className="text-content-heading">No friends added currently, use the search bar to find them!</p>
           ) : (
             <FriendsSidebar friends={friends} />
           )}

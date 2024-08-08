@@ -90,3 +90,8 @@
   text-align: center;
   color: red;
 }
+
+.home-page-background {
+  background-image: url('../../assets/treeImage.JPG');
+  background-size: cover;
+}
