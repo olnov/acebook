@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
+const likesRouter = require("./routes/likes")
 const usersRouter = require("./routes/users");
 const postsRouter = require("./routes/posts");
 const commentsRouter = require("./routes/comments");
@@ -25,6 +25,7 @@ app.use("/posts", tokenChecker, postsRouter);
 app.use("/tokens", authenticationRouter);
 app.use("/comments", tokenChecker, commentsRouter)
 app.use("/profile-images", profileRouter);
+app.use("/likes", tokenChecker, likesRouter);
 
 // 404 Handler
 app.use((_req, res) => {

@@ -5,11 +5,13 @@ const bcrypt = require('bcrypt');
 const User = require('./models/user'); // Ensure the path is correct
 const Post = require('./models/post'); // Ensure the path is correct
 const Comment = require('./models/comments'); // Ensure the path is correct
+const Like = require('./models/like'); // Ensure the path is correct
 require('dotenv').config(); // Load environment variables
 
 const NUM_USERS = 10;
 const NUM_POSTS = 1000;
 const NUM_COMMENTS = 3000; // Number of comments to create
+const NUM_LIKES = 5000; // Number of likes to create
 const TEST_USER = {
   full_name: 'Marco P',
   email: 'marco@gmail.com',
@@ -46,7 +48,8 @@ async function seedDatabase() {
   try {
     await User.deleteMany({});
     await Post.deleteMany({});
-    await Comment.deleteMany({}); // Delete existing comments
+    await Comment.deleteMany({});
+    await Like.deleteMany({}); // Delete existing likes
 
     const users = [];
 
@@ -129,6 +132,27 @@ async function seedDatabase() {
 
     for (const comment of comments) {
       await comment.save();
+    }
+
+    for (const post of posts) {
+      await post.save();
+    }
+
+    // Create likes
+    const likes = [];
+    for (let i = 0; i < NUM_LIKES; i++) {
+      const randomUserIndex = Math.floor(Math.random() * users.length);
+      const randomPostIndex = Math.floor(Math.random() * posts.length);
+      const like = new Like({
+        post_id: posts[randomPostIndex]._id,
+        author_id: users[randomUserIndex]._id,
+      });
+      likes.push(like);
+      posts[randomPostIndex].likes.push(like._id); // Add like to post
+    }
+
+    for (const like of likes) {
+      await like.save();
     }
 
     for (const post of posts) {

@@ -7,14 +7,14 @@ import { ProfileImage } from "../ProfileImage/ProfileImage";
 import NewCommentPopOut from '../NewCommentPopOut/NewCommentPopOut';
 import { getLikesbyPostID, createLike, deleteLike } from '../../services/likes';
 
-const PostCardWithLike = ({ post, comment }) => {
+const PostCardWithLike = ({ post }) => {
   const [showPopOut, setShowPopOut] = useState(false);
   const [showAddComment, setShowAddComment] = useState(false);
-  const [likes, setLikes] = useState([]); // Initialize with an empty array
+  const [likes, setLikes] = useState([]);
   const [liked, setLiked] = useState(false);
-  const post_id = post._id || post.id;
+
   const token = localStorage.getItem('token');
-  const user_id = localStorage.getItem('user_id'); // Assuming user_id is stored in localStorage
+  const userId = localStorage.getItem('userId');
 
   useEffect(() => {
     fetchLikes();
@@ -26,9 +26,9 @@ const PostCardWithLike = ({ post, comment }) => {
       return;
     }
     try {
-      const fetchedLikes = await getLikesbyPostID(token, post_id);
+      const fetchedLikes = await getLikesbyPostID(token, post._id);
       setLikes(fetchedLikes.likes);
-      setLiked(fetchedLikes.likes.some(like => like.author_id === user_id));
+      setLiked(fetchedLikes.likes.some(like => like.author_id === userId));
     } catch (error) {
       console.error('Error fetching likes:', error);
     }
@@ -37,10 +37,10 @@ const PostCardWithLike = ({ post, comment }) => {
   const handleLikeClick = async () => {
     try {
       if (liked) {
-        const like = likes.find(like => like.author_id === user_id);
+        const like = likes.find(like => like.author_id === userId);
         await deleteLike(token, like._id);
       } else {
-        await createLike({ post_id: post_id, author_id: user_id }, token);
+        await createLike({ post_id: post._id, author_id: userId }, token);
       }
       fetchLikes();
     } catch (error) {
@@ -81,8 +81,8 @@ const PostCardWithLike = ({ post, comment }) => {
         <div className="like-section">
           <button className={`like-button ${liked ? 'liked' : ''}`} onClick={handleLikeClick}>
             <IconOutlinedActionThumbThumbUp2 />
+            {likes.length}
           </button>
-          <p>{likes ? likes.length : 0}</p> {/* Ensure likes is always defined */}
         </div>
       </div>
       <div className="post-card-body">
@@ -96,8 +96,6 @@ const PostCardWithLike = ({ post, comment }) => {
       <div>
         <button className="add-comment-button" onClick={handleAddCommentClick}>Add comment</button>
         {showAddComment && <NewCommentPopOut key={post._id} post={post} onClose={handleCloseCommentClick} />}
-      </div>
-      <div>
       </div>
     </div>
   );
