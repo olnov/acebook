@@ -8,7 +8,6 @@ export const FriendListFrame = () => {
   return (
     <div className={`friend-list-frame`}>
       <FriendsSidebar/>
-      
     </div>
   );
 };

@@ -1,11 +1,12 @@
 import React from "react";
 import { FriendListFrame } from "../FriendListFrame";
 import "./style.css";
+import FriendsSidebar from "../FriendListFrame/FriendsSidebar";
 
 export const FriendList = ({ className }) => {
   return (
     <div className={`friend-list ${className}`}>
-      <FriendListFrame className="friend-list-frame-instance" />
+      <FriendsSidebar className="friend-list-frame-instance" />
     </div>
   );
 };

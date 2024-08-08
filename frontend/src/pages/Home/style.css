@@ -1,5 +1,8 @@
 .home-page {
-  padding-top: 150px; /* Ensure there's space for the TopBarGroup */
+  padding-top: 20%; /* Ensure there's space for the TopBarGroup */
+  padding-bottom: 45px;
+  justify-content: center;
+  align-items: center;
 }
 
 .top-bar-group-instance {
@@ -13,6 +16,7 @@
 }
 
 .welcome-message {
+  padding-top: 20px;
   text-align: center;
   margin: 20px 0;
   font-size: 24px;
@@ -36,6 +40,11 @@
   gap: 10px;
 }
 
+.heading {
+  text-align: centre;
+  font-size: large;
+
+}
 .avatar-instance {
   width: 150px;
   height: 150px;
@@ -55,19 +64,28 @@
 
 .card-grid-content {
   display: flex;
+  padding: 10px;
   flex-direction: column;
   align-items: center;
+  
 }
 
-.friend-list-container {
-  width: 100%;
-  max-width: 400px;
-  margin-bottom: 40px;
-  text-align: center;
+.friend-border{
+  display: flex;
+  justify-self: center;
+  align-items: center; /* Center vertically */
+  width: 100%; /* Full viewport width */
+  padding: 10px; /* Optional padding */
+  margin: auto;
+  background-image: url('../../assets/treeImage.JPG');
+  background-size: 100%;
+  background-position: 20%;
+  border-radius: 30px;
 }
 
 .friend-list-instance ul {
   list-style: none;
+  grid: column;
   padding: 0;
 }
 
@@ -87,6 +105,8 @@
   gap: 20px;
   width: 100%;
   max-width: 1200px;
+  
+
 }
 
 .error-message, .no-posts-message {

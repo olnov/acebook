@@ -1,12 +1,21 @@
 .search-results {
+
     display: flex;
     flex-direction: column;
+    height: 80vh;
+    scroll-margin-bottom: 10vh;
 }
 
 .search-results-item {
+    display: flex;
     list-style-type: none;
     gap: 10px;
     padding: 10px;
+
+}
+.search-results-item:last-child {
+    padding-bottom: 10vh;
+
 }
 
 .search-results-card {
@@ -17,6 +26,14 @@
     /* border-radius: 8px; */
     gap: 10px;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 20px;
+    background-color: #efefef;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+
 }
+
+
 
