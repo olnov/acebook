@@ -4,7 +4,7 @@ const faker = require('faker');
 const bcrypt = require('bcrypt');
 const User = require('./models/user'); // Ensure the path is correct
 const Post = require('./models/post'); // Ensure the path is correct
-const Comment = require('./models/comments'); // Corrected path
+const Comment = require('./models/comments'); // Ensure the path is correct
 require('dotenv').config(); // Load environment variables
 
 const NUM_USERS = 10;
@@ -25,6 +25,23 @@ mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTop
     console.error('Database connection error:', err);
   });
 
+async function fetchProfileImage(retries = 5) {
+  try {
+    const response = await axios.get('https://thispersondoesnotexist.com', {
+      responseType: 'arraybuffer'
+    });
+    return response.data;
+  } catch (error) {
+    if (retries > 0) {
+      console.error('Error fetching profile image, retrying...', error);
+      return fetchProfileImage(retries - 1);
+    } else {
+      console.error('Failed to fetch profile image after multiple attempts:', error);
+      return null;
+    }
+  }
+}
+
 async function seedDatabase() {
   try {
     await User.deleteMany({});
@@ -32,19 +49,6 @@ async function seedDatabase() {
     await Comment.deleteMany({}); // Delete existing comments
 
     const users = [];
-
-    // Helper function to fetch profile image
-    const fetchProfileImage = async () => {
-      try {
-        const response = await axios.get('https://thispersondoesnotexist.com/image', {
-          responseType: 'arraybuffer'
-        });
-        return response.data;
-      } catch (error) {
-        console.error('Error fetching profile image:', error);
-        return null;
-      }
-    };
 
     // Create test user
     const salt = await bcrypt.genSalt(10);
