@@ -1,5 +1,6 @@
 .profile-page {
   font-family: Arial, sans-serif;
+  padding-top: 100px; /* Ensure content is not hidden by the top bar */
 }
 
 .header .logo {
@@ -19,6 +20,15 @@
 
 .header .navigation-pill-list .navigation-pill-instance {
   margin: 0 10px;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .hero-basic {
@@ -80,16 +90,9 @@
   text-align: center;
 }
 
-.profile-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .profile-container {
-  margin-top: 100px; /* Adjust as needed */
+  margin-top: 50px;
   width: 100%;
-  max-width: 800px;
   padding: 20px;
   background-color: var(--color-gray-foreground); /* Light mode background color */
   border-radius: 10px;
@@ -97,25 +100,27 @@
 
 .profile-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .profile-avatar {
-  margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 .profile-bio, .profile-friends, .profile-posts {
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .profile {
   position: relative;
-  max-width: 400px;
+  width: 100%;
   border: 1px solid var(--color-gray-border); /* Example border */
   border-radius: 8px; /* Example rounded corners */
   padding: 20px; /* Example padding */
-  height: 500px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Example shadow for the card */
   opacity: 0.9;
   background-color: var(--color-gray-foreground); /* Light mode background color */
@@ -154,6 +159,32 @@
   padding: 15px;
 }
 
+.friends-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  overflow-x: auto; /* Allow horizontal scrolling */
+  overflow-y: hidden; /* Prevent vertical scrolling */
+}
+
+.friend-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px; /* Adjust the width for smaller cards */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background-color: #efefef;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.friend-name {
+  margin-top: 10px;
+  text-align: center;
+}
+
 /* Dark mode styles */
 [data-theme='dark'] .profile-container {
   background-color: var(--color-dark-darker); /* Dark mode background color */
@@ -174,6 +205,17 @@
 }
 
 [data-theme='dark'] .post-card-with-like-button {
+  background-color: var(--color-dark-foreground); /* Dark mode background color */
+  color: var(--color-white); /* Dark mode text color */
+  border: 1px solid var(--color-dark-border); /* Dark mode border color */
+}
+
+[data-theme='dark'] .friends-list-container {
+  background-color: var(--color-dark-darker); /* Dark mode background color */
+  box-shadow: 0px 0px 50px 0px #444; /* Dark mode shadow color */
+}
+
+[data-theme='dark'] .friend-item {
   background-color: var(--color-dark-foreground); /* Dark mode background color */
   color: var(--color-white); /* Dark mode text color */
   border: 1px solid var(--color-dark-border); /* Dark mode border color */
