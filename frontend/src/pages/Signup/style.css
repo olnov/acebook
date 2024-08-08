@@ -1,13 +1,12 @@
-.login-page, .signup-page {
+.signup-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: var(--background-color);
   color: var(--text-color);
 }
 
-.login-container, .signup-container {
+.signup-container {
   width: 100%;
   max-width: 400px;
   margin-top: 50px;
@@ -55,13 +54,12 @@ button {
 }
 
 /* Dark mode styles */
-[data-theme='dark'] .login-page, [data-theme='dark'] .signup-page {
-  background-color: var(--background-color);
+[data-theme='dark'] .signup-page {
   color: var(--text-color);
 }
 
-[data-theme='dark'] .login-container, [data-theme='dark'] .signup-container {
-  background: rgba(18, 18, 18, 0.9); /* Darker background with 90% opacity */
+[data-theme='dark'] .signup-container {
+  background: rgba(33, 33, 33, 0.9); /* Adjusted to be slightly lighter than pure black */
   border: 1px solid var(--container-border);
   box-shadow: 0 4px 6px var(--container-shadow);
 }
@@ -75,4 +73,9 @@ button {
 [data-theme='dark'] button {
   background-color: var(--button-background);
   color: var(--button-text);
+}
+
+/* Ensure the background color transition is smooth */
+body, .signup-page, .signup-container, input, button {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }

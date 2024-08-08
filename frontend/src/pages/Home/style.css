@@ -113,3 +113,8 @@
   text-align: center;
   color: red;
 }
+
+[data-theme='dark'] .home-page {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}

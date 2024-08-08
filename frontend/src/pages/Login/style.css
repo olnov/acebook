@@ -1,22 +1,20 @@
-.login-page, .signup-page {
+.login-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: var(--background-color);
   color: var(--text-color);
 }
 
-.login-container, .signup-container {
+.login-container {
   width: 100%;
   max-width: 400px;
   margin-top: 50px;
   padding: 20px;
-  background: var(--container-background);
+  background: rgba(255, 255, 255, 0.9); /* Standard background color with 90% opacity */
   border: 1px solid var(--container-border);
   border-radius: 20px; /* Make corners rounded */
   box-shadow: 0 4px 6px var(--container-shadow);
-  opacity: 0.9; /* Set opacity to 90% */
 }
 
 h2 {
@@ -34,7 +32,7 @@ input {
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid var(--input-border);
-  background-color: var(--input-background);
+  background-color: #fff; /* Light background color for light mode */
   border-radius: 5px;
   color: var(--text-color); /* Ensure text is visible in dark mode */
 }
@@ -56,24 +54,28 @@ button {
 }
 
 /* Dark mode styles */
-[data-theme='dark'] .login-page, [data-theme='dark'] .signup-page {
-  background-color: var(--background-color);
+[data-theme='dark'] .login-page {
   color: var(--text-color);
 }
 
-[data-theme='dark'] .login-container, [data-theme='dark'] .signup-container {
-  background: var(--container-background);
+[data-theme='dark'] .login-container {
+  background: rgba(33, 33, 33, 0.9); /* Adjusted to be slightly lighter than pure black */
   border: 1px solid var(--container-border);
   box-shadow: 0 4px 6px var(--container-shadow);
 }
 
 [data-theme='dark'] input {
   border: 1px solid var(--input-border);
-  background-color: var(--input-background);
+  background-color: #333; /* Dark background color for dark mode */
   color: var(--text-color);
 }
 
 [data-theme='dark'] button {
   background-color: var(--button-background);
   color: var(--button-text);
+}
+
+/* Ensure the background color transition is smooth */
+body, .signup-page, .signup-container, input, button {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }

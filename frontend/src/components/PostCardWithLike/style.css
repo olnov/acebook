@@ -16,7 +16,23 @@
 .post-card-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
+}
+
+.post-card-header .profile-image {
+  margin-right: 15px; /* Add margin to the right of the profile image */
+}
+
+.post-card-footer {
+  display: flex;
+  /* The code below just adds a space between the view more and add comment button */
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.post-card-footer button {
+  margin: 0 20px;
 }
 
 .avatar {
@@ -89,6 +105,9 @@
   justify-content: center;
   padding: var(--size-space-300, 8px);
   cursor: pointer;
+  color: var(--color-text-default-default, #000);
+  font-family: var(--single-line-body-base-font-family, Arial, sans-serif);
+  font-size: var(--single-line-body-base-font-size, 0.9em); /* Adjusted font size */
 }
 
 [data-theme='dark'] .post-card {
