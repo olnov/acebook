@@ -11,8 +11,8 @@ router.get("/", CommentsController.getComments);
 // router.get("/:id", CommentsController.getComments);
 
 // POST route for a specific Facebook post
-router.post('/:id', tokenChecker, CommentsController.createComment);
-// router.post('/:post_id', CommentsController.createComment);
+// router.post('/:id', tokenChecker, CommentsController.createComment);
+router.post('/:post_id', tokenChecker, CommentsController.createComment);
 
 // DELETE route
 router.delete("/:comment_id", CommentsController.deleteComment);

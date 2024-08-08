@@ -9,6 +9,7 @@ import NewCommentPopOut from '../NewCommentPopOut/NewCommentPopOut';
 
 const PostCardWithLike = ({ post, comment }) => {
   const [showPopOut, setShowPopOut] = useState(false);
+  const [showAddComment, setShowAddComment] = useState(false);
 
   const handleSeeMoreClick = () => {
     setShowPopOut(true);
@@ -19,8 +20,12 @@ const PostCardWithLike = ({ post, comment }) => {
   };
 
   const handleAddCommentClick = () => {
-    setShowPopOut(true);
+    setShowAddComment(true);
   };
+
+  const handleCloseCommentClick = () => {
+    setShowAddComment(false);
+  } 
 
 
   return (
@@ -52,7 +57,7 @@ const PostCardWithLike = ({ post, comment }) => {
       </div>
       <div>
       <button className ="add-comment-button" onClick={handleAddCommentClick}>Add comment</button>
-      {showPopOut && <NewCommentPopOut key={post._id} post={post} onClose={handleClosePopOut} />}
+      {showAddComment && <NewCommentPopOut key={post._id} post={post} onClose={handleCloseCommentClick} />}
     </div>
     </div>
   );
