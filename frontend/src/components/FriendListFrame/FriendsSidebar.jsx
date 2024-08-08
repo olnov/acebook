@@ -54,10 +54,10 @@ export const FriendsSidebar = () => {
             <ul className="friends-list">
                 {friends.map(friend => (
                     <li className = "friend-item" key={friend._id}>
-                        <Link to={`/profile/${friend._id}`} style={{ textDecoration: 'none'}}>
-                        <ProfileImage foundUserId={friend._id} height="70" width="70"/>
-                        </Link>
-                        <div classname='friend-info'>
+                        {/* <Link to={`/profile/${friend._id}`} style={{ textDecoration: 'none'}}> */}
+                        <ProfileImage userId={friend._id} height="70" width="70"/>
+                        {/* </Link> */}
+                        <div className='friend-info'>
                             <Link to={`/profile/${friend._id}`} style={{ textDecoration: 'none'}}>
                             <span className = 'friend-name'> {friend.full_name} </span>
                             </Link>

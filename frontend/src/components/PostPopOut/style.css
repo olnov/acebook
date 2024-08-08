@@ -47,6 +47,7 @@
 /* Header styles */
 .post-popout-header {
   display: flex;
+  padding-right: 30px;
   align-items: center;
   margin-bottom: 10px; /* Adjusted for consistency */
 }

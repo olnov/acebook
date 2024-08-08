@@ -4,9 +4,12 @@ import './style.css'; // Ensure this file contains the required styles
 import PostPopOut from '../PostPopOut/PostPopOut';
 import IconOutlinedActionThumbThumbUp2 from '../../icons/IconOutlinedActionThumbThumbUp2'; // Import the icon
 import { ProfileImage } from "../ProfileImage/ProfileImage";
+import NewCommentPopOut from '../NewCommentPopOut/NewCommentPopOut';
 
-const PostCardWithLike = ({ post }) => {
+
+const PostCardWithLike = ({ post, comment }) => {
   const [showPopOut, setShowPopOut] = useState(false);
+  const [showAddComment, setShowAddComment] = useState(false);
 
   const handleSeeMoreClick = () => {
     setShowPopOut(true);
@@ -17,8 +20,12 @@ const PostCardWithLike = ({ post }) => {
   };
 
   const handleAddCommentClick = () => {
-    setShowPopOut(false);
+    setShowAddComment(true);
   };
+
+  const handleCloseCommentClick = () => {
+    setShowAddComment(false);
+  } 
 
 
   return (
@@ -46,13 +53,14 @@ const PostCardWithLike = ({ post }) => {
       </div>
       <div className="post-card-footer">
         <button className="see-more-button" onClick={handleSeeMoreClick}>See more</button>
-        <button className ="add-comment-button" onClick={handleAddCommentClick}>Add comment</button>
+      {showPopOut && <PostPopOut key={post._id} post={post} onClose={handleClosePopOut} />}
       </div>
-      {showPopOut && <PostPopOut post={post} onClose={handleClosePopOut} />}
+      <div>
+      <button className ="add-comment-button" onClick={handleAddCommentClick}>Add comment</button>
+      {showAddComment && <NewCommentPopOut key={post._id} post={post} onClose={handleCloseCommentClick} />}
+    </div>
     </div>
   );
 };
 
 export default PostCardWithLike;
-
-

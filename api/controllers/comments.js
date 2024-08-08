@@ -39,6 +39,7 @@ const createComment = async (req, res) => {
         res.status(201).json({ message: "Comment created", comment: savedComment.message });
     } catch (error) {
         res.status(500).json({ error: "Could not post comment" });
+        console.log(error);
     }
 };
 

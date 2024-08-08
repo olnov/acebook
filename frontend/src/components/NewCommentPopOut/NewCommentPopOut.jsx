@@ -1,9 +1,11 @@
+// Heavily referencing the NewPostPopOut.jsx component hehe
+
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
 import { createComment } from '../../services/comments';
 
-const NewCommentPopOut = ({ onClose, onCommentCreated }) => {
+const NewCommentPopOut = ({ post, onClose, onCommentCreated }) => {
   const [body, setBody] = useState('');
   const [charCount, setCharCount] = useState(0);
 
@@ -17,6 +19,7 @@ const NewCommentPopOut = ({ onClose, onCommentCreated }) => {
 
     try {
       const comment = await createComment({
+        post_id: post._id,
         message: body,
         author_id: userId,
       }, token);
@@ -37,7 +40,7 @@ const NewCommentPopOut = ({ onClose, onCommentCreated }) => {
         alert('Session expired. Please log in again.');
         window.location.href = '/login';
       } else {
-        console.error('Error creating comment:', error);
+        console.error('Error creating post:', error);
       }
     }
   };
@@ -47,8 +50,6 @@ const NewCommentPopOut = ({ onClose, onCommentCreated }) => {
       <div className="new-comment-popout">
         <button className="close-button" onClick={onClose}>X</button>
         <h2>Create a New Comment</h2>
-        <div className="form-group">
-        </div>
         <div className="form-group">
           <label>Comment Body</label>
           <textarea
@@ -67,9 +68,10 @@ const NewCommentPopOut = ({ onClose, onCommentCreated }) => {
   );
 };
 
-NewPostPopOut.propTypes = {
+NewCommentPopOut.propTypes = {
+  post: PropTypes.object.isRequired,
   onClose: PropTypes.func.isRequired,
-  onPostCreated: PropTypes.func.isRequired,
+  onCommentCreated: PropTypes.func.isRequired,
 };
 
 export default NewCommentPopOut;
