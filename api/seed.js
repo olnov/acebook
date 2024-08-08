@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
+const axios = require('axios');
 const faker = require('faker');
 const bcrypt = require('bcrypt');
 const User = require('./models/user'); // Ensure the path is correct
 const Post = require('./models/post'); // Ensure the path is correct
-const Comment = require('./models/comments'); // Ensure the path is correct
+const Comment = require('./models/comments'); // Corrected path
 require('dotenv').config(); // Load environment variables
 
 const NUM_USERS = 10;
@@ -32,23 +33,40 @@ async function seedDatabase() {
 
     const users = [];
 
+    // Helper function to fetch profile image
+    const fetchProfileImage = async () => {
+      try {
+        const response = await axios.get('https://thispersondoesnotexist.com/image', {
+          responseType: 'arraybuffer'
+        });
+        return response.data;
+      } catch (error) {
+        console.error('Error fetching profile image:', error);
+        return null;
+      }
+    };
+
     // Create test user
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(TEST_USER.password, salt);
+    const testUserProfileImage = await fetchProfileImage();
     const testUser = new User({
       full_name: TEST_USER.full_name,
       email: TEST_USER.email,
       password: hashedPassword,
+      profile_image: testUserProfileImage
     });
     await testUser.save();
     users.push(testUser);
 
     // Create random users
     for (let i = 0; i < NUM_USERS; i++) {
+      const profileImage = await fetchProfileImage();
       const user = new User({
         full_name: faker.name.findName(),
         email: faker.internet.email(),
         password: 'password123', // Use a simple password for all users
+        profile_image: profileImage
       });
       users.push(user);
     }

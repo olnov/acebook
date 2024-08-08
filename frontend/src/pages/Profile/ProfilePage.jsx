@@ -5,10 +5,9 @@ import TopBarGroup from '../../components/TopBarGroup';
 import { fetchProfileData, updateProfileData } from '../../services/users';
 import "./style.css";
 import "../../assets/styles/modal.css";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getPosts, getPostsByUser } from '../../services/posts';
 import { getUserFriends } from '../../services/friends';
-import FriendsSidebar from "../../components/FriendListFrame/FriendsSidebar";
 import PostCardWithLike from '../../components/PostCardWithLike';
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -39,6 +38,7 @@ export const Profile = () => {
 
     const fetchFriends = async () => {
       try {
+        console.log("This is your userId:", userId)
         const [fetchedFriends] = await Promise.all([
           getUserFriends(userId),
         ]);
@@ -157,12 +157,21 @@ export const Profile = () => {
           </p>
         )}
         <h2>{fullName}'s Friends</h2>
-        <div className="friend-border">
-          {friends.length === 0 ? (
-            <p className="text-content-heading">No friends added currently, use the search bar to find them!</p>
-          ) : (
-            <FriendsSidebar friends={friends} />
-          )}
+        <div className="friends-list-container">
+            <ul className="friends-list">
+                {friends.map(friend => (
+                    <li className = "friend-item" key={friend._id}>
+                        <Link to={`/profile/${friend._id}`} style={{ textDecoration: 'none'}}>
+                        <ProfileImage foundUserId={friend._id} height="70" width="70"/>
+                        </Link>
+                        <div className='friend-info'>
+                            <Link to={`/profile/${friend._id}`} style={{ textDecoration: 'none'}}>
+                            <span className = 'friend-name'> {friend.full_name} </span>
+                            </Link>
+                        </div>
+                    </li>
+                    ))}
+            </ul>
         </div>
       </div>
 
