@@ -49,7 +49,7 @@
 }
 
 body {
-  background-color: var(--color-gray-background);
+  /* background-color: var(--color-gray-background); */
   color: var(--color-black);
   margin: 0;
   display: flex;
@@ -58,6 +58,8 @@ body {
   min-height: 100vh;
   justify-content: center;
   font-family: var(--font-family-primary);
+  background-color: rgba(255, 255, 255, 0.836);
+  backdrop-filter: blur(2px);
 }
 
 .container {

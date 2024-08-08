@@ -59,7 +59,7 @@ export const TopBarGroup = () => {
 
   return (
     <div className='top-bar-group'>
-      <div className="header">
+      <div className="header-top-bar">
         <div className="logo" onClick={handleHomeClick} style={{ cursor: 'pointer' }}>
           <div className="logo-container">
             <img className="block" alt="Block" src={Logo} onError={handleImageError} />
