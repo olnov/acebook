@@ -16,7 +16,7 @@ const HeroActions = ({
   };
 
   const handleSignUpClick = () => {
-    navigate("/sign-up");
+    navigate("/signup");
   };
 
   return (
