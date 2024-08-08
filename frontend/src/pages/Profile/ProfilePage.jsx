@@ -7,6 +7,7 @@ import "./style.css";
 import "../../assets/styles/modal.css";
 import { useParams } from 'react-router-dom';
 import { getPosts, getPostsByUser } from '../../services/posts';
+import FriendsSidebar from "../../components/FriendListFrame/FriendsSidebar";
 import PostCardWithLike from '../../components/PostCardWithLike';
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -17,6 +18,7 @@ export const Profile = () => {
   const [editedBio, setEditedBio] = useState("");
   const [fullName, setFullName] = useState("");
   const [posts, setPosts] = useState([]);
+  const [friends, setFriends] = useState([]);
   const token = localStorage.getItem("token");
   const { userId } = useParams();
   const currentUserId = localStorage.getItem("userId");
@@ -34,18 +36,29 @@ export const Profile = () => {
       }
     };
 
+    const fetchFriends = async () => {
+      try {
+        const [fetchedFriends] = await Promise.all([
+          getUserFriends(userId),
+        ]);
+        setFriends(fetchedFriends);
+      } catch (error) {
+        console.error("Error fetching friend data:", error);
+      }
+    };
+
     const fetchPostData = async ()=> {
       try {
-        const limit=3
-        const postData = await getPostsByUser(currentUserId,token,limit);
+        const limit=3;
+        const postData = await getPostsByUser(currentUserId, token, limit);
         setPosts(postData);
       } catch(error) {
-        console.error("Faild to fetch posts data");
-        console.log(error);
+        console.error("Failed to fetch posts data");
       }
     };
 
     fetchData();
+    fetchFriends();
     fetchPostData();
   }, [userId]);
 
@@ -61,9 +74,9 @@ export const Profile = () => {
     setBio(editedBio);
     setIsEditingBio(false);
     try {
-        await updateProfileData(userId, editedBio);
+      await updateProfileData(userId, editedBio);
     } catch (error) {
-        console.error("Something went wrong: ", error);
+      console.error("Something went wrong: ", error);
     }
   };
 
@@ -113,7 +126,7 @@ export const Profile = () => {
 
   return (
     <>
-    <TopBarGroup />
+      <TopBarGroup />
       <div className="profile">
         <div className='banner'></div>
         <ProfileImage userId={userId} width="150" height="150"/>
@@ -142,25 +155,25 @@ export const Profile = () => {
             {bio}
           </p>
         )}
-        <p>Friend list</p>
+        <h2>Your Friends</h2>
+        <div className="friend-border">
+          {friends.length === 0 ? (
+            <p className="text-content-heading">No friends added currently, use the search bar to find them!</p>
+          ) : (
+            <FriendsSidebar friends={friends} />
+          )}
+        </div>
       </div>
 
       <div className="text-content-heading">
-          <div className="heading">Most Recent Posts</div>
-        </div>
-        <div className="cards">
-          {console.log("Inside card. Here are posts:",posts[0])}
-          { currentUserId ? (
-            posts.map((post) => (
-              <PostCardWithLike key={post._id} post={post} className="post-card-with-like-instance" />
-            ))
-          ) : (
-            <span>
-              No recent activity.
-            </span>
-          )}
-        </div>
-      
+        <div className="heading">Most Recent Posts</div>
+      </div>
+      <div className="cards">
+        {posts.map((post) => (
+          <PostCardWithLike key={post._id} post={post} className="post-card-with-like-instance" />
+        ))}
+      </div>
+
       {isModalOpen && (
         <>
           <div className="modal">

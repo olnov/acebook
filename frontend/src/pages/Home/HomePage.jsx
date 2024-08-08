@@ -2,8 +2,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TopBarGroup from "../../components/TopBarGroup";
-import Avatar from "../../components/Avatar";
-import FriendList from "../../components/FriendList";
 import FriendsSidebar from "../../components/FriendListFrame/FriendsSidebar";
 import PostCardWithLike from "../../components/PostCardWithLike";
 import { getPosts } from "../../services/posts";
