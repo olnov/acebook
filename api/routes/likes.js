@@ -3,19 +3,19 @@ const router = express.Router();
 const tokenChecker = require('../middleware/tokenChecker');
 
 
-const likesController = require("../controllers/likes");
+const LikesController = require("../controllers/likes");
 
-router.get("/", likesController.getlikes);
+router.get("/", LikesController.getLikes);
 
 // GET routes 
 // router.get("/", PostsController.getAllPosts);
 // router.get("/:id", likesController.getlikes);
 
 // POST route for a specific Facebook post
-router.post('/:post_id', tokenChecker, likesController.createComment);
+router.post('/:post_id', tokenChecker, LikesController.addLike);
 // router.post('/:post_id', likesController.createComment);
 
 // DELETE route
-router.delete("/:comment_id", likesController.deleteComment);
+router.delete("/:like_id", LikesController.unLike);
 
 module.exports = router;
