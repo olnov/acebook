@@ -81,7 +81,7 @@ export const HomePage = () => {
         property1="default"
       />
       <div className="welcome-message">
-        <h1>Welcome back, {fullName}!</h1>
+        <h1>Welcome back {fullName}!</h1>
       </div>
       <h2>Your Friends</h2>
         <div className="friend-border">
