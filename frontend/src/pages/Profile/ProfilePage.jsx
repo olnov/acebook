@@ -51,7 +51,7 @@ export const Profile = () => {
     const fetchPostData = async ()=> {
       try {
         const limit=3;
-        const postData = await getPostsByUser(currentUserId, token, limit);
+        const postData = await getPostsByUser(userId, token, limit);
         setPosts(postData);
       } catch(error) {
         console.error("Failed to fetch posts data");
