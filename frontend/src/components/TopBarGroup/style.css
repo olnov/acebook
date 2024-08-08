@@ -1,5 +1,5 @@
 .top-bar-group {
-  display: flex; 
+  display:flex; 
   align-items: center; 
   background-color: #f9f9f9;
   /* border-bottom: 1px solid #ffffff; */
@@ -17,6 +17,15 @@
   width: 100%;
   padding: 20px;
 }
+.header-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* width: 88vh; */
+  min-width: 88vh;
+  padding: 20px;
+  margin: auto;
+}
 
 .logo {
   display: flex;
@@ -25,8 +34,12 @@
 }
 
 .logo-container {
+  float: left;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
+  /* padding-left: 50vh; */
+  position: relative;
+
 }
 
 .block {
@@ -34,9 +47,11 @@
 }
 
 .div {
+  display: flex;
   font-size: 24px;
   font-weight: bold;
   margin-left: 10px;
+  padding-right: 2vh;
 }
 
 .search-instance {
@@ -44,6 +59,7 @@
   margin: 0 20px;
   display: flex; 
   align-items: center; 
+  padding: 10px 20px;
 }
 
 .search-instance input {
@@ -129,13 +145,14 @@
 
 .ui-switch {
   --switch-bg: rgb(135, 150, 165);
-  --switch-width: 48px;
+  --switch-width: 60px;
   --switch-height: 20px;
   --circle-diameter: 32px;
   --circle-bg: rgb(232, 89, 15);
   --circle-inset: calc((var(--circle-diameter) - var(--switch-height)) / 2);
-  display: inline-block;
+  display: flex;
   position: relative;
+  /* padding-right: 50vh; */
 }
 
 .ui-switch input {

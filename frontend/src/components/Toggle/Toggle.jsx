@@ -5,7 +5,7 @@ const Toggle = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <div className="toggle-container mt-auto p-4">
+    <div>
       <label className="ui-switch">
         <input type="checkbox" onChange={toggleTheme} checked={theme === 'dark'} />
         <span className="slider">

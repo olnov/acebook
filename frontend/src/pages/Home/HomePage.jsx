@@ -73,6 +73,7 @@ export const HomePage = () => {
 
   return (
     <div className="home-page">
+      <div className="welcome-message">
       <TopBarGroup
         block="https://c.animaapp.com/M2klh9T2/img/block-2.svg"
         headerClassName="top-bar-group-instance"
