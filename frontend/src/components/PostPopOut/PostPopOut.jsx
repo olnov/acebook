@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { ProfileImage } from "../ProfileImage/ProfileImage";
 import './style.css';
 
 const PostPopOut = ({ post, onClose }) => {
@@ -12,7 +13,7 @@ const PostPopOut = ({ post, onClose }) => {
         </button>
         <h2>{post.title}</h2>
         <div className="post-popout-author">
-          <img src="path/to/avatar.jpg" alt="Avatar" />
+          <ProfileImage userId={post.post_author._id} height="70" width="70" />
           <div>
             <strong>{post.post_author?.full_name || 'Unknown Author'}</strong>
             <p>{new Date(post.date_created).toLocaleDateString()}</p>

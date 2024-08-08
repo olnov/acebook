@@ -6,6 +6,8 @@ import { fetchProfileData, updateProfileData } from '../../services/users';
 import "./style.css";
 import "../../assets/styles/modal.css";
 import { useParams } from 'react-router-dom';
+import { getPosts, getPostsByUser } from '../../services/posts';
+import PostCardWithLike from '../../components/PostCardWithLike';
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const Profile = () => {
@@ -14,6 +16,8 @@ export const Profile = () => {
   const [isEditingBio, setIsEditingBio] = useState(false);
   const [editedBio, setEditedBio] = useState("");
   const [fullName, setFullName] = useState("");
+  const [posts, setPosts] = useState([]);
+  const token = localStorage.getItem("token");
   const { userId } = useParams();
   const currentUserId = localStorage.getItem("userId");
 
@@ -30,7 +34,19 @@ export const Profile = () => {
       }
     };
 
+    const fetchPostData = async ()=> {
+      try {
+        const limit=3
+        const postData = await getPostsByUser(currentUserId,token,limit);
+        setPosts(postData);
+      } catch(error) {
+        console.error("Faild to fetch posts data");
+        console.log(error);
+      }
+    };
+
     fetchData();
+    fetchPostData();
   }, [userId]);
 
   const handleEditClick = () => {
@@ -128,6 +144,22 @@ export const Profile = () => {
         )}
         <p>Friend list</p>
       </div>
+
+      <div className="text-content-heading">
+          <div className="heading">Most Recent Posts</div>
+        </div>
+        <div className="cards">
+          {console.log("Inside card. Here are posts:",posts[0])}
+          { currentUserId ? (
+            posts.map((post) => (
+              <PostCardWithLike key={post._id} post={post} className="post-card-with-like-instance" />
+            ))
+          ) : (
+            <span>
+              No recent activity.
+            </span>
+          )}
+        </div>
       
       {isModalOpen && (
         <>
