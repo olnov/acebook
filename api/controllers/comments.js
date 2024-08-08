@@ -55,7 +55,7 @@ const deleteComment = async (req, res) => {
     }
   
     if (comment.author_id.toString() !== user_id) {
-        return res.status(403).json({ error: 'You are not authorized to delete this post' });
+        return res.status(403).json({ error: 'You are not authorized to delete this comment' });
     }
   
     await Comment.findByIdAndDelete(comment_id);
@@ -71,19 +71,19 @@ const deleteComment = async (req, res) => {
   
   
   const getAllCommentsforPost = async (req, res) => {
-      const { post_id } = req.params;
-      try {
-          const post = await Post.findById(post_id);
-          if (!post) {
-              return res.status(404).json({ error: 'Post could not be found' });
-            } 
-            
-        } catch (error) {
-            res.status(500).json({ message: "Error fetching comments for post" });
-            
-            
+    const { post_id } = req.params;
+    try {
+        const post = await Post.findById(post_id);
+        if (!post) {
+            return res.status(404).json({ error: 'Post not found' });
         }
-    };
+        
+        const comments = await Comment.find({ post_id: post_id });
+        res.status(200).json({ comments });
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching comments for post", error });
+    }
+};
     
     const CommentsController = {
         getAllCommentsforPost: getAllCommentsforPost,
