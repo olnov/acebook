@@ -7,6 +7,7 @@ import "./style.css";
 import "../../assets/styles/modal.css";
 import { useParams } from 'react-router-dom';
 import { getPosts, getPostsByUser } from '../../services/posts';
+import { getUserFriends } from '../../services/friends';
 import FriendsSidebar from "../../components/FriendListFrame/FriendsSidebar";
 import PostCardWithLike from '../../components/PostCardWithLike';
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -155,7 +156,7 @@ export const Profile = () => {
             {bio}
           </p>
         )}
-        <h2>Your Friends</h2>
+        <h2>{fullName}'s Friends</h2>
         <div className="friend-border">
           {friends.length === 0 ? (
             <p className="text-content-heading">No friends added currently, use the search bar to find them!</p>
