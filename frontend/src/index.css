@@ -68,12 +68,12 @@ body {
 }
 
 a {
-  color: var(--color-link);
+  color: var(--font-family-primary);
   font-family: var(--font-family-secondary);
 }
 
 a:hover {
-  color: var(--color-link-hover);
+  color: var(--font-family-primary);
 }
 
 /* Dark mode styles */

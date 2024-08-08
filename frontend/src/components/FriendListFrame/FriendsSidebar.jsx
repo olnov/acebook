@@ -58,7 +58,6 @@ export const FriendsSidebar = () => {
                         <ProfileImage userId={friend._id} height="70" width="70"/>
                         {/* </Link> */}
                         <div className='friend-info'>
-
                             <Link to={`/profile/${friend._id}`} style={{ textDecoration: 'none'}}>
                             <span className = 'friend-name'> {friend.full_name} </span>
                             </Link>
