@@ -1,5 +1,3 @@
-import { CardGridImage } from "../../components/CardGridImage";
-import { HeroBasic } from "../../components/HeroBasic";
 import TopBarGroup from "../../components/TopBarGroup";
 import "./style.css";
 
