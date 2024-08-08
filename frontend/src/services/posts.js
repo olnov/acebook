@@ -67,7 +67,7 @@ export const createPost = async (post, token) => {
 // };
 
 export const getPostsByUser = async (userId, token, limit) => {
-  const response = await fetch(`${BACKEND_URL}/posts/users/${userId}/posts?${limit}`, {
+  const response = await fetch(`${BACKEND_URL}/posts/users/${userId}/posts?limit=${limit}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

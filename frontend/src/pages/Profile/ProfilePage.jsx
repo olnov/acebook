@@ -37,7 +37,7 @@ export const Profile = () => {
     const fetchPostData = async ()=> {
       try {
         const limit=3
-        const postData = await getPostsByUser(currentUserId,token,limit);
+        const postData = await getPostsByUser(userId,token,limit);
         setPosts(postData);
       } catch(error) {
         console.error("Faild to fetch posts data");
@@ -146,11 +146,10 @@ export const Profile = () => {
       </div>
 
       <div className="text-content-heading">
-          <div className="heading">Most Recent Posts</div>
+          <div className="heading">Person Recent Posts</div>
         </div>
         <div className="cards">
-          {console.log("Inside card. Here are posts:",posts[0])}
-          { currentUserId ? (
+          { userId ? (
             posts.map((post) => (
               <PostCardWithLike key={post._id} post={post} className="post-card-with-like-instance" />
             ))
