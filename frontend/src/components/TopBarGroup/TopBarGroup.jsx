@@ -10,12 +10,7 @@ import { ProfileImage } from "../ProfileImage/ProfileImage";
 import Logo from "../../assets/acebook.svg";
 import './style.css';
 
-export const TopBarGroup = ({
-  // property1,
-  // headerClassName,
-  // block = 'https://c.animaapp.com/M2klh9T2/img/block-2.svg',
-  // block = Logo,
-}) => {
+export const TopBarGroup = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
@@ -76,9 +71,11 @@ export const TopBarGroup = ({
           <Link to="/" className={`navigation-pill-link ${location.pathname === '/' ? 'active' : ''}`}>
             <NavigationPill className="navigation-pill-instance" label="Home" state="default" />
           </Link>
-          <Link to="/feed" className={`navigation-pill-link ${location.pathname === '/feed' ? 'active' : ''}`}>
-            <NavigationPill className="navigation-pill-instance" label="Feed" state="default" />
-          </Link>
+          {isLoggedIn && (
+            <Link to="/feed" className={`navigation-pill-link ${location.pathname === '/feed' ? 'active' : ''}`}>
+              <NavigationPill className="navigation-pill-instance" label="Feed" state="default" />
+            </Link>
+          )}
           <Link to="/about-us" className={`navigation-pill-link ${location.pathname === '/about-us' ? 'active' : ''}`}>
             <NavigationPill className="navigation-pill-instance" label="About us" state="default" />
           </Link>
