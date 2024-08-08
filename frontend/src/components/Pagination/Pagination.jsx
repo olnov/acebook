@@ -1,4 +1,3 @@
-import React from "react";
 import PaginationList from "../PaginationList/PaginationList";
 import PaginationNext from "../PaginationNext/PaginationNext";
 import PaginationPrevious from "../PaginationPrevious/PaginationPrevious";
