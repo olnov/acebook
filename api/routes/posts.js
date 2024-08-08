@@ -6,9 +6,10 @@ const tokenChecker = require('../middleware/tokenChecker');
 
 router.get("/", PostsController.getAllPosts);
 router.get("/:id", PostsController.getPostById);
-router.post('/', tokenChecker, PostsController.createPost);
 router.get('/users/:user_id/posts', PostsController.getPostsByUser);
 
+// POST route
+router.post('/', tokenChecker, PostsController.createPost);
 
 // DELETE route
 router.delete("/:id", PostsController.deletePost);
