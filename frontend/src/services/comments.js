@@ -1,14 +1,11 @@
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const createComment = async (comment, token) => {
-    console.log(token)
-    console.log(comment)
-    console.log(comment.post_id)
     const requestOptions = {
         method: "POST",
         headers: {
             "Content-Type" : "application/json",
-            Authorization: `Bearer ${token},`
+            Authorization: `Bearer ${token}`
         },
         body: JSON.stringify(comment),
     };
@@ -23,23 +20,25 @@ export const createComment = async (comment, token) => {
     return data;
 };
 
-// export const getCommentsbyPostID = async (token, post_id) => {
-//     const requestOptions = {
-//       method: "GET",
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//       },
-//     };
+export const getCommentsbyPostID = async (token, post_id) => {
+    console.log(token)
+    console.log(post_id)
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
   
-//     try {
-//       const response = await fetch(`${BACKEND_URL}/comments`, requestOptions);
-//       if (response.status !== 200) {
-//         throw new Error("Unable to fetch posts");
-//       }
-//       const data = await response.json();
-//       return data || []; 
-//     } catch (error) {
-//       console.error('Error in getPosts:', error);
-//       return [];
-//     }
-//   };
+    try {
+      const response = await fetch(`${BACKEND_URL}/comments/${post_id}`, requestOptions);
+      if (response.status !== 200) {
+        throw new Error("Unable to fetch comments");
+      }
+      const data = await response.json();
+      return data || []; 
+    } catch (error) {
+      console.error('Error in getCommentbyPostID:', error);
+      return [];
+    }
+  };

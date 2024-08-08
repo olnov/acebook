@@ -4,6 +4,7 @@ import Pagination from '../../components/Pagination/Pagination';
 import { getPosts } from '../../services/posts';
 import TopBarGroup from '../../components/TopBarGroup/TopBarGroup';
 import './style.css';
+import CommentCard from '../../components/CommentCard/CommentCard';
 
 export const FeedPage = () => {
   const [posts, setPosts] = useState([]);
@@ -99,11 +100,14 @@ export const FeedPage = () => {
             totalPosts={posts.length}
             currentPage={currentPage}
             paginate={paginate}
-          />
+            />
         </div>
       </div>
     </div>
   );
 };
 
+// <CommentCard key={comment._id} comment={comment} />
 export default FeedPage;
+
+
