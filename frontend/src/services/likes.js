@@ -20,12 +20,12 @@ export const createlike = async (like, token) => {
     return data;
 };
 
-// export const getlikesbyPost = async (token) => {
-//     const requestOptions = {
-//         method: "GET",
-//         headers : {
-//             Authorization: `Bearer ${token}`,
-//         },
-//     };
+export const getlikesbyPost = async (token) => {
+    const requestOptions = {
+        method: "GET",
+        headers : {
+            Authorization: `Bearer ${token}`,
+        },
+    };
 
 // }

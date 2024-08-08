@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import CommentPagination from '../CommentPagination/CommentPagination'
 import PropTypes from 'prop-types';
+import { ProfileImage } from "../ProfileImage/ProfileImage";
 import './style.css';
 import CommentCard from '../CommentCard/CommentCard';
 import { getCommentsbyPostID } from '../../services/comments.js';
@@ -55,12 +56,10 @@ const PostPopOut = ({ post, onClose }) => {
   return (
     <div className="post-popout-overlay">
       <div className="post-popout-container">
-        <button className="post-popout-close" onClick={onClose}>
-          X
-        </button>
+      <button className="close-button" onClick={onClose}>X</button>
         <h2>{post.title}</h2>
         <div className="post-popout-author">
-          <img src="path/to/avatar.jpg" alt="Avatar" />
+          <ProfileImage userId={post.post_author._id} height="70" width="70" />
           <div>
             <strong>{post.post_author?.full_name || 'Unknown Author'}</strong>
             <p>{new Date(post.date_created).toLocaleDateString()}</p>

@@ -1,4 +1,4 @@
-/* Reset some basic styles */
+/* Basic Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -15,7 +15,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f9f9f9; /* Match the background color of other pages */
+  background-color: var(--background-color); /* Use variable for background color */
   padding-top: 100px; /* Space for the fixed top bar */
 }
 
@@ -27,7 +27,7 @@ html, body {
   width: 100%;
   max-width: 1200px;
   z-index: 1000;
-  background-color: #fff; /* Ensure top bar background */
+  background-color: var(--foreground-color); /* Use variable for foreground color */
 }
 
 .hero-basic {
@@ -43,7 +43,7 @@ html, body {
 
 .hero-basic p {
   font-size: 24px;
-  color: #666;
+  color: var(--text-color); /* Use variable for text color */
 }
 
 .panel-image-double {
@@ -75,39 +75,73 @@ html, body {
 
 .content-section .subheading {
   font-size: 20px;
-  color: #666;
+  color: var(--text-color); /* Use variable for text color */
   margin-bottom: 20px;
 }
 
-.card-grid-image {
+.card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr); /* Adjust grid to 2 columns */
   gap: 20px;
+  justify-content: center; /* Center the grid */
 }
 
-.card-grid-image .card {
-  background-color: #fff;
-  border: 1px solid #e0e0e0;
+.card-grid .card {
+  background-color: var(--foreground-color); /* Use variable for background color */
+  border: 1px solid var(--border-color); /* Use variable for border color */
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: left;
 }
 
-.card-grid-image .card img {
+.card-grid .card img {
   width: 100%;
   height: auto;
   margin-bottom: 10px;
   border-radius: 5px;
 }
 
-.card-grid-image .card h3 {
+.card-grid .card h3 {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.card-grid-image .card p {
+.card-grid .card p {
   font-size: 14px;
-  color: #666;
+  color: var(--text-color); /* Use variable for text color */
+}
+
+/* Dark mode styles */
+[data-theme='dark'] {
+  --background-color: var(--color-dark-background);
+  --foreground-color: var(--color-dark-foreground);
+  --border-color: var(--color-dark-border);
+  --text-color: var(--color-white);
+  --link-color: var(--color-dark-link);
+  --link-hover-color: var(--color-dark-link-hover);
+}
+
+[data-theme='dark'] body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+[data-theme='dark'] .about-us-page,
+[data-theme='dark'] .top-bar-group-instance,
+[data-theme='dark'] .content-section,
+[data-theme='dark'] .card-grid .card {
+  background-color: var(--foreground-color);
+  color: var(--text-color);
+}
+
+[data-theme='dark'] .card-grid .card {
+  border: 1px solid var(--border-color);
+}
+
+[data-theme='dark'] .hero-basic p,
+[data-theme='dark'] .content-section .subheading,
+[data-theme='dark'] .card-grid .card p {
+  color: var(--text-color);
 }

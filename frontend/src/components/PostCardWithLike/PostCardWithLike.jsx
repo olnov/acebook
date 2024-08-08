@@ -25,7 +25,7 @@ const PostCardWithLike = ({ post, comment }) => {
 
   const handleCloseCommentClick = () => {
     setShowAddComment(false);
-  }
+  } 
 
   return (
     <div className="post-card">

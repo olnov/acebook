@@ -35,5 +35,15 @@
 
 }
 
-
+.add-friend-button {
+    padding: 10px 20px;
+    width: 140px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #494949;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
 
