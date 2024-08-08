@@ -82,8 +82,8 @@ a:hover {
   --foreground-color: var(--color-dark-foreground);
   --border-color: var(--color-dark-border);
   --text-color: var(--color-white);
-  --link-color: var(--color-dark-link);
-  --link-hover-color: var(--color-dark-link-hover);
+  --link-color: var(--color-white;
+  --link-hover-color: var(--color-white);
 }
 
 [data-theme='dark'] body {
