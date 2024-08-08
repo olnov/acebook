@@ -58,6 +58,12 @@ export const Profile = () => {
       }
     };
 
+  //   const sortedPosts = Array.isArray(fetchedPosts)
+  //   ? fetchedPosts.sort((a, b) => new Date(b.date_created) - new Date(a.date_created))
+  //   : [];
+  // const latest3Posts = sortedPosts.slice(0, 3);
+  // setPosts(latest3Posts);
+
     fetchData();
     fetchFriends();
     fetchPostData();
