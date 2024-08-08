@@ -8,9 +8,7 @@ const PostPopOut = ({ post, onClose }) => {
   return (
     <div className="post-popout-overlay">
       <div className="post-popout-container">
-        <button className="post-popout-close" onClick={onClose}>
-          X
-        </button>
+      <button className="close-button" onClick={onClose}>X</button>
         <h2>{post.title}</h2>
         <div className="post-popout-author">
           <ProfileImage userId={post.post_author._id} height="70" width="70" />
