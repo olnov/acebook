@@ -1,5 +1,5 @@
 .home-page {
-  padding-top: 150px; /* Ensure there's space for the TopBarGroup */
+  padding-top: 100px; /* Ensure there's space for the TopBarGroup */
   display: flex;
   flex-direction: column;
   align-items: center;
