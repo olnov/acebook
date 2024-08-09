@@ -8,6 +8,7 @@ export const SignupPage = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   
   //Add background
   useEffect(() => {
@@ -23,12 +24,16 @@ export const SignupPage = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      await signup(fullName, email, password);
-      navigate("/login");
-    } catch (err) {
-      console.error(err);
-      navigate("/signup");
+    if (password === confirmPassword) {
+      try {
+        await signup(fullName, email, password);
+        navigate("/login");
+      } catch (err) {
+        console.error(err);
+        navigate("/signup");
+      }
+    } else {
+      alert("Passwords don't match");
     }
   };
 
@@ -43,6 +48,10 @@ export const SignupPage = () => {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
+
+  const handleConfirmPasswordChange = (event) => {
+    setConfirmPassword(event.target.value);
+  }
 
   return (
     <div className="signup-page">
@@ -74,6 +83,14 @@ export const SignupPage = () => {
             type="password"
             value={password}
             onChange={handlePasswordChange}
+            autoComplete="on"
+          />
+          <label htmlFor="confirm_password">Confirm:</label>
+          <input
+            id="confirm_password"
+            type="password"
+            value={confirmPassword}
+            onChange={handleConfirmPasswordChange}
             autoComplete="on"
           />
           <button type="submit">Sign Up</button>

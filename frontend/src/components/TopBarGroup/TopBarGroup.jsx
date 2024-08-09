@@ -81,7 +81,7 @@ export const TopBarGroup = () => {
           </Link>
         </div>
         <div className="header-auth">
-          {!isLoggedIn ? (
+          {!isLoggedIn || token != undefined ? (
             <>
               <div className="button" onClick={handleLoginClick}>
                 <button className="button-2">Login</button>
