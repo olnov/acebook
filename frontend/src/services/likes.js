@@ -1,14 +1,8 @@
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
- export const createLike = async (like, token) => {
-   const requestOptions = {
-     method: "POST",
-     headers: {
-       "Content-Type": "application/json",
-       Authorization: `Bearer ${token}`,
-     },
-     body: JSON.stringify(like),
-   };
+export const addLike = async (req, res) => {
+  const { author_id } = req.body;
+  const { post_id } = req.params;
 
    try {
      const response = await fetch(`${BACKEND_URL}/likes/${like.post_id}`, requestOptions);
