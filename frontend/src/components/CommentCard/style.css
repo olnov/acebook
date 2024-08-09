@@ -20,11 +20,6 @@
 }
 
 .comment-card p:nth-child(2) {
-  font-size: 0.9em; /* Smaller font size for the date */
-  color: var(--color-text-muted); /* Lighter color for the date */
-}
-
-.comment-card p:nth-child(3) {
   font-size: 1.2em; /* Increase the font size for the comment text */
   color: var(--color-text-default-default); /* Primary text color */
 }
@@ -41,9 +36,5 @@
 }
 
 [data-theme='dark'] .comment-card p:nth-child(2) {
-  color: var(--color-dark-light-mid); /* Adjust text color for dark mode */
-}
-
-[data-theme='dark'] .comment-card p:nth-child(3) {
   color: var(--color-white); /* Adjust text color for dark mode */
 }

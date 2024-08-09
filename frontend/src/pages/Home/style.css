@@ -120,11 +120,17 @@
 }
 
 [data-theme='dark'] .home-page {
-  background-color: var(--background-color);
+  /* background-color: var(--background-color); */
   color: var(--text-color);
 }
 
 .home-page-background {
   background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255,255,255,0.2)), url('../../assets/treeImage.JPG');
   background-size: cover;
+}
+
+[data-theme='dark'] .home-page {
+  background-image: linear-gradient(rgba(19, 18, 18, 0.7), rgba(159, 6, 6, 0.2)), url('../../assets/treeImage.JPG');
+  background-size: cover;
+  backdrop-filter: blur(5px);
 }

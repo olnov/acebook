@@ -4,8 +4,7 @@ import './style.css';
 const CommentCard = ({ comment }) => {
   return (
     <div className="comment-card">
-      <p>{comment.author_id.full_name}</p>
-      <p> {new Date(comment.date_created).toLocaleDateString()}</p>
+      <p>{comment.author_id.full_name} {new Date(comment.date_created).toLocaleDateString()}</p>
       <p>{comment.message}</p>
     </div>
   );
