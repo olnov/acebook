@@ -78,7 +78,8 @@ const deleteComment = async (req, res) => {
             return res.status(404).json({ error: 'Post not found' });
         }
         
-        const comments = await Comment.find({ post_id: post_id });
+        const comments = await Comment.find({ post_id: post_id })
+            .populate('author_id', 'full_name');
         res.status(200).json({ comments });
     } catch (error) {
         res.status(500).json({ message: "Error fetching comments for post", error });
