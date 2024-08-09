@@ -24,7 +24,29 @@ export const login = async (email, password) => {
   }
 };
 
+export const checkEmail = async (email) => {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type":"application/json",
+    },
+    body: JSON.stringify(email),
+    };
+
+    const response = await fetch(`${BACKEND_URL}/users/email`,requestOptions);
+    if (response.status === 201 ) {
+      const data = await response.json();
+      return;
+    } else {
+      throw new Error(`Received status ${response.status} when signing up. Expected 201`);
+    }
+  }
+
 export const signup = async (full_name, email, password) => {
+  // Checking if the user already exist
+  if (checkEmail(email)) {
+    throw new Error(`User with email: ${email} already exist `);
+  }
   const payload = {
     full_name: full_name,
     email: email,
@@ -43,9 +65,9 @@ export const signup = async (full_name, email, password) => {
 
   if (response.status === 201) {
     const data = await response.json();
-    localStorage.setItem('token', data.token);
-    localStorage.setItem('userId', data.userId); // Assuming userId is returned
-    localStorage.setItem('userName', data.userName); // Assuming userName is returned
+    // localStorage.setItem('token', data.token);
+    // localStorage.setItem('userId', data.userId); // Assuming userId is returned
+    // localStorage.setItem('userName', data.userName); // Assuming userName is returned
     return;
   } else {
     throw new Error(`Received status ${response.status} when signing up. Expected 201`);

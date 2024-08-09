@@ -9,6 +9,7 @@ export const SignupPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState(false);
   
   //Add background
   useEffect(() => {
@@ -29,6 +30,7 @@ export const SignupPage = () => {
         await signup(fullName, email, password);
         navigate("/login");
       } catch (err) {
+        setError(true);
         console.error(err);
         navigate("/signup");
       }
@@ -95,6 +97,11 @@ export const SignupPage = () => {
           />
           <button type="submit">Sign Up</button>
         </form>
+        {error ? (
+          <span className="error-text"><h5>This email already registered</h5></span>
+        ):(
+        <p></p>
+        )}
         <p className="form-footer">
           Already have an account? <Link to="/login">Log in!</Link>
         </p>

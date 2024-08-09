@@ -23,24 +23,6 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-// const getUserFriends = async (req, res) => {
-//   const id = req.params.id;
-//   console.log("this is your user's id: " + id)
-//   try {
-//     // const user = await User.findById(id).select("friends full_name email _id");
-//     const user = await User.findById(id).populate("friends");
-//     console.log(user)
-//     if (!user) {
-//       return res.status(404).json({ message: "User not found" });
-//     }
-//     console.log(user.friends)
-//     res.status(200).json(user.friends || []); // Ensure an empty array is returned if no friends
-//   } catch (err) {
-//     const user = await User.findById(id).populate('friends', 'full_name', 'email');
-//     res.status(500).json({ message: "Error fetching friends", error: err.message });
-//     console.log('this is the user variable: ' + user)
-//   }
-// };
 
 const getUserFriends = async (req, res) => {
   try {
@@ -108,6 +90,22 @@ const getUserById = async (req, res) => {
   }
 };
 
+// Function to select user by email. Required to check on signup, if the user already exist.
+
+const getUserByEmail = async (req,res) => {
+  const userEmail = req.body.email;
+  try {
+    const user = await User.findOne({email:userEmail});
+    if (!user) {
+      res.status(400).json({ message: "User does not exist"});
+    } else {
+      res.status(200).json({ id: user.id, full_name: user.full_name, email: user.email, user_bio: user.user_bio });
+    } 
+  } catch(error) {
+      res.status(500).json({ message: "Error fetching user details", error: error.message });
+  }
+}
+
 
 // Function to update user data. In the first iteration limited to user_bio.
 const updateUserById = async (req, res) => {
@@ -146,7 +144,8 @@ const UsersController = {
   getAllUsers,
   getUsersByName,
   getUserFriends,
-  addRemoveFriend
+  addRemoveFriend,
+  getUserByEmail
 };
 
 module.exports = UsersController;
