@@ -1,5 +1,5 @@
 #root {
-  padding-top: 200px;
+  padding: 10px;
   display: flex;
   align-items: flex-start;
 }
@@ -26,7 +26,9 @@
   box-shadow:  0px 0px 50px 0px #dbddc6;
   margin: auto;
   background-color: rgba(255, 255, 255, 0.836);
-  backdrop-filter: blur(2px)
+  backdrop-filter: blur(2px);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   
 }
 
@@ -55,6 +57,7 @@
 }
 
 .main-container {
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,6 +87,7 @@
 }
 
 .bio, .friends, .posts {
+  border-radius: 5px;
   margin-bottom: 20px;
 }
 
