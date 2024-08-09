@@ -82,7 +82,7 @@ a:hover {
   --foreground-color: var(--color-dark-foreground);
   --border-color: var(--color-dark-border);
   --text-color: var(--color-white);
-  --link-color: var(--color-white;
+  --link-color: var(--color-white);
   --link-hover-color: var(--color-white);
 }
 
@@ -104,4 +104,9 @@ a:hover {
 
 [data-theme='dark'] a:hover {
   color: var(--link-hover-color);
+}
+
+.home-page-background {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.2));
+  background-size: cover;
 }
