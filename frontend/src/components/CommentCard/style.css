@@ -1,149 +1,49 @@
 .comment-card {
-    align-items: flex-start;
-    background-color: var(--color-background-default-default);
-    border: 1px solid;
-    border-color: var(--color-border-default-default);
-    border-radius: var(--size-radius-200);
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--size-space-600);
-    padding: var(--size-space-600);
-    position: relative;
-    width: 440px;
-  }
-  
-  .comment-card .avatar-block {
-    align-items: flex-start;
-    display: flex;
-    gap: var(--size-space-300);
-    position: relative;
-    width: 192px;
-  }
-  
-  .comment-card .avatar-instance {
-    position: relative !important;
-  }
-  
-  .comment-card .info {
-    align-items: flex-start;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    flex-grow: 1;
-    gap: 2px;
-    position: relative;
-  }
-  
-  .comment-card .text-wrapper-3 {
-    align-self: stretch;
-    color: var(--color-text-default-secondary);
-    font-family: var(--body-strong-font-family);
-    font-size: var(--body-strong-font-size);
-    font-style: var(--body-strong-font-style);
-    font-weight: var(--body-strong-font-weight);
-    letter-spacing: var(--body-strong-letter-spacing);
-    line-height: var(--body-strong-line-height);
-    margin-top: -1px;
-    position: relative;
-  }
-  
-  .comment-card .text-wrapper-4 {
-    align-self: stretch;
-    color: var(--color-text-default-tertiary);
-    font-family: var(--body-base-font-family);
-    font-size: var(--body-base-font-size);
-    font-style: var(--body-base-font-style);
-    font-weight: var(--body-base-font-weight);
-    letter-spacing: var(--body-base-letter-spacing);
-    line-height: var(--body-base-line-height);
-    position: relative;
-  }
-  
-  .comment-card .body {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    gap: var(--size-space-400);
-    margin-right: -7px;
-    position: relative;
-    width: 399px;
-  }
-  
-  .comment-card .text-2 {
-    align-items: flex-start;
-    align-self: stretch;
-    display: flex;
-    flex: 0 0 auto;
-    flex-direction: column;
-    gap: var(--size-space-200);
-    position: relative;
-    width: 100%;
-  }
-  
-  .comment-card .text-wrapper-5 {
-    align-self: stretch;
-    color: var(--color-text-default-default);
-    font-family: var(--heading-font-family);
-    font-size: var(--heading-font-size);
-    font-style: var(--heading-font-style);
-    font-weight: var(--heading-font-weight);
-    letter-spacing: var(--heading-letter-spacing);
-    line-height: var(--heading-line-height);
-    margin-top: -1px;
-    position: relative;
-  }
-  
-  .comment-card .p {
-    align-self: stretch;
-    color: var(--color-text-default-secondary);
-    font-family: var(--body-base-font-family);
-    font-size: var(--body-base-font-size);
-    font-style: var(--body-base-font-style);
-    font-weight: var(--body-base-font-weight);
-    letter-spacing: var(--body-base-letter-spacing);
-    line-height: var(--body-base-line-height);
-    position: relative;
-  }
-  
-  .comment-card .button-group {
-    align-items: center;
-    display: flex;
-    flex: 0 0 auto;
-    gap: var(--size-space-400);
-    position: relative;
-    width: 97px;
-  }
-  
-  .comment-card .button {
-    all: unset;
-    align-items: center;
-    background-color: var(--color-background-neutral-tertiary);
-    border: 1px solid;
-    border-color: var(--color-border-neutral-secondary);
-    border-radius: var(--size-radius-200);
-    box-sizing: border-box;
-    display: inline-flex;
-    flex: 0 0 auto;
-    gap: var(--size-space-200);
-    justify-content: center;
-    overflow: hidden;
-    padding: var(--size-space-300);
-    position: relative;
-  }
-  
-  .comment-card .button-2 {
-    all: unset;
-    box-sizing: border-box;
-    color: var(--color-text-default-default);
-    font-family: var(--single-line-body-base-font-family);
-    font-size: var(--single-line-body-base-font-size);
-    font-style: var(--single-line-body-base-font-style);
-    font-weight: var(--single-line-body-base-font-weight);
-    letter-spacing: var(--single-line-body-base-letter-spacing);
-    line-height: var(--single-line-body-base-line-height);
-    margin-top: -1px;
-    position: relative;
-    white-space: nowrap;
-    width: fit-content;
-  }
-  
+  background-color: var(--color-background-default-default);
+  border: 1px solid var(--color-border-default-default);
+  border-radius: var(--size-radius-200);
+  padding: var(--size-space-400);
+  margin-bottom: var(--size-space-400); /* Space between comment cards */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for better separation */
+}
+
+.comment-card p {
+  margin: 0;
+  padding: 4px 0;
+  line-height: 1.4;
+}
+
+.comment-card p:first-child {
+  font-weight: bold; /* Make the author name bold */
+  font-size: 1.1em; /* Slightly increase the font size */
+  color: var(--color-text-default-secondary); /* Adjust text color if needed */
+}
+
+.comment-card p:nth-child(2) {
+  font-size: 0.9em; /* Smaller font size for the date */
+  color: var(--color-text-muted); /* Lighter color for the date */
+}
+
+.comment-card p:nth-child(3) {
+  font-size: 1.2em; /* Increase the font size for the comment text */
+  color: var(--color-text-default-default); /* Primary text color */
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .comment-card {
+  background-color: var(--color-dark-darker);
+  border-color: var(--color-dark-light-mid);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Adjust shadow for dark mode */
+}
+
+[data-theme='dark'] .comment-card p:first-child {
+  color: var(--color-white); /* Adjust text color for dark mode */
+}
+
+[data-theme='dark'] .comment-card p:nth-child(2) {
+  color: var(--color-dark-light-mid); /* Adjust text color for dark mode */
+}
+
+[data-theme='dark'] .comment-card p:nth-child(3) {
+  color: var(--color-white); /* Adjust text color for dark mode */
+}

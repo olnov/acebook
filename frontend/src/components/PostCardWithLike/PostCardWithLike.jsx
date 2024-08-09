@@ -93,7 +93,7 @@ const PostCardWithLike = ({ post }) => {
         <button className="see-more-button" onClick={handleSeeMoreClick}>See more</button>
         {showPopOut && <PostPopOut key={post._id} post={post} onClose={handleClosePopOut} />}
       </div>
-      <div>
+      <div className="post-card-footer">
         <button className="add-comment-button" onClick={handleAddCommentClick}>Add comment</button>
         {showAddComment && <NewCommentPopOut key={post._id} post={post} onClose={handleCloseCommentClick} />}
       </div>
