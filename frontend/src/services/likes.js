@@ -1,31 +1,30 @@
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
- export const createLike = async (like, token) => {
-   const requestOptions = {
-     method: "POST",
-     headers: {
-       "Content-Type": "application/json",
-       Authorization: `Bearer ${token}`,
-     },
-     body: JSON.stringify(like),
-   };
-
-   try {
-     const response = await fetch(`${BACKEND_URL}/likes/${like.post_id}`, requestOptions);
-
-     if (!response.ok) {
-       const errorData = await response.json();
-       console.error("Error response from server:", errorData);
-       throw new Error("Error creating like");
-     }
-
-     const data = await response.json();
-     return data;
-   } catch (error) {
-     console.error("Error in createLike:", error);
-     throw error;
-   }
- };
+export const createLike = async (like, token) => {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(like),
+  };
+  try {
+    const response = await fetch(`${BACKEND_URL}/likes/${like.post_id}`, requestOptions);
+  
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("Error response from server:", errorData);
+      throw new Error("Error creating like");
+    }
+  
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error in createLike:", error);
+    throw error;
+  }
+};
 
 export const getLikesbyPostID = async (token, post_id) => {
   console.log(token)

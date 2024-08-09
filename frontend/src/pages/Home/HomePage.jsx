@@ -15,12 +15,13 @@ export const HomePage = () => {
   const [friends, setFriends] = useState([]);
   const [error, setError] = useState("");
   const [fullName, setFullName] = useState("");
+  // const []
 
   useEffect(() => {
     document.body.classList.add('home-page-background');
-
     return () => {
-      document.body.classList.remove('home-page-background');
+      document.body.classList.remove('home-page-background')
+      ;
     };
   }, []);
 
@@ -70,6 +71,7 @@ export const HomePage = () => {
   }, [navigate]);
 
   return (
+    
     <div className="home-page">
       <TopBarGroup
         block="https://c.animaapp.com/M2klh9T2/img/block-2.svg"

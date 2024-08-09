@@ -1,8 +1,9 @@
 .search-results {
     display: flex;
     flex-direction: column;
+    /* position: relative; */
     height: 80vh;
-    scroll-margin-bottom: 10vh;
+    /* scroll-margin-bottom: 0vh; */
     overflow-y: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
