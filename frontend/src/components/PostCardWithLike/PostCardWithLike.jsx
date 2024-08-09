@@ -5,7 +5,7 @@ import PostPopOut from '../PostPopOut/PostPopOut';
 import IconOutlinedActionThumbThumbUp2 from '../../icons/IconOutlinedActionThumbThumbUp2';
 import { ProfileImage } from "../ProfileImage/ProfileImage";
 import NewCommentPopOut from '../NewCommentPopOut/NewCommentPopOut';
-import { getLikesbyPostID, deleteLike, addLike } from '../../services/likes';
+import { getLikesbyPostID, createLike, deleteLike } from '../../services/likes';
 
 const PostCardWithLike = ({ post }) => {
   const [showPopOut, setShowPopOut] = useState(false);
@@ -40,7 +40,7 @@ const PostCardWithLike = ({ post }) => {
         const like = likes.find(like => like.author_id === userId);
         await deleteLike(token, like._id);
       } else {
-        await addLike({ post_id: post._id, author_id: userId }, token);
+        await createLike({ post_id: post._id, author_id: userId }, token);
       }
       fetchLikes();
     } catch (error) {
