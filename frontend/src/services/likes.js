@@ -9,7 +9,6 @@ export const createLike = async (like, token) => {
     },
     body: JSON.stringify(like),
   };
-
   try {
     const response = await fetch(`${BACKEND_URL}/likes/${like.post_id}`, requestOptions);
   
