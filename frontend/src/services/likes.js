@@ -1,43 +1,31 @@
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-export const addLike = async (req, res) => {
-  const { author_id } = req.body;
-  const { post_id } = req.params;
+ export const createLike = async (like, token) => {
+   const requestOptions = {
+     method: "POST",
+     headers: {
+       "Content-Type": "application/json",
+       Authorization: `Bearer ${token}`,
+     },
+     body: JSON.stringify(like),
+   };
 
-  try {
-    console.log(`Searching for post with ID: ${post_id}`);
-    const post = await Post.findById(post_id);
-    if (!post) {
-      console.log("Post not found");
-      return res.status(404).json({ error: "Post not found" });
-    }
+   try {
+     const response = await fetch(`${BACKEND_URL}/likes/${like.post_id}`, requestOptions);
 
-    // Check if the like already exists
-    console.log(`Checking if like already exists for post_id: ${post_id} and author_id: ${author_id}`);
-    const existingLike = await Like.findOne({ author_id, post_id });
-    if (existingLike) {
-      console.log("Like already exists");
-      return res.status(400).json({ error: "Post already liked by this user" });
-    }
+     if (!response.ok) {
+       const errorData = await response.json();
+       console.error("Error response from server:", errorData);
+       throw new Error("Error creating like");
+     }
 
-    console.log("Creating new like");
-    const like = new Like({ author_id, post_id });
-    const savedLike = await like.save();
-
-    if (!post.likes) {
-      post.likes = [];
-    }
-
-    post.likes.push(savedLike._id);
-    await post.save();
-
-    console.log("Post liked successfully");
-    res.status(201).json({ message: "Post liked", like: savedLike });
-  } catch (error) {
-    console.error("Error in addLike:", error);
-    res.status(500).json({ error: "Could not like post" });
-  }
-};
+     const data = await response.json();
+     return data;
+   } catch (error) {
+     console.error("Error in createLike:", error);
+     throw error;
+   }
+ };
 
 export const getLikesbyPostID = async (token, post_id) => {
   console.log(token)
