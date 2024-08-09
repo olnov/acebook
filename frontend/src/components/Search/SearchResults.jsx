@@ -23,7 +23,8 @@ export const SearchResults = ({ results }) => {
         if (userId && token) {
             fetchFriends();
         }
-    }, [userId, token, friendIds]);
+    // }, [userId, token, friendIds]);
+    }, []);
 
     // handles adding friends
     const handleAddFriend = async (friendId) => {

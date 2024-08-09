@@ -163,7 +163,7 @@ export const Profile = () => {
           </p>
         )}
         <h2>{fullName}'s Friends</h2>
-        <div className="friends-list-container">
+        <div className="profile-friends-list-container">
             <ul className="friends-list">
                 {friends.map(friend => (
                     <li className = "friend-item" key={friend._id}>
@@ -180,11 +180,12 @@ export const Profile = () => {
             </ul>
         </div>
       </div>
-
+      {/* <span>
       <div className="text-content-heading">
           <div className="heading">Person Recent Posts</div>
         </div>
-        <div className="cards">
+        </span> */}
+        <div className="profile-cards">
           { userId ? (
             posts.map((post) => (
               <PostCardWithLike key={post._id} post={post} className="post-card-with-like-instance" />
@@ -195,6 +196,7 @@ export const Profile = () => {
             </span>
           )}
         </div>
+
       {isModalOpen && (
         <>
           <div className="modal">
@@ -229,7 +231,7 @@ export const Profile = () => {
           <div className="overlay" onClick={closeModal}></div>
         </>
       )}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

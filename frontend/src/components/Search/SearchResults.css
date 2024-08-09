@@ -4,6 +4,8 @@
     height: 80vh;
     scroll-margin-bottom: 10vh;
     overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .search-results-item {
