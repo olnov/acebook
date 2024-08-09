@@ -16,6 +16,7 @@ const TEST_USER = {
   full_name: 'Marco P',
   email: 'marco@gmail.com',
   password: 'mypssword',
+  user_bio: 'This is a test user created for the seeding process.',
 };
 
 mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -61,7 +62,8 @@ async function seedDatabase() {
       full_name: TEST_USER.full_name,
       email: TEST_USER.email,
       password: hashedPassword,
-      profile_image: testUserProfileImage
+      profile_image: testUserProfileImage,
+      user_bio: TEST_USER.user_bio,
     });
     await testUser.save();
     users.push(testUser);
@@ -73,7 +75,8 @@ async function seedDatabase() {
         full_name: faker.name.findName(),
         email: faker.internet.email(),
         password: 'password123', // Use a simple password for all users
-        profile_image: profileImage
+        profile_image: profileImage,
+        user_bio: faker.lorem.sentence().slice(0, 300), // Adding user_bio
       });
       users.push(user);
     }

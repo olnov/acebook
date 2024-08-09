@@ -1,6 +1,6 @@
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-const addLike = async (req, res) => {
+export const addLike = async (req, res) => {
   const { author_id } = req.body;
   const { post_id } = req.params;
 
